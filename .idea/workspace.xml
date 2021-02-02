@@ -21,11 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d44c0108-c79b-41d7-9f76-1b877a1020f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/assets/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TestComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TestComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +32,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Vue Single File Component" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -52,6 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -80,7 +78,10 @@
       <workItem from="1612200140061" duration="426000" />
       <workItem from="1612221001820" duration="734000" />
       <workItem from="1612221744026" duration="1687000" />
-      <workItem from="1612225071529" duration="5572000" />
+      <workItem from="1612225071529" duration="5702000" />
+      <workItem from="1612271898891" duration="8913000" />
+      <workItem from="1612280869087" duration="800000" />
+      <workItem from="1612292008000" duration="316000" />
     </task>
     <servers />
   </component>
@@ -100,6 +101,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1024" y="525" key="#Notifications" timestamp="1612280964259">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1024" y="525" key="#Notifications/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612280964259" />
     <state x="1010" y="503" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1612230038193">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
