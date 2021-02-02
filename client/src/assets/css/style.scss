@@ -56,7 +56,7 @@ body {
 }
 
 button, .button {
-    background-color: orangered;
+    background-color: $actionBackground;
     color: $actionText;
     border-radius: 4px;
     transition: all .3s ease;
