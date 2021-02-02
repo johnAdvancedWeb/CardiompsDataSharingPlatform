@@ -1,7 +1,8 @@
 <template>
-  <div class="container">
-    <button class="primary-button" @click="showModal">Show Modal</button><br>
-    <button class="primary-button" @click="showModal('viewData')">View Experimental Data</button><br>
+  <div id="home-container">
+    <br><button>This is a CSS styled button</button><br><br>
+    <button class="primary-button" @click="showModal">This is a Tailwind styled button</button><br><br>
+    <button class="primary-button" @click="showModal('viewData')">View Experimental Data</button><br><br>
     <button class="primary-button" @click="showModal('addData')">Add Experimental Data</button><br>
 
     <Modal :is-modal-visible="isModalVisible" @close-modal="closeModal">
