@@ -1,11 +1,12 @@
 <template>
-  <div class="container">
-    <button style="margin: auto" @click="showModal">Show Modal</button>
-    <button style="margin: auto" @click="showModal('login')">Login</button>
-    <button style="margin: auto" @click="showModal('register')">Register</button>
+  <div id="home-container">
+    <br><button>This is a CSS styled button</button><br><br>
+    <button class="primary-button" @click="showModal">This is a Tailwind styled button</button><br><br>
+    <button class="primary-button" @click="showModal('viewData')">View Experimental Data</button><br><br>
+    <button class="primary-button" @click="showModal('addData')">Add Experimental Data</button><br>
 
     <Modal :is-modal-visible="isModalVisible" @close-modal="closeModal">
-      <Login v-if="actionLoginOrRegister === 'login'"></Login>
+      <Login v-if="actionLoginOrRegister === 'viewData'"></Login>
       <TestComponent v-else></TestComponent>
     </Modal>
   </div>
@@ -39,6 +40,3 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
