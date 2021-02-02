@@ -23,7 +23,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/assets/css/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/assets/css/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TestComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TestComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +52,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/client/src/components" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -72,7 +80,7 @@
       <workItem from="1612200140061" duration="426000" />
       <workItem from="1612221001820" duration="734000" />
       <workItem from="1612221744026" duration="1687000" />
-      <workItem from="1612225071529" duration="254000" />
+      <workItem from="1612225071529" duration="5572000" />
     </task>
     <servers />
   </component>
@@ -92,6 +100,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1010" y="503" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1612230038193">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1010" y="503" key="#com.intellij.fileTypes.FileTypeChooser/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612230038193" />
     <state x="1011" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1612222603523">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
