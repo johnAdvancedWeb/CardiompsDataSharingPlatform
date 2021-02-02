@@ -21,7 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="d44c0108-c79b-41d7-9f76-1b877a1020f4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +54,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alsha\Desktop\CardiompsDataSharingPlatform\client\src\assets" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\alsha\Desktop\CardiompsDataSharingPlatform\client\src\components" />
     </key>
@@ -67,6 +72,7 @@
       <workItem from="1612200140061" duration="426000" />
       <workItem from="1612221001820" duration="734000" />
       <workItem from="1612221744026" duration="1687000" />
+      <workItem from="1612225071529" duration="254000" />
     </task>
     <servers />
   </component>
@@ -90,5 +96,21 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1011" y="448" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612222603523" />
+    <state width="2539" height="401" key="GridCell.Tab.0.bottom" timestamp="1612225138712">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="401" key="GridCell.Tab.0.bottom/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612225138712" />
+    <state width="2539" height="401" key="GridCell.Tab.0.center" timestamp="1612225138712">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="401" key="GridCell.Tab.0.center/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612225138712" />
+    <state width="2539" height="401" key="GridCell.Tab.0.left" timestamp="1612225138712">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="401" key="GridCell.Tab.0.left/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612225138712" />
+    <state width="2539" height="401" key="GridCell.Tab.0.right" timestamp="1612225138712">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="401" key="GridCell.Tab.0.right/-1920.435.1920.1020/-3840.435.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1612225138712" />
   </component>
 </project>
