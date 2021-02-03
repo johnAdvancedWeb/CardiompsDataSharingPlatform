@@ -5,16 +5,16 @@
         <ul class="flex flex-row">
           <li class="navbar-list-items-button"><button id="logo">Cardiomps DSP</button></li>
           <li class="navbar-list-items-routes"><router-link to="/">Home</router-link></li>
-          <li class="navbar-list-items-routes"><router-link to="/about">About</router-link></li>
-          <li class="navbar-list-items-routes"><router-link :to="{ name: 'Line' }">Line</router-link></li>
-          <li class="navbar-list-items-routes"><router-link :to="{ name: 'Bar' }">Bar</router-link></li>
+          <li class="navbar-list-items-routes"><router-link :to="{ name: 'Line' }">Add Experimental Data</router-link></li>
+          <li class="navbar-list-items-routes"><router-link :to="{ name: 'Bar' }">View Experimental Data</router-link></li>
+          <li class="navbar-list-items-routes"><router-link to="/about">Help and About</router-link></li>
         </ul>
       </div>
 
       <div>
         <ul class="flex flex-row">
-          <li class="navbar-list-items-button"><button>View Experimental Data</button></li>
-          <li class="navbar-list-items-button"><button>Insert Experimental Data</button></li>
+          <li class="navbar-list-items-routes"><router-link class="button" :to="{ name: 'SignUp' }">Sign Up</router-link></li>
+          <li class="navbar-list-items-routes"><router-link class="button" :to="{ name: 'SignIn' }">Sign In</router-link></li>
         </ul>
       </div>
     </nav>
