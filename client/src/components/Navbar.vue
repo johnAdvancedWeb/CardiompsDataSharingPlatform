@@ -6,6 +6,8 @@
           <li class="navbar-list-items-button"><button id="logo">Cardiomps DSP</button></li>
           <li class="navbar-list-items-routes"><router-link to="/">Home</router-link></li>
           <li class="navbar-list-items-routes"><router-link to="/about">About</router-link></li>
+          <li class="navbar-list-items-routes"><router-link :to="{ name: 'Line' }">Line</router-link></li>
+          <li class="navbar-list-items-routes"><router-link :to="{ name: 'Bar' }">Bar</router-link></li>
         </ul>
       </div>
 
