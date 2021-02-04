@@ -24,11 +24,11 @@
 @import 'global';
 
 .navbar-container {
-    background-color: $navbarBackground;
+    background-color: var(--navbarBackground);
 }
 
 #logo {
-    color: $actionBackground;
+    color: var(--actionBackground);
     background-color: unset;
     pointer-events: none;
 }
@@ -40,7 +40,7 @@
 .navbar-list-items-routes {
     transition: .3s ease all;
     &:hover {
-        color: $actionBackground;
+        color: var(--actionBackground);
     }
 }
 
@@ -52,12 +52,12 @@
     @apply w-full h-64 rounded-lg shadow-2xl;
 
     transition: all .3s ease;
-    background-color: $navbarBackground;
+    background-color: var(--navbarBackground);
 }
 
 
 #login-container, #register-container {
-    background-color: $navbarBackground;
+    background-color: var(--navbarBackground);
     max-width: 1200px;
     position: relative;
     left: 50%;
@@ -66,15 +66,15 @@
     margin-top: 20px;
 
     input {
-        background-color: $bodyBackground;
+        background-color: var(--bodyBackground);
         margin-bottom: 20px;
         width: 50%;
         padding: 10px;
         transition: all .5s ease;
 
         &:focus {
-            background-color: $bodyText;
-            color: $navbarBackground;
+            background-color: var(--bodyText);
+            color: var(--navbarBackground);
         }
     }
 }
@@ -86,12 +86,18 @@
         #password {
             margin-bottom: 2px !important;
         }
+
+        a {
+            &:hover {
+                color: var(--blue);
+            }
+        }
     }
 }
 
 #login-header, #register-header {
-    background-color: $actionBackground;
-    color: $actionText;
+    background-color: var(--actionBackground);
+    color: var(--actionText);
     padding: 10px 0;
     margin-bottom: 20px;
 }

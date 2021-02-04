@@ -1,18 +1,44 @@
-$actionBackground: #FCD34D;
-$bodyBackground: #1b1b1e;
+/* variables for default/light theme below */
+:root {
+  --bodyBackground: rgb(250, 247, 247);
+  --bodyText: #000000;
+  --actionBackground: slateblue;
+  --actionText: white;
 
-$actionText: black;
-$bodyText: white;
+  --navbarBackground: rgb(255, 255, 255);
 
-$navbarBackground: #232326;
+  /* other variables */
+  --blue: slateblue;
 
-/* other variables */
-$blue: slateblue;
+  .blue-text {
+    color: var(--blue);
+  }
 
-.blue-text {
-  color: $blue;
+  .blue-background {
+    background-color: var(--blue);
+  }
+  /* variables for default/light theme code ends here */
+
+
+  @media (prefers-color-scheme: dark) {
+    --bodyBackground: rgb(27, 27, 30);
+    --bodyText: white;
+
+    --actionBackground: #FCD34D;
+    --actionText: black;
+
+    --navbarBackground: rgb(33, 33, 34);
+
+    /* other variables */
+    --blue: slateblue;
+
+    .blue-text {
+      color: var(--blue);
+    }
+
+    .blue-background {
+      background-color: var(--blue);
+    }
+  }
 }
 
-.blue-background {
-  background-color: $blue;
-}

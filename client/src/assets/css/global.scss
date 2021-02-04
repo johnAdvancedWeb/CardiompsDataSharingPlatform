@@ -2,30 +2,27 @@
 
 * {
   font-family: Raleway, serif;
-  color: $bodyText;
+  color: var(--bodyText);
 }
 
 body {
-  background-color: $bodyBackground;
+  background-color: var(--bodyBackground);
   text-align: center;
 }
 
 a {
   transition: all .5s ease;
-  &:hover {
-    color: $blue;
-  }
 }
 
 button, .button {
-  background-color: $actionBackground;
-  color: $actionText;
+  background-color: var(--actionBackground);
+  color: var(--actionText);
   border-radius: 4px;
   transition: all .5s ease;
   padding: 10px;
 
   &:hover {
-    background-color: white;
+    background-color: var(--bodyText);
   }
 }
 

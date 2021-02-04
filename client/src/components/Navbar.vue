@@ -23,7 +23,41 @@
 
 <script>
 export default {
-name: "Navbar"
+  data() {
+    return {
+      lightModeEnabled: false,
+    };
+  },
+  mounted: function() {
+    // call the function under methods that gets saved theme from localstorage
+    this.getThemeFromLocalStorage();
+  },
+  methods: {
+    getThemeFromLocalStorage() {
+      // get the theme stored in the local storage
+      const currentTheme = localStorage.getItem('theme');
+
+      if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        this.lightModeEnabled = true;
+        if (currentTheme === 'dark') {
+          document.documentElement.setAttribute('data-theme', currentTheme);
+          this.lightModeEnabled = false;
+        }
+      }
+    },
+    changeTheme() {
+      if(this.lightModeEnabled) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        this.lightModeEnabled = false;
+      } else if(!this.lightModeEnabled) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        this.lightModeEnabled = true;
+      }
+    },
+  }
 }
 </script>
 
