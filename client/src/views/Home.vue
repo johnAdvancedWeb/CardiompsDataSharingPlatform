@@ -35,7 +35,7 @@ export default {
   },
   data() {
     return {
-      isModalVisible: true,
+      isModalVisible: false,
       actionDescription: "",
     }
   },
