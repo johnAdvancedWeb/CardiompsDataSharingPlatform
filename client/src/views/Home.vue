@@ -11,15 +11,16 @@
         </div>
 
         <!-- right -->
-        <div class="">
+        <div class="" @click="showModal">
           <div class="latest-news-container"></div>
         </div>
       </div>
 
-    <Modal :is-modal-visible="isModalVisible" @close-modal="closeModal">
-      <Login v-if="actionLoginOrRegister === 'viewData'"></Login>
-      <TestComponent v-else></TestComponent>
-    </Modal>
+      <Modal :is-modal-visible="isModalVisible" @close-modal="closeModal">
+        <Login v-if="actionDescription === 'viewData'"></Login>
+        <TestComponent v-else></TestComponent>
+      </Modal>
+    </div>
   </div>
 </template>
 
@@ -34,20 +35,19 @@ export default {
   },
   data() {
     return {
-      isModalVisible: false,
-      actionLoginOrRegister: "",
+      isModalVisible: true,
+      actionDescription: "",
     }
   },
   methods: {
     showModal(action) {
-      this.actionLoginOrRegister = action;
+      this.actionDescription = action;
       this.isModalVisible = true;
     },
     closeModal() {
       this.isModalVisible = false;
     }
   },
-
 }
 </script>
 
