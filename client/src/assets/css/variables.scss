@@ -17,28 +17,48 @@
   .blue-background {
     background-color: var(--blue);
   }
+
   /* variables for default/light theme code ends here */
+}
 
+[data-theme="light"] {
+  --bodyBackground: rgb(250, 247, 247);
+  --bodyText: #000000;
+  --actionBackground: slateblue;
+  --actionText: white;
 
-  @media (prefers-color-scheme: dark) {
-    --bodyBackground: rgb(27, 27, 30);
-    --bodyText: white;
+  --navbarBackground: rgb(255, 255, 255);
 
-    --actionBackground: #FCD34D;
-    --actionText: black;
+  /* other variables */
+  --blue: slateblue;
 
-    --navbarBackground: rgb(33, 33, 34);
+  .blue-text {
+    color: var(--blue);
+  }
 
-    /* other variables */
-    --blue: slateblue;
+  .blue-background {
+    background-color: var(--blue);
+  }
+}
 
-    .blue-text {
-      color: var(--blue);
-    }
+[data-theme="dark"] {
+  --bodyBackground: rgb(27, 27, 30);
+  --bodyText: white;
 
-    .blue-background {
-      background-color: var(--blue);
-    }
+  --actionBackground: #FCD34D;
+  --actionText: black;
+
+  --navbarBackground: rgb(33, 33, 34);
+
+  /* other variables */
+  --blue: slateblue;
+
+  .blue-text {
+    color: var(--blue);
+  }
+
+  .blue-background {
+    background-color: var(--blue);
   }
 }
 
