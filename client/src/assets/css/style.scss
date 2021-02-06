@@ -52,6 +52,18 @@ a:not(a.button) {
     padding-right: 10px;
 }
 
+.navbar-list-items-theme {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    transition: all .5s ease;
+    &:hover {
+        cursor: pointer;
+        color: var(--actionBackground) !important;
+    }
+}
+
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
