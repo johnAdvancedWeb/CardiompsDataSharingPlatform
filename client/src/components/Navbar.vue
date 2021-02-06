@@ -3,6 +3,7 @@
     <nav class="flex justify-between">
       <div>
         <ul class="flex flex-row">
+          <li class="navbar-list-items-logo"><img src="../assets/images/Logo.gif" alt="Beating Heart Logo" id="logo-gif"></li>
           <li class="navbar-list-items-button"><button id="logo">Cardiomps DSP</button></li>
           <li class="navbar-list-items-routes"><router-link to="/">Home</router-link></li>
           <li class="navbar-list-items-routes"><router-link :to="{ name: 'Line' }">Add Experimental Data</router-link></li>
