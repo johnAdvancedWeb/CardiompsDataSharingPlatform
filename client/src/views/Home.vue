@@ -11,7 +11,7 @@
         </div>
 
         <!-- right -->
-        <div class="" @click="showModal">
+        <div class="">
           <div class="latest-news-container"></div>
         </div>
       </div>

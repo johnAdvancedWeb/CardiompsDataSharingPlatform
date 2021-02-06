@@ -15,6 +15,7 @@
         <ul class="flex flex-row">
           <li class="navbar-list-items-routes"><router-link class="button" :to="{ name: 'SignUp' }">Sign Up</router-link></li>
           <li class="navbar-list-items-routes"><router-link class="button" :to="{ name: 'SignIn' }">Sign In</router-link></li>
+          <li><i class="navbar-list-items-theme fas fa-adjust" @click="changeTheme"></i></li>
         </ul>
       </div>
     </nav>
