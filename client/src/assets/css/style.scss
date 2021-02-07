@@ -27,13 +27,19 @@
     background-color: var(--navbarBackground);
 }
 .navbar-container {
-    background-color: var(--navbarBackground);
+    background: var(--navbarBackground);
+    color: white;
 }
 
 #logo {
+    font-weight: bold;
     color: var(--actionBackground);
     background-color: unset;
     pointer-events: none;
+}
+
+#logo-gif {
+    height: 50px; 
 }
 
 .navbar-list-items-logo, .navbar-list-items-routes {
@@ -72,12 +78,12 @@ a:not(a.button), .nav-link {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
     transition: all .3s ease;
-    background-color: var(--navbarBackground);
+    background: var(--navbarBackground);
 }
 
 
 #login-container, #register-container {
-    background-color: var(--navbarBackground);
+    background: var(--navbarBackground);
     max-width: 1200px;
     position: relative;
     left: 50%;

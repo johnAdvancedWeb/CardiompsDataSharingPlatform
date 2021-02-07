@@ -7,7 +7,10 @@
         <i class="fas fa-bars custom-toggle-icon"></i>
       </span>
     </button>
-    <a class="navbar-brand" href="#" id="logo">Cardiomps DSP</a>
+    <a class="navbar-brand" href="#" id="logo">
+      <img src="../assets/images/Logo.gif" alt="Beating Heart Logo" id="logo-gif" class="d-inline-block">
+      Cardiomps DSP
+    </a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -36,8 +39,6 @@
       </router-link>
     </div>
   </nav>
-
-
 </template>
 
 <script>
