@@ -4,7 +4,7 @@
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
             aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">
-        <i class="fas fa-bars custom-toggle-icon"></i>
+        
       </span>
     </button>
     <a class="navbar-brand" href="#" id="logo">
