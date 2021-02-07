@@ -31,6 +31,5 @@ name: "TestComponent"
 </script>
 
 <style scoped>
-div {
-}
+
 </style>

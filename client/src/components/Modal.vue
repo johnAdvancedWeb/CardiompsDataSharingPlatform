@@ -1,15 +1,15 @@
 <template>
   <div class="modal-mask" v-if="isModalVisible" @click="closeModal">
-    <button :plain="true" disabled>
+    <span :plain="true" disabled>
       <slot></slot>
-    </button>
+    </span>
   </div>
 </template>
 
 <script>
 export default {
   name: "Modal",
-  props: ["isModalVisible", "actionLoginOrRegister"],
+  props: ["isModalVisible", "actionDescription"],
   setup(props, context) {
     function closeModal() {
       context.emit("close-modal");
@@ -27,19 +27,25 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+span {
+  width: 80%;
+  height: 100%;
+  position: relative;
+  padding: 16px;
+  //border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
+  box-sizing: border-box;
+}
+
+div {
+  padding: 0 !important;
 }
 
 button {
-  width: 80%;
-  height: auto;
-  margin: 50px auto 0;
-  position: relative;
-  padding: 16px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.13);
-  box-sizing: border-box;
+  padding: 0 !important;
 }
 
 </style>

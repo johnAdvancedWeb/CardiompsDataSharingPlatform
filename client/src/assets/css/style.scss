@@ -20,22 +20,18 @@
     }
 }
 /* tailwind code ends here */
-* {
-    font-family: Raleway, serif;
-    color: $bodyText;
-}
 
-body {
-    background-color: $bodyBackground;
-    text-align: center;
-}
+@import 'global';
 
+#navbar {
+    background-color: var(--navbarBackground);
+}
 .navbar-container {
-    background-color: $navbarBackground;
+    background-color: var(--navbarBackground);
 }
 
 #logo {
-    color: $actionBackground;
+    color: var(--actionBackground);
     background-color: unset;
     pointer-events: none;
 }
@@ -46,8 +42,12 @@ body {
 
 .navbar-list-items-routes {
     transition: .3s ease all;
+}
+
+a:not(a.button), .nav-link {
+    transition: all .5s ease;
     &:hover {
-        color: $actionBackground;
+        color: var(--actionBackground) !important;
     }
 }
 
@@ -55,20 +55,68 @@ body {
     padding-right: 10px;
 }
 
-button, .button {
-    background-color: $actionBackground;
-    color: $actionText;
-    border-radius: 4px;
-    transition: all .3s ease;
-    padding: 10px;
 
+.navbar-list-items-theme {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    transition: all .5s ease;
     &:hover {
-        background-color: white;
+        cursor: pointer;
+        color: var(--actionBackground) !important;
     }
 }
 
+.latest-news-container {
+    @apply w-full h-64 rounded-lg shadow-2xl;
 
-h2 {
-    text-transform: uppercase;
+    transition: all .3s ease;
+    background-color: var(--navbarBackground);
 }
 
+
+#login-container, #register-container {
+    background-color: var(--navbarBackground);
+    max-width: 1200px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 20px;
+    margin-top: 20px;
+
+    input {
+        background-color: var(--bodyBackground);
+        margin-bottom: 20px;
+        width: 50%;
+        padding: 10px;
+        transition: all .5s ease;
+
+        &:focus {
+            background-color: var(--bodyText);
+            color: var(--navbarBackground);
+        }
+    }
+}
+
+#login-container {
+    #password-container {
+        margin-bottom: 10px;
+
+        #password {
+            margin-bottom: 2px !important;
+        }
+    }
+}
+
+#login-header, #register-header {
+    background-color: var(--actionBackground);
+    color: var(--actionText);
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+//#login-container, #login-header, #register-container, #register-header {
+//    border-top-left-radius: 10px;
+//    border-top-right-radius: 10px;
+//}
