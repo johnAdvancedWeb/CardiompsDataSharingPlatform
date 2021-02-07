@@ -14,7 +14,7 @@ a {
   transition: all .5s ease;
 }
 
-button, .button {
+button, .button,  {
   background-color: var(--actionBackground);
   color: var(--actionText);
   border-radius: 4px;
@@ -22,11 +22,26 @@ button, .button {
   padding: 10px !important;
 
   &:hover {
-    //background-color: var(--bodyText);
-    //color: var(--bodyBackground);
+    background-color: var(--bodyText);
+    color: var(--bodyBackground);
+  }
+}
+
+#navbar button {
+  background-color: unset;
+  color: unset;
+  &:hover {
+    background-color: unset;
+    color: unset;
   }
 }
 
 h2 {
   text-transform: uppercase;
+}
+
+/* bootstrap toggle styling */
+.custom-toggle-icon {
+  color: var(--actionBackground);
+  font-size: 28px;
 }
