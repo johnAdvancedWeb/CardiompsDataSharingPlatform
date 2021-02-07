@@ -23,6 +23,9 @@
 
 @import 'global';
 
+#navbar {
+    background-color: var(--navbarBackground);
+}
 .navbar-container {
     background-color: var(--navbarBackground);
 }
@@ -41,10 +44,10 @@
     transition: .3s ease all;
 }
 
-a:not(a.button) {
+a:not(a.button), .nav-link {
     transition: all .5s ease;
     &:hover {
-        color: var(--actionBackground);
+        color: var(--actionBackground) !important;
     }
 }
 

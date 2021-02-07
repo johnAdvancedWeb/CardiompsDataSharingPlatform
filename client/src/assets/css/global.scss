@@ -19,10 +19,11 @@ button, .button {
   color: var(--actionText);
   border-radius: 4px;
   transition: all .5s ease;
-  padding: 10px;
+  padding: 10px !important;
 
   &:hover {
-    background-color: var(--bodyText);
+    //background-color: var(--bodyText);
+    //color: var(--bodyBackground);
   }
 }
 
