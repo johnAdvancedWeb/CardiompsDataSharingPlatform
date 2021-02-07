@@ -24,7 +24,7 @@
 @import 'global';
 
 #navbar {
-    background-color: var(--navbarBackground);
+    background: var(--navbarBackground);
 }
 .navbar-container {
     background: var(--navbarBackground);
@@ -32,8 +32,8 @@
 }
 
 #logo {
-    font-weight: bold;
-    color: var(--actionBackground);
+    font-weight: normal;
+    color: var(--logoText);
     background-color: unset;
     pointer-events: none;
 }
@@ -78,12 +78,12 @@ a:not(a.button), .nav-link {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
     transition: all .3s ease;
-    background: var(--navbarBackground);
+    background: var(--secondaryBackground);
 }
 
 
 #login-container, #register-container {
-    background: var(--navbarBackground);
+    background: var(--secondaryBackground);
     max-width: 1200px;
     position: relative;
     left: 50%;
@@ -100,7 +100,7 @@ a:not(a.button), .nav-link {
 
         &:focus {
             background-color: var(--bodyText);
-            color: var(--navbarBackground);
+            color: var(--secondaryBackground);
         }
     }
 }
@@ -116,10 +116,11 @@ a:not(a.button), .nav-link {
 }
 
 #login-header, #register-header {
-    background-color: var(--actionBackground);
-    color: var(--actionText);
+    background: var(--headerBackground);
+    color: var(--headerText);
     padding: 10px 0;
     margin-bottom: 20px;
+    font-size: larger;
 }
 
 //#login-container, #login-header, #register-container, #register-header {

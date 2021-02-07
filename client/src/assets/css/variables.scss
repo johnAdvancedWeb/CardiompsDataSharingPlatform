@@ -21,12 +21,21 @@
 
   @media (prefers-color-scheme: light) {
     //[data-theme="light"] {
+      --navbarBackground: linear-gradient(to bottom right, #2884B8 -20%, #D1BAD2 80%);
+      --logoText: black;
+
       --bodyBackground: rgb(250, 247, 247);
       --bodyText: #000000;
+
+      --secondaryBackground: rgb(255, 255, 255);
+
       --actionBackground: slateblue;
       --actionText: white;
 
-      --navbarBackground: rgb(255, 255, 255);
+      --headerBackground: var(--navbarBackground);
+      --headerText: var(--actionText);
+
+      
 
       /* other variables */
       --blue: slateblue;
@@ -43,13 +52,19 @@
 
   @media (prefers-color-scheme: dark) {
     //[data-theme="dark"] {
+      --navbarBackground: rgb(33, 33, 34);
+      --logoText: #FCD34D;
+
       --bodyBackground: rgb(27, 27, 30);
       --bodyText: white;
+
+      --secondaryBackground: var(--navbarBackground);
 
       --actionBackground: #FCD34D;
       --actionText: black;
 
-      --navbarBackground: rgb(33, 33, 34);
+      --headerBackground: var(--actionBackground);
+      --headerText: var(--actionText);
 
       /* other variables */
       --blue: slateblue;
