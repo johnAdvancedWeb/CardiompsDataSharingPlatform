@@ -1,32 +1,24 @@
 /* variables for default/light theme below */
 :root {
-  --bodyBackground: rgb(250, 247, 247);
-  --bodyText: #000000;
-  --actionBackground: slateblue;
-  --actionText: white;
-
-  --navbarBackground: rgb(255, 255, 255);
-
-  /* other variables */
-  --blue: slateblue;
-
-  .blue-text {
-    color: var(--blue);
-  }
-
-  .blue-background {
-    background-color: var(--blue);
-  }
-  /* variables for default/light theme code ends here */
-
   @media (prefers-color-scheme: light) {
     //[data-theme="light"] {
+      --navbarBackground: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
+      --logoText: var(--actionBackground);
+
       --bodyBackground: rgb(250, 247, 247);
       --bodyText: #000000;
+
+      --secondaryBackground: rgb(255, 255, 255);
+
+      /* this changes the overall theme, buttons, header background, hover colour and many other */
       --actionBackground: slateblue;
+      /* above comment ends here */
       --actionText: white;
 
-      --navbarBackground: rgb(255, 255, 255);
+      --headerBackground: var(--actionBackground);
+      --headerText: var(--actionText);
+
+      
 
       /* other variables */
       --blue: slateblue;
@@ -43,13 +35,19 @@
 
   @media (prefers-color-scheme: dark) {
     //[data-theme="dark"] {
+      --navbarBackground: rgb(33, 33, 34);
+      --logoText: var(--actionBackground);
+
       --bodyBackground: rgb(27, 27, 30);
       --bodyText: white;
+
+      --secondaryBackground: var(--navbarBackground);
 
       --actionBackground: #FCD34D;
       --actionText: black;
 
-      --navbarBackground: rgb(33, 33, 34);
+      --headerBackground: var(--actionBackground);
+      --headerText: var(--actionText);
 
       /* other variables */
       --blue: slateblue;

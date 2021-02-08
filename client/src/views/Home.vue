@@ -2,6 +2,7 @@
   <div id="section-one">
     <div class="min-h-screen p-10">
       <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2">
+        
         <!-- left -->
         <div class="md:flex md:flex-col md:justify-center">
           <h2 class="text-black text-2xl md:text-4xl font-bold mb-4">
