@@ -22,7 +22,7 @@
   @media (prefers-color-scheme: light) {
     //[data-theme="light"] {
       --navbarBackground: linear-gradient(to bottom right, #2884B8 -20%, #D1BAD2 80%);
-      --logoText: black;
+      --logoText: slateblue;
 
       --bodyBackground: rgb(250, 247, 247);
       --bodyText: #000000;
@@ -32,7 +32,7 @@
       --actionBackground: slateblue;
       --actionText: white;
 
-      --headerBackground: var(--navbarBackground);
+      --headerBackground: var(--actionBackground);
       --headerText: var(--actionText);
 
       
