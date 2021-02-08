@@ -52,6 +52,7 @@
 
 a:not(a.button), .nav-link {
     transition: all .5s ease;
+    text-decoration: none !important;
     &:hover {
         color: var(--actionBackground) !important;
     }
