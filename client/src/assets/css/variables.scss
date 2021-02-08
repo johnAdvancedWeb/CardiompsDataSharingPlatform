@@ -2,10 +2,11 @@
 :root {
   @media (prefers-color-scheme: light) {
     //[data-theme="light"] {
+
     --navbarBackground: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
     --logoText: var(--actionBackground);
-
-    --bodyBackground: #9ffa29;
+    // test
+    --bodyBackground: rgb(250, 247, 247);
     --bodyText: #000000;
 
     --secondaryBackground: rgb(255, 255, 255);
