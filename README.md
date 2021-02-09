@@ -1,11 +1,15 @@
-# Welcome to the CardiompsDataSharingPlatform project
-# To set up, you must follow a few simple steps, make sure you have followed the git instructions below...
-# ...assuming that you have switched to the develop branch, you may follow the three instructions below:
-# 1. Once the repo has been cloned, open the project and type "cd client" to change directories
-# 2. Type "npm install" to install all the dependencies
-# 3. Type "npm serve" to start the client application
+# Welcome to the CardiompsDataSharingPlatform Project
 
-# Useful Git Commands for collaborating:
+# How to Set Up:
+# 1. git clone https://github.com/ibbialshamary/CardiompsDataSharingPlatform
+# 2. git checkout -b yournamehere-branch
+# 3. git pull origin develop 
+# 4. above instruction will open an editor to enter your message, press I, write something then press Esc and write :wq
+# 5. cd client
+# 6. npm install
+# 7. npm run serve
+
+# Useful Git Commands for Collaborating and Working with Group:
 # 1. Switch to the develop branch, or your newly created branch and "git pull origin develop" to stay up to date
 # 2. Once that is done, create a new branch and switch to it by typing "git checkout -b feature-branch"
 # 3. Work on your feature and once finished, "git add ." and "git commit -m "message goes here""
