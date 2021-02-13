@@ -1,7 +1,6 @@
 /* variables for default/light theme below */
 :root {
   @media (prefers-color-scheme: light) {
-    //[data-theme="light"] {
     --navbarBackground: linear-gradient(315deg, #f6f6f6 0%, #e9e9e9 74%);
     --logoText: var(--actionBackground);
     --bodyBackground: rgb(250, 247, 247);
@@ -20,7 +19,7 @@
 
     /* other variables */
     --blue: slateblue;
-    --red: #ff8400;
+    --red: crimson;
 
     .blue-text {
       color: var(--blue);
@@ -33,11 +32,9 @@
     .blue-background {
       background-color: var(--blue);
     }
-    //}
   }
 
   @media (prefers-color-scheme: dark) {
-    //[data-theme="dark"] {
     --navbarBackground: rgb(33, 33, 34);
     --logoText: var(--actionBackground);
 
@@ -54,7 +51,7 @@
 
     /* other variables */
     --blue: slateblue;
-    --red: #ff8400;
+    --red: crimson;
 
     .blue-text {
       color: var(--blue);
@@ -67,7 +64,6 @@
     .blue-background {
       background-color: var(--blue);
     }
-    //}
   }
 }
 
