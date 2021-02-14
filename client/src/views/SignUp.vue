@@ -5,22 +5,27 @@
       <form @submit.prevent>
         <div id="username-container">
           <label for="email">Email:</label><br>
-          <input type="email" placeholder="Enter email here" id="email" v-model="email" required><br>
+          <input type="email" placeholder='e.g., "asmith2021@gmail.com"' id="email" v-model="email" required><br>
         </div>
 
         <div id="full-name-container">
           <label for="full-name">Full Name:</label><br>
-          <input type="text" placeholder="Enter full name here" id="full-name" v-model="name" minlength="6" required><br>
+          <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="name" minlength="6" required><br>
+        </div>
+
+        <div id="institution-container">
+          <label for="institution">Institutional Affiliation:</label><br>
+          <input type="text" placeholder='e.g., "The University of Oxford"' id="institution" minlength="6" required><br>
         </div>
 
         <div id="password-container">
           <label for="password">Password:</label><br>
-          <input type="password" placeholder="Enter password here" id="password" v-model="password" minlength="6" required><br>
+          <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password" v-model="password" minlength="6" required><br>
         </div>
 
         <div id="confirm-password-container">
           <label for="confirm-password">Confirm Password:</label><br>
-          <input type="password" placeholder="Confirm password here" id="confirm-password" v-model="confirmPassword" minlength="6" required><br>
+          <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password" v-model="confirmPassword" minlength="6" required><br>
         </div>
 
         <button @click="registerUser">Sign up</button>
@@ -77,7 +82,7 @@ export default {
         password: password.value
       };
 
-      if (doPasswordsMatch.value && !errorRegistration.value) {
+      if (doPasswordsMatch.value) {
         firebaseAuthentication().createUserWithEmailAndPassword(info.email, info.password).then((userCredentials) => {
           return userCredentials.user.updateProfile({
             displayName: info.displayName,
