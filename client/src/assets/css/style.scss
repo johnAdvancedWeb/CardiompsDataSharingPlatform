@@ -99,9 +99,21 @@ a:not(a.button), .nav-link {
         padding: 10px;
         transition: all .5s ease;
 
-        &:focus {
+        &:valid {
             background-color: var(--bodyText);
             color: var(--secondaryBackground);
+        }
+
+        &:focus {
+            &:valid {
+                color: black;
+                background-color: mediumspringgreen;
+            }
+
+            &:invalid {
+                color: white;
+                background-color: var(--red);
+            }
         }
     }
 }
@@ -124,7 +136,19 @@ a:not(a.button), .nav-link {
     font-size: larger;
 }
 
-//#login-container, #login-header, #register-container, #register-header {
-//    border-top-left-radius: 10px;
-//    border-top-right-radius: 10px;
-//}
+#register-container {
+    #register-form {
+        #error-container {
+            margin-top: 20px;
+            background-color: var(--red);
+            width: 50%;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            user-select: none;
+            p {
+                color: white;
+                padding: 10px;
+            }
+        }
+    }
+}
