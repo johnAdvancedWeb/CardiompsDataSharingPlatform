@@ -20,11 +20,11 @@
         </li>
 
         <li class="navbar-list-items-routes">
-          <router-link class="nav-link" :to="{ name: 'Line' }">Add Experimental Data</router-link>
+          <router-link class="nav-link" :to="{ name: 'AddData' }">Add Experimental Data</router-link>
         </li>
 
         <li class="navbar-list-items-routes">
-          <router-link class="nav-link" :to="{ name: 'Bar' }">View Experimental Data</router-link>
+          <router-link class="nav-link" :to="{ name: 'QueryData' }">Query Experimental Data</router-link>
         </li>
 
         <li class="navbar-list-items-routes">
