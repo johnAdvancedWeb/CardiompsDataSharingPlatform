@@ -83,7 +83,7 @@ export default {
       };
 
       if (doPasswordsMatch.value) {
-        firebaseAuthentication().createUserWithEmailAndPassword(info.email, info.password).then((userCredentials) => {
+        firebaseAuthentication.createUserWithEmailAndPassword(info.email, info.password).then((userCredentials) => {
           return userCredentials.user.updateProfile({
             displayName: info.displayName,
           }).then(() => {
