@@ -1,7 +1,17 @@
 <template>
-  <h3>Bar Chart Example</h3>
   <div>
-    <bar-chart class="center"></bar-chart>
+    
+    <div v-if="user">
+      What user sees
+    </div>
+    <div v-else>
+      What guest
+    </div>
+
+    <h3>Bar Chart Example</h3>
+    <div>
+      <bar-chart class="center"></bar-chart>
+    </div>
   </div>
 </template>
 
@@ -11,6 +21,13 @@ import BarChart from "@/components/BarChart";
 export default {
   components: {
     BarChart,
+  },
+
+  props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
   },
 };
 </script>

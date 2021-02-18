@@ -1,41 +1,60 @@
 <template>
-  <div id="register-container">
-    <div id="register-header">Sign up below</div>
-    <div id="register-form">
-      <form @submit.prevent>
-        <div id="username-container">
-          <label for="email">Email:</label><br>
-          <input type="email" placeholder='e.g., "asmith2021@gmail.com"' id="email" v-model="email" required><br>
-        </div>
+  <div>
+    <div v-if="user">
+      Sign Out before registering a new account 
+    </div>
 
-        <div id="full-name-container">
-          <label for="full-name">Full Name:</label><br>
-          <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="name" minlength="6" required><br>
-        </div>
+    <div v-else>
+      <ion-grid>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <div id="register-container">
+              <div id="register-header">Sign up below</div>
+              <div id="register-form">
+                <form @submit.prevent>
+                  <div id="username-container">
+                    <label for="email">Email:</label><br>
+                    <input type="email" placeholder='e.g., "asmith2021@gmail.com"' id="email" v-model="email" required><br>
+                  </div>
 
-        <div id="institution-container">
-          <label for="institution">Institutional Affiliation:</label><br>
-          <input type="text" placeholder='e.g., "The University of Oxford"' id="institution" minlength="6" required><br>
-        </div>
+                  <div id="full-name-container">
+                    <label for="full-name">Full Name:</label><br>
+                    <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="name" minlength="6"
+                          required><br>
+                  </div>
 
-        <div id="password-container">
-          <label for="password">Password:</label><br>
-          <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password" v-model="password" minlength="6" required><br>
-        </div>
+                  <div id="institution-container">
+                    <label for="institution">Institutional Affiliation:</label><br>
+                    <input type="text" placeholder='e.g., "The University of Oxford"' id="institution" minlength="6"
+                          required><br>
+                  </div>
 
-        <div id="confirm-password-container">
-          <label for="confirm-password">Confirm Password:</label><br>
-          <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password" v-model="confirmPassword" minlength="6" required><br>
-        </div>
+                  <div id="password-container">
+                    <label for="password">Password:</label><br>
+                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password" v-model="password"
+                          minlength="6"
+                          required><br>
+                  </div>
 
-        <button @click="registerUser">Sign up</button>
+                  <div id="confirm-password-container">
+                    <label for="confirm-password">Confirm Password:</label><br>
+                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password"
+                          v-model="confirmPassword" minlength="6" required><br>
+                  </div>
 
-        <transition name="fade-in">
-          <div id="error-container" v-if="errorRegistration">
-            <p class="red-text">{{ errorRegistration }}</p>
-          </div>
-        </transition>
-      </form>
+                  <button @click="registerUser">Sign up</button>
+
+                  <transition name="fade-in">
+                    <div id="error-container" v-if="errorRegistration">
+                      <p class="red-text">{{ errorRegistration }}</p>
+                    </div>
+                  </transition>
+                </form>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
   </div>
 </template>
@@ -54,6 +73,13 @@ export default {
       // name: "",
       // doPasswordsMatch: false,
     }
+  },
+
+  props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
   },
 
   setup() {

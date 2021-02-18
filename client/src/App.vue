@@ -1,32 +1,47 @@
 <template>
   <div>
-    <Navbar/>
-    <router-view/>
+    <Navbar v-bind:user="user" @signOut="signOut"/>
+    <router-view :user="user" @signOut="signOut"/>
   </div>
 </template>
 
 <script>
-//import { ref } from "vue";
-//import { firebaseAuthentication } from "@/firebase/database";
+import { ref } from "vue";
+import { firebaseAuthentication } from "@/firebase/database";
+import { useRouter } from "vue-router";
 import Navbar from "@/components/Navbar";
 
 export default {
   components: { Navbar },
   
-  /*setup() {
+  setup() {
     const user = ref(null);
+    const errorSignOut = ref(null);
+    const router = useRouter();
 
     firebaseAuthentication.onAuthStateChanged( (currentUser) => {
       if(currentUser) {
-        user.value = currentUser.email;
+        user.value = currentUser;
       }
       else {
         user.value == null;
       }
     });
 
-    return { user };
-  }*/
+    function signOut() {
+      firebaseAuthentication.signOut().then(
+        () => {
+          user.value = null;
+          router.push("sign-in");
+        },
+        (error) => {
+          errorSignOut.value = error.message;
+        }
+      );
+    }
+
+    return { user, signOut };
+  },
 };
 </script>
 

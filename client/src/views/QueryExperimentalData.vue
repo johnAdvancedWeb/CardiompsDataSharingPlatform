@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    
+  <div>
+
     <div v-if="user">
       (What user sees)
     </div>
@@ -8,12 +8,14 @@
       (What guest sees)
     </div>
 
-    <h1>This is an about page</h1>
+    <p>Query experimental data form goes here</p>
   </div>
 </template>
 
 <script>
 export default {
+  name: "QueryExperimentalData",
+
   props: {
     user: {
       type: Object,
@@ -22,3 +24,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+</style>

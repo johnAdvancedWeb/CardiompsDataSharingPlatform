@@ -1,5 +1,13 @@
 <template>
   <div id="section-one">
+
+    <div v-if="user">
+      (What user sees)
+    </div>
+    <div v-else>
+      (What guest sees)
+    </div>
+
     <div class="min-h-screen p-10">
       <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2">
         
@@ -31,15 +39,25 @@ import TestComponent from "@/components/TestComponent";
 
 export default {
   name: 'Home',
+
   components: {
     Modal, TestComponent
   },
+
   data() {
     return {
       isModalVisible: false,
       actionDescription: "",
     }
   },
+
+  props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
   methods: {
     showModal(action) {
       this.actionDescription = action;
