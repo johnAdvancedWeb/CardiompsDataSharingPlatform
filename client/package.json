@@ -15,6 +15,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/vue-fontawesome": "^3.0.0-3",
+    "@ionic/vue": "^5.5.4",
+    "@ionic/vue-router": "^5.5.4",
     "apexcharts": "^3.24.0",
     "autoprefixer": "^9.8.6",
     "bootstrap": "^4.6.0",
