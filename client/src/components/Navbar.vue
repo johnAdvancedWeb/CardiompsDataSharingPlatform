@@ -20,11 +20,11 @@
         </li>
 
         <li class="navbar-list-items-routes">
-          <router-link class="nav-link" :to="{ name: 'Line' }">Add Experimental Data</router-link>
+          <router-link class="nav-link" :to="{ name: 'AddData' }">Add Experimental Data</router-link>
         </li>
 
         <li class="navbar-list-items-routes">
-          <router-link class="nav-link" :to="{ name: 'Bar' }">View Experimental Data</router-link>
+          <router-link class="nav-link" :to="{ name: 'QueryData' }">Query Experimental Data</router-link>
         </li>
 
         <li class="navbar-list-items-routes">
@@ -32,26 +32,41 @@
         </li>
 
       </ul>
-
-      <router-link class="button btn my-2 my-sm-0" style="margin-right: 5px" :to="{ name: 'SignUp' }">Sign Up
-      </router-link>
-      <router-link class="button btn my-2 my-sm-0" style="margin-right: 5px" :to="{ name: 'SignIn' }">Sign In
-      </router-link>
+      <div v-if="user">
+        <b>{{user.displayName}}</b><button @click="$emit('signOut')">Sign Out</button>
+      </div>
+      <div v-else>
+        <router-link class="button btn my-2 my-sm-0" style="margin-right: 5px" :to="{ name: 'SignUp' }">Sign Up
+        </router-link>
+        <router-link class="button btn my-2 my-sm-0" style="margin-right: 5px" :to="{ name: 'SignIn' }">Sign In
+        </router-link>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
 export default {
+  name: 'Navbar',
+
   data() {
     return {
       lightModeEnabled: false,
     };
   },
+
+  props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
+  },
+
   mounted: function () {
     // call the function under methods that gets saved theme from localstorage
     this.getThemeFromLocalStorage();
   },
+
   methods: {
     getThemeFromLocalStorage() {
       // get the theme stored in the local storage

@@ -1,0 +1,24 @@
+[debug] [2021-02-16T17:43:00.393Z] ----------------------------------------------------------------------
+[debug] [2021-02-16T17:43:00.397Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\John\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js --debug login
+[debug] [2021-02-16T17:43:00.398Z] CLI Version:   9.3.0
+[debug] [2021-02-16T17:43:00.398Z] Platform:      win32
+[debug] [2021-02-16T17:43:00.398Z] Node Version:  v15.6.0
+[debug] [2021-02-16T17:43:00.404Z] Time:          Tue Feb 16 2021 17:43:00 GMT+0000 (Greenwich Mean Time)
+[debug] [2021-02-16T17:43:00.405Z] ----------------------------------------------------------------------
+[debug] [2021-02-16T17:43:00.405Z] 
+[debug] [2021-02-16T17:43:00.410Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[info] i  Firebase optionally collects CLI usage and error reporting information to help improve our products. Data is collected in accordance with Google's privacy policy (https://policies.google.com/privacy) and is not used to identify you.
+ 
+[debug] [2021-02-16T17:43:02.373Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-02-16T17:43:02.382Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] i  To change your data collection preference at any time, run `firebase logout` and log in again. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=622559217&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-02-16T17:43:27.980Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ {"code":"4/0AY0e-g5SvqgDvpO2eBcANtv2rk3W8y3LDYKs69cSFiUmb7i6IPkArD6-llPaD07pTdaBew","client_id":"563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com","client_secret":"j9iVZfS8kkCEFUPaAeJV0sAi","redirect_uri":"http://localhost:9005","grant_type":"authorization_code"}
+[debug] [2021-02-16T17:43:28.283Z] <<< HTTP RESPONSE 200 {"date":"Tue, 16 Feb 2021 17:43:26 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] +  Success! Logged in as mr.j.j.cunningham@gmail.com 
