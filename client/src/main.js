@@ -14,5 +14,8 @@ fontawesome.library.add(brands, solid);
 const app = createApp(App);
 app.use(router);
 app.use(VueApexCharts);
+
+app.mount('#app');
 app.use(IonicVue);
 app.mount('#app');
+

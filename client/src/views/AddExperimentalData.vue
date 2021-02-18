@@ -1,4 +1,15 @@
 <template>
+  <div>
+
+    <div v-if="user">
+      (What user sees)
+    </div>
+    <div v-else>
+      (What guest sees)
+    </div>
+
+    <p>Add experimental data form goes here</p>
+  </div>
 
   <ion-grid>
     <ion-row>
@@ -55,12 +66,22 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 export default {
   name: "AddExperimentalData",
-  emits: ["add-post"],
+
   props: {
+    user: {
+      type: Object,
+      default: () => {},
+    },
+    
     posts: {
       type: Array,
       default: () => [],
     },
+  },
+}
+
+  emits: ["add-post"],
+
   },
   setup(props, context) {
     const slug = ref("");
@@ -76,6 +97,7 @@ export default {
     return { slug, title, description, content, tags, addPost };
   },
 };
+
 </script>
 
 <style scoped>

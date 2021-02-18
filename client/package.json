@@ -25,6 +25,8 @@
     "core-js": "^3.6.5",
     "firebase": "^8.2.7",
     "postcss": "^7.0.35",
+    "run": "^1.4.0",
+    "serve": "^11.3.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^3.0.5",
     "vue-router": "^4.0.0-0",
