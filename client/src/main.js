@@ -17,5 +17,4 @@ app.use(VueApexCharts);
 
 app.mount('#app');
 app.use(IonicVue);
-app.mount('#app');
 

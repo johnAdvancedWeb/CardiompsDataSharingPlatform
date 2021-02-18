@@ -3,7 +3,7 @@
     <Navbar v-bind:user="user" @signOut="signOut"/>
     <router-view @add-post="addPost" :user="user" @signOut="signOut"/>
   </div>
-
+</template>
 
 <script>
 import { ref } from "vue";

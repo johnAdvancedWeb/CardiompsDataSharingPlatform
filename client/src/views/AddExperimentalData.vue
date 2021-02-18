@@ -78,11 +78,9 @@ export default {
       default: () => [],
     },
   },
-}
 
   emits: ["add-post"],
 
-  },
   setup(props, context) {
     const slug = ref("");
     const title = ref("");
