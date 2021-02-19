@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Navbar v-bind:user="user" @signOut="signOut"/>
-    <router-view @add-post="addPost" :user="user" @signOut="signOut"/>
+    <Navbar :user="user" @signOut="signOut"/>
+    <router-view @add-post="addPost" @delete-post="deletePost" :user="user" @signOut="signOut"/>
   </div>
 </template>
 
@@ -23,6 +23,24 @@ export default {
     firebaseAuthentication.onAuthStateChanged( (currentUser) => {
       if(currentUser) {
         user.value = currentUser;
+
+        firebaseFireStore
+            .collection("users")
+            .doc(user.value.uid)
+            .collection("posts")
+            .onSnapshot((snapShot) => {
+              const snapData = [];
+              snapShot.forEach((doc) => {
+                snapData.push({
+                  slug: doc.data().slug,
+                  title: doc.data().title,
+                  description: doc.data().description,
+                  content: doc.data().content,
+                  tags: doc.data().tags.split(","),
+                });
+              });
+              this.posts = snapData;
+            });
       }
       else {
         user.value == null;
@@ -80,19 +98,25 @@ export default {
         tags: tags
       };
 
-      // const post = {
-      //   slug: "slug",
-      //   title: "title",
-      //   description: "description",
-      //   content: "content",
-      //   tags: "tags"
-      // };
-
       firebaseFireStore
           .collection("users")
-          .doc("dnlsk9Mskeg8DO1L1OQcHq3hnF92")
+          .doc(this.user.uid)
           .collection("posts")
           .add(post);
+    },
+
+    deletePost(slug) {
+      firebaseFireStore
+          .collection("users")
+          .doc(this.user.uid)
+          .collection("posts")
+          .where("slug", "==", slug)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              doc.ref.delete();
+            });
+          });
     }
   }
 }
