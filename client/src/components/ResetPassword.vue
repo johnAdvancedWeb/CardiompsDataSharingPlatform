@@ -1,21 +1,27 @@
 <template>
-  <div id="login-container" @click.stop>
-    <div id="login-header">Reset your password here</div>
-    <div id="login-form">
-      <form>
-        <div id="username-container">
-          <label for="email">Email:</label><br>
-          <input type="text" placeholder="Enter email here" id="email"><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div id="login-container" @click.stop>
+          <div id="login-header">Reset your password here</div>
+          <div id="login-form">
+            <form>
+              <div id="username-container">
+                <label for="email">Email:</label><br>
+                <input type="text" placeholder="Enter email here" id="email"><br>
+              </div>
+              <button>Submit Reset Request</button>
+            </form>
+          </div>
         </div>
-        <button>Submit Reset Request</button>
-      </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-name: "ResetPassword"
+  name: "ResetPassword"
 }
 </script>
 

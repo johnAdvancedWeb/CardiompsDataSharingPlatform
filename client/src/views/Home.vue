@@ -1,12 +1,6 @@
 <template>
   <div id="section-one">
 
-    <div v-if="user">
-      (What user sees)
-    </div>
-    <div v-else>
-      (What guest sees)
-    </div>
 
     <div class="min-h-screen p-10">
       <div class="space-y-10 md:space-y-0 md:grid md:grid-cols-2">

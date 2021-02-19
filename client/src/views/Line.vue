@@ -1,12 +1,6 @@
 <template>
   <div>
 
-    <div v-if="user">
-      (What user sees)
-    </div>
-    <div v-else>
-      (What guest sees)
-    </div>
 
     <h3>Line Chart Example</h3>
     <div>

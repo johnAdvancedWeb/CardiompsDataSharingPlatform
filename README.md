@@ -1,8 +1,8 @@
 # Welcome to the CardiompsDataSharingPlatform Project
 
 # How to Set Up:
-# 1. git clone https://github.com/ibbialshamary/CardiompsDataSharingPlatform
-# 2. git checkout -b yournamehere-branch
+# 1. git clone https://github.com/advancedwebgroup1/CardiompsDataSharingPlatform
+# 2. git checkout -b your_name_here-branch
 # 3. git pull origin develop 
 # 4. above instruction will open an editor to enter your message, press I, write something then press Esc and write :wq
 # 5. cd client

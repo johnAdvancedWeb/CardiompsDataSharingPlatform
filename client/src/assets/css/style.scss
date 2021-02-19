@@ -136,8 +136,8 @@ a:not(a.button), .nav-link {
     font-size: larger;
 }
 
-#register-container {
-    #register-form {
+#register-container, #login-container {
+    #register-form, #login-form {
         #error-container {
             margin-top: 20px;
             background-color: var(--red);

@@ -1,21 +1,9 @@
 <template>
-  <div>
-
-    <div v-if="user">
-      (What user sees)
-    </div>
-    <div v-else>
-      (What guest sees)
-    </div>
-
-    <p>Add experimental data form goes here</p>
-  </div>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size-md="6" offset-md="3">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
         <div id="register-container">
-          <div id="register-header">Sign up below</div>
+          <div id="register-header">Add and record experimental data</div>
           <div id="register-form">
             <form @submit.prevent>
               <div id="username-container">
@@ -43,36 +31,39 @@
                 <input type="text" id="tags" v-model="tags" required><br>
               </div>
 
-              <button @click="addPost">Create Post</button><br>
+              <button @click="addPost">Submit Form</button>
+              <br>
 
-<!--              <transition name="fade-in">-->
-<!--                <div id="error-container" v-if="errorRegistration">-->
-<!--                  <p class="red-text">{{ errorRegistration }}</p>-->
-<!--                </div>-->
-<!--              </transition>-->
+              <!--              <transition name="fade-in">-->
+              <!--                <div id="error-container" v-if="errorRegistration">-->
+              <!--                  <p class="red-text">{{ errorRegistration }}</p>-->
+              <!--                </div>-->
+              <!--              </transition>-->
             </form>
           </div>
         </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      </div>
+    </div>
+  </div>
 
 
 </template>
 
 <script>
 
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import {ref} from "vue";
+import {useRouter} from "vue-router";
+
 export default {
   name: "AddExperimentalData",
 
   props: {
     user: {
       type: Object,
-      default: () => {},
+      default: () => {
+      },
     },
-    
+
     posts: {
       type: Array,
       default: () => [],
@@ -88,11 +79,13 @@ export default {
     const content = ref("");
     const tags = ref("");
     const router = useRouter();
+
     function addPost() {
       context.emit("add-post", slug.value, title.value, description.value, content.value, tags.value);
       router.push("/");
     }
-    return { slug, title, description, content, tags, addPost };
+
+    return {slug, title, description, content, tags, addPost};
   },
 };
 
