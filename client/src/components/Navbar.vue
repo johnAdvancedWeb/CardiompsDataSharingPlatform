@@ -4,7 +4,7 @@
             data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
             aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">
-        
+        <i class="fas fa-bars" style="color: green !important;"></i>
       </span>
     </button>
     <a class="navbar-brand" href="#" id="logo">
@@ -15,15 +15,15 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-        <li class="navbar-list-items-routes">
+        <li class="navbar-list-items-routes" v-if="user">
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
 
-        <li class="navbar-list-items-routes">
+        <li class="navbar-list-items-routes" v-if="user">
           <router-link class="nav-link" :to="{ name: 'AddData' }">Add Experimental Data</router-link>
         </li>
 
-        <li class="navbar-list-items-routes">
+        <li class="navbar-list-items-routes" v-if="user">
           <router-link class="nav-link" :to="{ name: 'QueryData' }">Query Experimental Data</router-link>
         </li>
 
@@ -33,7 +33,9 @@
 
       </ul>
       <div v-if="user">
-        <b>{{user.displayName}}</b><button @click="$emit('signOut')">Sign Out</button>
+        <i class="fas fa-user"></i><span style="margin-left: 6px; margin-right: 14px">{{ user.displayName }}</span>
+        <router-link @click="$emit('signOut')" class="button btn my-2 my-sm-0" to="#">Sign Out
+        </router-link>
       </div>
       <div v-else>
         <router-link class="button btn my-2 my-sm-0" style="margin-right: 5px" :to="{ name: 'SignUp' }">Sign Up
@@ -58,7 +60,8 @@ export default {
   props: {
     user: {
       type: Object,
-      default: () => {},
+      default: () => {
+      },
     },
   },
 

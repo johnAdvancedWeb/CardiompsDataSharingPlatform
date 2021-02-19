@@ -1,13 +1,5 @@
 <template>
   <div>
-    
-    <div v-if="user">
-      What user sees
-    </div>
-    <div v-else>
-      What guest
-    </div>
-
     <h3>Bar Chart Example</h3>
     <div>
       <bar-chart class="center"></bar-chart>

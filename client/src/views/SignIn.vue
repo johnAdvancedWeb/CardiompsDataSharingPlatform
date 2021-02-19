@@ -5,9 +5,9 @@
     </div>
 
     <div v-else>
-      <ion-grid>
-        <ion-row>
-          <ion-col size-md="6" offset-md="3">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
             <div id="login-container">
               <div id="login-header">Sign in below</div>
               <div id="login-form">
@@ -19,22 +19,25 @@
 
                   <div id="password-container">
                     <label for="password">Password:</label><br>
-                    <input type="password" placeholder="Enter password here" id="password" show-password v-model="password" required><br>
+                    <input type="password" placeholder="Enter password here" id="password" show-password
+                           v-model="password" required><br>
                     <a href="#" @click="showModal('resetPassword')">Forgotten password</a>
                   </div>
 
-                  <div id="error-container" v-if="errorFirebase">
-                    <p class="red-text">{{ errorFirebase }}</p>
-                  </div>
-
                   <button plain type="success" @click="signIn">Sign in</button>
+
+                  <transition name="fade-in">
+                    <div id="error-container" v-if="errorLogin">
+                      <p class="red-text">{{ errorLogin }}</p>
+                    </div>
+                  </transition>
                 </form>
               </div>
             </div>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      
+          </div>
+        </div>
+      </div>
+
       <Modal :is-modal-visible="isModalVisible" @close-modal="closeModal">
         <ResetPassword v-if="actionDescription === 'resetPassword'"></ResetPassword>
       </Modal>
@@ -43,9 +46,9 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import { firebaseAuthentication } from "@/firebase/database";
-import { useRouter } from "vue-router";
+import {ref} from "vue";
+import {firebaseAuthentication} from "@/firebase/database";
+import {useRouter} from "vue-router";
 import Modal from "@/components/Modal";
 import ResetPassword from "@/components/ResetPassword";
 
@@ -55,7 +58,7 @@ export default {
   components: {
     Modal, ResetPassword
   },
-  
+
   data() {
     return {
       isModalVisible: false,
@@ -66,7 +69,8 @@ export default {
   props: {
     user: {
       type: Object,
-      default: () => {},
+      default: () => {
+      },
     },
   },
 
@@ -83,26 +87,27 @@ export default {
   setup() {
     const email = ref("");
     const password = ref("");
-    const errorFirebase = ref(null);
-    
+    const errorLogin = ref(null);
+
     const router = useRouter();
-    
+
     function signIn() {
       const info = {
         email: email.value,
         password: password.value,
       };
-      
+
       firebaseAuthentication.signInWithEmailAndPassword(info.email, info.password).then(
           () => {
             router.push("/");
           },
           (error) => {
-            errorFirebase.value = error.message;
+            errorLogin.value = error.message;
           }
-        );
+      );
     }
-    return { email, password, errorFirebase, signIn };
+
+    return {email, password, errorLogin, signIn};
   },
 }
 </script>
