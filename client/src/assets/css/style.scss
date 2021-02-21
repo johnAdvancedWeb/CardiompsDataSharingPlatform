@@ -75,12 +75,49 @@ a:not(a.button), .nav-link {
     }
 }
 
+.latest-news-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.latest-news-container::-webkit-scrollbar-track {
+    background: var(--actionBackground);
+}
+
+.latest-news-container::-webkit-scrollbar-thumb {
+    background: var(--navbarBackground);
+    border: 1px solid var(--actionBackground);
+
+    &:hover {
+        background-color: crimson;
+    }
+}
+
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
     transition: all .3s ease;
     background: var(--secondaryBackground);
+    overflow: scroll; overflow-x: hidden;
+
+    h1 {
+        padding: 10px 0;
+        font-size: 2em;
+    }
+
+    #post {
+        #content {
+            background-color: var(--bodyText);
+            height: 100%;
+            padding: 20px;
+            border-radius: 6px;
+
+            p {
+                color: var(--bodyBackground);
+            }
+        }
+    }
 }
+
 
 
 #login-container, #register-container {
