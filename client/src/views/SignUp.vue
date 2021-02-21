@@ -46,7 +46,7 @@
                   <button @click="registerUser">Sign up</button>
 
                   <transition name="fade-in">
-                    <div id="error-container" v-if="errorRegistration">
+                    <div class="error-container" v-if="errorRegistration">
                       <p class="red-text">{{ errorRegistration }}</p>
                     </div>
                   </transition>

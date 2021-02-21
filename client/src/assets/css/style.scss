@@ -171,7 +171,7 @@ a:not(a.button), .nav-link {
 
 #register-container, #login-container {
     #register-form, #login-form {
-        #error-container {
+        .error-container {
             margin-top: 20px;
             background-color: var(--red);
             width: 50%;

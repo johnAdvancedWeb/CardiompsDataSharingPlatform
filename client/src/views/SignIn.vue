@@ -27,7 +27,7 @@
                   <button plain type="success" @click="signIn">Sign in</button>
 
                   <transition name="fade-in">
-                    <div id="error-container" v-if="errorLogin">
+                    <div class="error-container" v-if="errorLogin">
                       <p class="red-text">{{ errorLogin }}</p>
                     </div>
                   </transition>
