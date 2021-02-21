@@ -6,6 +6,7 @@ import SignIn from "@/views/SignIn";
 import SignUp from "@/views/SignUp";
 import AddExperimentalData from "@/views/AddExperimentalData";
 import QueryExperimentalData from "@/views/QueryExperimentalData";
+import MyPosts from "@/views/MyPosts";
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: "/query-data",
     name: "QueryData",
     component: QueryExperimentalData
+  },
+  {
+    path: "/my-posts",
+    name: "MyPosts",
+    component: MyPosts
   },
   {
     path: '/about',

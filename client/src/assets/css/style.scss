@@ -106,10 +106,14 @@ a:not(a.button), .nav-link {
 
     #post {
         #content {
-            background-color: var(--bodyBackground);
+            background-color: var(--bodyText);
             height: 100%;
             padding: 20px;
             border-radius: 6px;
+
+            p {
+                color: var(--bodyBackground);
+            }
         }
     }
 }
