@@ -22,27 +22,21 @@ describe("Login Tests", ()=> {
         expect(wrapper.text()).toBe("User is already signed in");
     })
 
-    test("Displays the resgister page",  ()=> {
-        const wrapper = mount(signin, {
-            data() {
-                return {
-                  isModalVisible: true,
-                  actionDescription: "resetPassword",
-                }
-              },
-        }
-            );
-        
-        expect(wrapper.text()).toMatch("Reset your password here");
+    test("Displays the register page",  ()=> {
+        const wrapper = mount(signin);
+        wrapper.find("#login-form > form > button").trigger("click");
+        wrapper.vm.$nextTick().then(()=>{
+           expect(wrapper.vm.isModalVisible).toBe(false);
+          }
+        )
     })
 
     test("Display the login error", ()=>{
 
         const wrapper = mount(signin);
         wrapper.find("#login-form > form > button").trigger("click");
-        wrapper.vm.$nextTick(() => {
+        wrapper.vm.$nextTick().then(() => {
             expect(wrapper.vm.errorLogin).toBeTruthy;
-            
           })
     })
 
@@ -52,7 +46,6 @@ describe("Login Tests", ()=> {
                 user : {}
             }
         })
-
         expect(wrapper.text()).toMatch("Sign in below");
     })
 
