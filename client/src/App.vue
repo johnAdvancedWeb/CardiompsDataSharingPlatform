@@ -3,6 +3,7 @@
     <Navbar :user="user" @signOut="signOut"/>
     <router-view @add-post="addPost" @delete-post="deletePost" :user="user" @signOut="signOut" :posts="posts"/>
   </div>
+  <canvas id="myChart"></canvas>
 </template>
 
 <script>
@@ -26,14 +27,6 @@ export default {
 
              The area of heart muscle that is affected by HCM and the amount of stiffening that occurs will determine how the symptoms affect you.`,
           tags: ["hcm", "hcm symptoms"],
-        },
-        {
-          slug: "cardiomyopathy-dcm",
-          title: "What are the symptoms of DCM?",
-          description: "Common symptoms of DCM",
-          content: `In most cases, DCM develops slowly, so some people can have quite severe symptoms before they are diagnosed. The most common symptoms are:
-            shortness of breath, swelling of the ankles and abdomen, excessive tiredness and palpitations.`,
-          tags: ["dcm", "dcm symptoms"],
         },
       ]);
 
@@ -68,6 +61,10 @@ export default {
       }
     });
 
+    /* get gene mutation collection */
+
+      /* ends here */
+
     function signOut() {
       firebaseAuthentication.signOut().then(
         () => {
@@ -84,6 +81,7 @@ export default {
   },
 
   methods: {
+
     addPost(slug, title, description, content, tags) {
       const post = {
         slug: slug,
@@ -116,6 +114,8 @@ export default {
   }
 }
 </script>
+
+
 
 <style>
 </style>

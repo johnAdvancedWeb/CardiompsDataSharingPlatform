@@ -12,19 +12,17 @@
           <p class="text-sm md:text-lg mb-4">The latest cardiomyopathy news</p>
         </div>
 
-        <div v-for="p in posts" :key="p.slug" style="padding: .5%">
+        <div v-for="d in disease" :key="d.diseaseId" style="padding: .5%">
           <div class="latest-news-container">
             <div class="container">
               <div class="row">
                 <div class="col">
                   <div id="post">
-                    <div id="heading"><h1>{{ p.title }}</h1></div>
+                    <div id="heading"><h1>{{ d.diseaseId }}<br> {{ d.diseaseName }}</h1></div>
                     <div id="content">
-                      <p>{{ p.description }}</p>
-                      <p>{{ p.content }}</p>
+                      <p>{{ d.diseaseName }}</p>
                     </div>
                   </div>
-                  <button @click="deletePost(p.slug)" style="margin-top: 10px;">Delete Post</button>
                 </div>
               </div>
             </div>
@@ -37,7 +35,7 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 
 export default {
   name: 'Home',
@@ -55,6 +53,8 @@ export default {
     return {
       isModalVisible: false,
       actionDescription: "",
+      disease: [],
+      catTermMap: [],
     }
   },
 
@@ -77,6 +77,19 @@ export default {
     },
     closeModal() {
       this.isModalVisible = false;
+    },
+
+    fetchDiseaseApi() {
+      axios.get('https://hpo.jax.org/api/hpo/disease/OMIM:115197')
+      .then((res) => {
+        if(this.disease.length === 0) {
+          this.disease.push(res.data.disease);
+          // this.catTermMap = res.data.catTermMap;
+          console.log(this.disease.diseaseId);
+          // console.log(this.catTermMap);
+        }
+      });
+
     },
   },
 }

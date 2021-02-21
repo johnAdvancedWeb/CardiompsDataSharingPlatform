@@ -7,12 +7,26 @@
       :options="chartOptions"
       :series="series"
     ></apexchart>
-  </div>
+  </div><br>
+  <button @click="test">Click me</button>
+
 </template>
 
 <script>
 import { ref } from "vue";
+
 export default {
+  props: {
+    mutationGroups: {
+      type: Array,
+      default: () => [],
+    }
+  },
+
+  methods: {
+
+  },
+
   setup() {
     const chartOptions = ref({
       chart: {
