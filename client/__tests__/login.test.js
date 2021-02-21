@@ -35,4 +35,16 @@ describe("Login Tests", ()=> {
         
         expect(wrapper.text()).toMatch("Reset your password here");
     })
+
+    test("Display the login error", ()=>{
+
+        const wrapper = mount(signin);
+        wrapper.find("#login-form > form > button").trigger("click");
+        wrapper.vm.$nextTick(() => {
+            wrapper.vm.closeModal() 
+            expect(wrapper.vm.errorLogin).toBeTruthy;
+            
+          })
+    })
+
 })
