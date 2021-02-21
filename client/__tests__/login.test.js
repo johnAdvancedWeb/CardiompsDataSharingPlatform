@@ -15,7 +15,7 @@ describe("Login Tests", ()=> {
     test("Displays to user that they are signed in", ()=>{
         const wrapper = shallowMount(signin,{
             props: { 
-                user : {}
+                user : {name: "bob" , email: "straightChillin@chill"}
             }
         })
 
