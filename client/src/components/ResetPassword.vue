@@ -14,8 +14,11 @@
               <br>
               <br>
               <transition name="fade-in">
-                <div class="error-container" style="color: mediumspringgreen" v-if="statusMessage">
-                  <p class="red-text">{{ statusMessage }}</p>
+                <div class="error-container" v-if="resetError && resetError != 'none'">
+                  <p class="red-text">{{ resetError }}</p>
+                </div>
+                <div class="success-container" v-else-if="resetError === 'none'">
+                  <p class="green-text">Success! Check email inbox for <b>{{successEmail}}</b> to reset your password, then refresh this page to sign in.</p>
                 </div>
               </transition>
             </form>
@@ -35,7 +38,8 @@ export default {
 
   setup() {
     const email = ref("");
-    const statusMessage = ref(null);
+    const successEmail = ref(null);
+    const resetError = ref(null);
 
     function resetPassword() {
       const info = {
@@ -43,13 +47,14 @@ export default {
       };
 
       firebaseAuthentication.sendPasswordResetEmail(info.email).then(function() {
-        statusMessage.value = 'Success! Check email inbox for '+info.email+' to find your "reset password" link, then refresh this page to sign in.';
+        successEmail.value = info.email;
+        resetError.value = 'none';
       }).catch(function(error) {
-        statusMessage.value = error.message;
+        resetError.value = error.message;
       });
     }
 
-    return {email, statusMessage, resetPassword};
+    return {email, successEmail, resetError, resetPassword};
   },
 }
 </script>
