@@ -7,8 +7,8 @@
       :options="chartOptions"
       :series="series"
     ></apexchart>
-  </div><br>
-  <button @click="test">Click me</button>
+  </div>
+<!--  <button @click="test">Click me</button>-->
 
 </template>
 
