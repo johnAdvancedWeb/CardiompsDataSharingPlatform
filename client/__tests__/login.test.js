@@ -41,7 +41,6 @@ describe("Login Tests", ()=> {
         const wrapper = mount(signin);
         wrapper.find("#login-form > form > button").trigger("click");
         wrapper.vm.$nextTick(() => {
-            wrapper.vm.closeModal() 
             expect(wrapper.vm.errorLogin).toBeTruthy;
             
           })
