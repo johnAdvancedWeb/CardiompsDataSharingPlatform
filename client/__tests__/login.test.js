@@ -2,7 +2,7 @@ import { shallowMount, mount } from "@vue/test-utils";
 import signin from "@/views/signin";
 
 describe("Login Tests", ()=> {
-    test("Displays to user to sign in", ()=>{
+    test("Displays to user to sign in when user is undefined", ()=>{
         const wrapper = shallowMount(signin,{
             props: { 
                 user : undefined
@@ -45,6 +45,16 @@ describe("Login Tests", ()=> {
             expect(wrapper.vm.errorLogin).toBeTruthy;
             
           })
+    })
+
+    test("Displays to user to sign in when user is an empty object", ()=> {
+        const wrapper = shallowMount(signin,{
+            props: { 
+                user : {}
+            }
+        })
+
+        expect(wrapper.text()).toMatch("Sign in below");
     })
 
 })
