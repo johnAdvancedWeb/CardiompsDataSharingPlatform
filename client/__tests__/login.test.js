@@ -40,15 +40,6 @@ describe("Login View Tests", ()=> {
           })
     })
 
-    test("Displays to user to sign in when user is an empty object", ()=> {
-        const wrapper = shallowMount(signin,{
-            props: { 
-                user : {}
-            }
-        })
-        expect(wrapper.text()).toMatch("Sign in below");
-    })
-
     test("User can input details", ()=>{
         const wrapper = shallowMount(signin);
         wrapper.find("#email").setValue("test email");
