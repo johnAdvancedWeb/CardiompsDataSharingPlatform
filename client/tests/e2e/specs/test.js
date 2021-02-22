@@ -1,8 +1,14 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
-  it('Visits the app root url', () => {
+describe('Home Page', () => {
+  it('Static content loads', () => {
     cy.visit('/')
-    cy.contains('h1', 'Welcome to Your Vue.js App')
+    cy.contains('p', "What's new")
+    cy.contains('p', "The latest cardiomyopathy news")
+  })
+
+  it('Dynamic content loads', () => {
+    cy.visit('/')
+    cy.get()
   })
 })
