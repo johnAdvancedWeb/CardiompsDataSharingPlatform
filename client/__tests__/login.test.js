@@ -26,7 +26,7 @@ describe("Login View Tests", ()=> {
         const wrapper = mount(signin);
         wrapper.find("#login-form > form > button").trigger("click");
         wrapper.vm.$nextTick().then(()=>{
-           expect(wrapper.vm.isModalVisible).toBe(false);
+           expect(wrapper.vm.isModalVisible).toBe(true);
           }
         )
     })
