@@ -1,6 +1,7 @@
 import { shallowMount } from "@vue/test-utils";
 import AddEx from "@/views/AddExperimentalData";
 
+
 describe("MyPost Component Tests", ()=> {
     test("Render component", ()=>{
         const wrapper = shallowMount(AddEx);
@@ -9,7 +10,7 @@ describe("MyPost Component Tests", ()=> {
     });
 
     test("User can input data", ()=>{
-        const wrapper = shallowMount(AddEx);
+        const wrapper = shallowMount(AddEx, {});
         wrapper.find("#slug").setValue("test");
         wrapper.find("#title").setValue("test");
         wrapper.find("#description").setValue("test");
@@ -23,6 +24,5 @@ describe("MyPost Component Tests", ()=> {
         expect(wrapper.vm.content).toBe("test")
         expect(wrapper.vm.tags).toBe("test");
 
-        wrapper.find("#register-form > form > button").trigger("click");
     })
 })
