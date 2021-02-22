@@ -1,10 +1,11 @@
 <template>
 
   <div class="text-black text-2xl md:text-4xl font-bold mt-2" v-if="disease.length === 0" id="content-loading">
-    <h1>Content is loading...</h1>
+    <br><h1>Content is loading...</h1>
   </div>
 
   <div v-else id="section-one">
+    <br>
     <div class="mt-2">
       <div class="space-y-10 md:space-y-0">
 
