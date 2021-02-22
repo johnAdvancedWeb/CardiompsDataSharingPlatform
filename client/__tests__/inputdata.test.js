@@ -1,4 +1,4 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount,  } from "@vue/test-utils";
 import AddEx from "@/views/AddExperimentalData";
 
 
@@ -10,7 +10,8 @@ describe("MyPost Component Tests", ()=> {
     });
 
     test("User can input data", ()=>{
-        const wrapper = shallowMount(AddEx, {});
+        const wrapper = shallowMount(AddEx);
+
         wrapper.find("#slug").setValue("test");
         wrapper.find("#title").setValue("test");
         wrapper.find("#description").setValue("test");
