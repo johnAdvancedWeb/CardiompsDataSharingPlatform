@@ -100,6 +100,8 @@ a:not(a.button), .nav-link {
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
+    margin-left: 2.5%;
+    width: 95%;
     padding-top: 10px;
     transition: all .3s ease;
     overflow: scroll; overflow-x: hidden;
