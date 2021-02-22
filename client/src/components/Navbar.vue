@@ -27,6 +27,10 @@
           <router-link class="nav-link" :to="{ name: 'QueryData' }">Query Experimental Data</router-link>
         </li>
 
+        <li class="navbar-list-items-routes" v-if="user">
+          <router-link class="nav-link" :to="{ name: 'MyPosts' }">My Posts</router-link>
+        </li>
+
         <li class="navbar-list-items-routes">
           <router-link class="nav-link" to="/about">Help and About</router-link>
         </li>
