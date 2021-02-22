@@ -18,7 +18,7 @@
                   <p class="red-text">{{ resetError }}</p>
                 </div>
                 <div class="success-container" v-else-if="resetError === 'none'">
-                  <p>Success! Check email inbox for <b>{{successEmail}}</b> to reset your password, then refresh this page to sign in.</p>
+                  <p>Success! Check email inbox for <strong>{{successEmail}}</strong> to reset your password, then refresh this page to sign in.</p>
                 </div>
               </transition>
             </form>

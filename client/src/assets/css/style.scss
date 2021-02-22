@@ -196,7 +196,7 @@ a:not(a.button), .nav-link {
 }
 
 .success-container {
-    p, b {
+    p, strong {
         color: black !important;
     }
     background-color: var(--green);
