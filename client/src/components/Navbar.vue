@@ -37,7 +37,7 @@
 
       </ul>
       <div v-if="user">
-        <i class="fas fa-user"></i><span style="margin-left: 6px; margin-right: 14px">{{ user.displayName }}</span>
+        <i class="fas fa-user"></i><span style="margin-left: 6px; margin-right: 14px"><b>{{ user.displayName }}</b></span>
         <router-link @click="$emit('signOut')" class="button btn my-2 my-sm-0" to="#">Sign Out
         </router-link>
       </div>

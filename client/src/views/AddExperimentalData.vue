@@ -31,6 +31,19 @@
                 <input type="text" id="tags" v-model="tags" required><br>
               </div>
 
+              <div id="graphs">
+                <h3><a class="add-graph" @click="addGraph">Add Graph</a></h3>
+                <br>
+                <div v-for="(graph, index) in graphs" :key="graph">
+                    <div>
+                      {{index}}. {{graph}}
+                    </div>
+                    <br>
+                    <h3><a class="delete-graph" @click="removeGraph(index)">Remove Graph</a></h3><br>
+                </div>
+              </div>
+
+              <br>
               <button @click="addPost">Submit Form</button>
               <br>
 
@@ -56,6 +69,13 @@ import {useRouter} from "vue-router";
 
 export default {
   name: "AddExperimentalData",
+
+  data() {
+    return {
+      graphs: [
+      ]
+    }
+  },
 
   props: {
     user: {
@@ -87,6 +107,15 @@ export default {
 
     return {slug, title, description, content, tags, addPost};
   },
+
+  methods: {
+    addGraph() {
+      this.graphs.push('new');
+    },
+    removeGraph(id) {
+      this.graphs.splice(id,1);
+    },
+  }
 };
 
 </script>

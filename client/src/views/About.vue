@@ -15,12 +15,12 @@
           <p class="text-sm md:text-lg mb-4">The name, description and synopsis data all found here, so please read thoroughly</p>
 
           <div v-for="(ctm, index) in catTermMap" :key="index" style="padding: 16px">
+            <h1 class="about-heading">{{ ctm.catLabel }}</h1>
             <div class="latest-news-container">
               <div class="container">
                 <div class="row">
                   <div class="col">
                     <div id="post">
-                      <div id="heading"><h1>{{ ctm.catLabel }}</h1></div>
                       <div id="content" v-for="(terms, index) in ctm.terms" :key="index" class="mb-2">
                         <b><p>{{ terms.name }}</p></b>
                         <p>{{ terms.definition }}</p>
@@ -31,9 +31,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
+        </div>
+
+      </div>
     </div>
   </div>
 

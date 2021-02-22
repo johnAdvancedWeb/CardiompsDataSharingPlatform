@@ -92,17 +92,17 @@ a:not(a.button), .nav-link {
     }
 }
 
+.about-heading {
+    font-size: 2em;
+    padding: 10px 0;
+}
+
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
     transition: all .3s ease;
     background: var(--secondaryBackground);
     overflow: scroll; overflow-x: hidden;
-
-    h1 {
-        padding: 10px 0;
-        font-size: 2em;
-    }
 
     #post {
         #content {
@@ -195,4 +195,20 @@ a:not(a.button), .nav-link {
 
 .success-container {
     background-color: var(--green);
+}
+
+.add-graph, .delete-graph {
+    cursor: pointer;
+    user-select: none;
+    font-size: 29px;
+}
+
+.add-graph {
+    float: left;
+    margin-left: 5%;
+}
+
+.delete-graph {
+    float: right;
+    margin-right: 5%;
 }
