@@ -31,14 +31,14 @@
     color: white;
 }
 
-#logo {
+#dark-logo, #light-logo {
     font-weight: normal;
     color: var(--logoText);
     background-color: unset;
     pointer-events: none;
 }
 
-#logo-gif {
+.logo-gif {
     height: 50px; 
 }
 
@@ -75,6 +75,11 @@ a:not(a.button), .nav-link {
     }
 }
 
+.about-heading {
+    font-size: 2em;
+    padding: 10px 0;
+}
+
 .latest-news-container::-webkit-scrollbar {
     width: 12px;
 }
@@ -92,16 +97,11 @@ a:not(a.button), .nav-link {
     }
 }
 
-.about-heading {
-    font-size: 2em;
-    padding: 10px 0;
-}
-
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
+    padding-top: 10px;
     transition: all .3s ease;
-    background: var(--secondaryBackground);
     overflow: scroll; overflow-x: hidden;
 
     #post {
@@ -118,6 +118,9 @@ a:not(a.button), .nav-link {
     }
 }
 
+.latest-news-container {
+    background: var(--secondaryBackground);
+}
 
 
 #login-container, #register-container {
@@ -195,20 +198,4 @@ a:not(a.button), .nav-link {
 
 .success-container {
     background-color: var(--green);
-}
-
-.add-graph, .delete-graph {
-    cursor: pointer;
-    user-select: none;
-    font-size: 29px;
-}
-
-.add-graph {
-    float: left;
-    margin-left: 5%;
-}
-
-.delete-graph {
-    float: right;
-    margin-right: 5%;
 }

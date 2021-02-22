@@ -7,8 +7,13 @@
         <i class="fas fa-bars" style="color: green !important;"></i>
       </span>
     </button>
-    <a class="navbar-brand" href="#" id="logo">
-      <img src="../assets/images/Logo.gif" alt="Beating Heart Logo" id="logo-gif" class="d-inline-block">
+
+    <a class="navbar-brand" href="#" id="dark-logo">
+      <img src="../assets/images/Dark-Logo.gif" alt="Beating Heart Logo (dark)" class="d-inline-block logo-gif">
+      Cardiomps DSP
+    </a>
+    <a class="navbar-brand" href="#" id="light-logo">
+      <img src="../assets/images/Light-Logo.gif" alt="Beating Heart Logo (light)" class="d-inline-block logo-gif">
       Cardiomps DSP
     </a>
 
@@ -36,6 +41,7 @@
         </li>
 
       </ul>
+      <br>
       <div v-if="user">
         <i class="fas fa-user"></i><span style="margin-left: 6px; margin-right: 14px"><b>{{ user.displayName }}</b></span>
         <router-link @click="$emit('signOut')" class="button btn my-2 my-sm-0" to="#">Sign Out

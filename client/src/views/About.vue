@@ -22,8 +22,8 @@
                   <div class="col">
                     <div id="post">
                       <div id="content" v-for="(terms, index) in ctm.terms" :key="index" class="mb-2">
-                        <b><p>{{ terms.name }}</p></b>
-                        <p>{{ terms.definition }}</p>
+                        <b><p>Name: {{ terms.name }}</p></b>
+                        <p>Definition: {{ terms.definition }}</p>
                       </div>
                     </div>
                   </div>

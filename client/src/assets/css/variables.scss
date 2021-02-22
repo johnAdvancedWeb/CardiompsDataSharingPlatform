@@ -18,9 +18,13 @@
 
 
     /* other variables */
-    --blue: slateblue;
+    --blue: rgb(106, 90, 205);
     --red: crimson;
     --green: mediumspringgreen;
+
+    #dark-logo {
+      display: none;
+    }
 
     .blue-text {
       color: var(--blue);
@@ -58,6 +62,11 @@
     --blue: slateblue;
     --red: crimson;
     --green: mediumspringgreen;
+
+    
+    #light-logo {
+        display: none;
+    }
 
     .blue-text {
       color: var(--blue);
