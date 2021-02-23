@@ -125,7 +125,7 @@ a:not(a.button), .nav-link {
 }
 
 
-#login-container, #register-container {
+#login-container, #register-container, #add-experiment-container, #reset-password-container {
     background: var(--secondaryBackground);
     max-width: 1200px;
     position: relative;
@@ -170,7 +170,7 @@ a:not(a.button), .nav-link {
     }
 }
 
-#login-header, #register-header {
+#login-header, #register-header, #add-experiment-header, #reset-password-header {
     background: var(--headerBackground);
     color: var(--headerText);
     padding: 10px 0;
@@ -178,8 +178,8 @@ a:not(a.button), .nav-link {
     font-size: larger;
 }
 
-#register-container, #login-container {
-    #register-form, #login-form {
+#register-container, #login-container, #add-experiment-container,#reset-password-container {
+    #register-form, #login-form, #add-experiment-form, #reset-password-form {
         .error-container, .success-container {
             margin-top: 20px;
             width: 50%;
