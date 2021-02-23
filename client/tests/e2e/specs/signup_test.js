@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('sign up Page', () => {
+describe('Register Page', () => {
   it("register page loads",()=>{
 
     cy.visit('/sign-up');
