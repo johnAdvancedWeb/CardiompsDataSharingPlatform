@@ -1,33 +1,33 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('Login Page', () => {
-  it("login page loads",()=>{
+describe('Home Page', () => {
+  it('Static content loads', () => {
+    cy.visit('/')
+    cy.contains('p', "What's new")
+    cy.contains('p', "The latest cardiomyopathy news")
+  })
 
-    cy.visit('/sign-in');
-    cy.get("#email").should("exist")
+  it('Dynamic content loads', () => {
+    cy.contains('p', "What's new");
+    cy.get('div#post').should('not.exist');
 
   })
 
-  it("user can input into fields", ()=>{
-    
-    cy.get("#email").type("you33@firebase.com");
-    cy.get("#password").type("123456");
+  it('Sign up button changes route',() =>{
+    cy.get("#navbarTogglerDemo03 > div > a:nth-child(1)").click();
+    cy.url().should('equal','http://localhost:8081/sign-up');
 
   })
 
-  it("user can login", ()=> {
-    
-    cy.get("#login-form > form > button").click();
-
-    cy.contains("What's new")
+  it('Sign in button changes route',() =>{
+    cy.get("#navbarTogglerDemo03 > div > a:nth-child(2)").click();
+    cy.url().should('equal','http://localhost:8081/sign-in');
   })
 
-  it("user can logout", ()=> {
-    
-    cy.get("#navbarTogglerDemo03 > div > a").click();
-
-    cy.contains("Sign in below")
+  it('help and about link changes route',() =>{
+    cy.get("#navbarTogglerDemo03 > ul > li > a").click();
+    cy.url().should('equal','http://localhost:8081/about');
   })
+
 
 })
-
