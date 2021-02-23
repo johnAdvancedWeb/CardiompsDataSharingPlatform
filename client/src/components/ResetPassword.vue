@@ -8,17 +8,17 @@
             <form @submit.prevent>
               <div id="username-container">
                 <label for="email">Email:</label><br>
-                <input type="text" placeholder="Enter email here" id="email" v-model="email"><br>
+                <input type="text" placeholder="Enter email here" id="email" v-model="email" required><br>
               </div>
               <button @click="resetPassword">Submit Reset Request</button>
               <br>
               <br>
               <transition name="fade-in">
-                <div class="error-container" v-if="resetError && resetError != 'none'">
+                <div class="error-container" v-if="resetError && resetError !== 'none'">
                   <p class="red-text">{{ resetError }}</p>
                 </div>
                 <div class="success-container" v-else-if="resetError === 'none'">
-                  <p class="green-text">Success! Check email inbox for <b>{{successEmail}}</b> to reset your password, then refresh this page to sign in.</p>
+                  <p>Success! Check email inbox for <strong>{{successEmail}}</strong> to reset your password, then refresh this page to sign in.</p>
                 </div>
               </transition>
             </form>
