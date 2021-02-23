@@ -1,6 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('Login Page', () => {
+describe('Login Page : signed in', () => {
   it("login page loads",()=>{
 
     cy.visit('/sign-in');
@@ -27,9 +27,30 @@ describe('Login Page', () => {
     cy.contains("What's new")
   })
 
+})
+
+describe("Signed in only pages", ()=> {
+  it("My Posts page loads",()=>{
+    cy.visit("/my-posts");
+    cy.get("div.latest-news-container").should("exist");
+  })
+
+  it("query page loads",()=>{
+    cy.visit("/query-data");
+  })
+
+  it("Add Data page loads",()=>{
+    cy.visit("add-data");
+    cy.contains("Add and record experimental data");
+  })
+
+})
+
+describe("Login page : signed out", ()=> {
+
   it("user can logout", ()=> {
     
-    cy.get("#navbarTogglerDemo03 > div > a").click();
+    cy.get("#data-test-logout").click();
     cy.contains("Sign in below")
   })
 
