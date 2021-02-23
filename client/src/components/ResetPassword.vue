@@ -10,7 +10,7 @@
                 <label for="email">Email:</label><br>
                 <input type="text" placeholder="Enter email here" id="email" v-model="email" required><br>
               </div>
-              <button @click="resetPassword">Submit Reset Request</button>
+              <button id="data-test-button" @click="resetPassword">Submit Reset Request</button>
               <br>
               <br>
               <transition name="fade-in">
