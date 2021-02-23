@@ -187,7 +187,6 @@ a:not(a.button), .nav-link {
             transform: translateX(-50%);
             user-select: none;
             p {
-                color: white;
                 padding: 10px;
             }
         }
@@ -195,9 +194,15 @@ a:not(a.button), .nav-link {
 }
 
 .error-container {
+    p, b {
+        color: white !important;
+    }
     background-color: var(--red);
 }
 
 .success-container {
+    p, strong {
+        color: black !important;
+    }
     background-color: var(--green);
 }

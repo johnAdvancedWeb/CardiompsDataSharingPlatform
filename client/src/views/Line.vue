@@ -1,7 +1,5 @@
 <template>
   <div>
-
-
     <h3>Line Chart Example</h3>
     <div>
       <line-chart class="center"></line-chart>
@@ -10,7 +8,7 @@
 </template>
 
 <script>
-import LineChart from "@/components/LineChart";
+import LineChart from "@/components/charts/LineChart";
 
 export default {
   components: {
