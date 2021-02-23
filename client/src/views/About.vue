@@ -22,8 +22,11 @@
                 <div class="row">
                   <div class="col">
                     <div id="post">
+<!--                      <div id="content" v-for="(terms, index) in ctm.terms" :key="index" class="mb-2">-->
+<!--                        <b><p>Name: {{ terms.name }}</p></b>-->
+<!--                      <div id="heading"><h1>Synopsis: {{ ctm.catLabel }}</h1></div>-->
                       <div id="content" v-for="(terms, index) in ctm.terms" :key="index" class="mb-2">
-                        <b><p>Name: {{ terms.name }}</p></b>
+                        <strong><p>Name: {{ terms.name }}</p></strong>
                         <p>Definition: {{ terms.definition }}</p>
                       </div>
                     </div>

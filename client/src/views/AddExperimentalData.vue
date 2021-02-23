@@ -6,11 +6,6 @@
           <div id="register-header">Add and record experimental data</div>
           <div id="register-form">
             <form @submit.prevent>
-              <div id="username-container">
-                <label for="slug">Slug: </label><br>
-                <input type="text" id="slug" v-model="slug" required><br>
-              </div>
-
               <div id="full-name-container">
                 <label for="title">Title:</label><br>
                 <input type="text" id="title" v-model="title" required><br>
@@ -21,17 +16,28 @@
                 <input type="text" id="description" v-model="description" required><br>
               </div>
 
-              <div id="password-container">
-                <label for="content">Content: </label><br>
-                <input type="text" id="content" v-model="content" required><br>
+              <div>
+                <label for="x-label">X-label: </label><br>
+                <input type="text" id="x-label" v-model="content" placeholder='e.g., "Time"' required><br>
               </div>
 
-              <div id="confirm-password-container">
-                <label for="tags">Tags: </label><br>
-                <input type="text" id="tags" v-model="tags" required><br>
+              <div>
+                <label for="x-data">X-axis (comma separated): </label><br>
+                <input type="text" id="x-data" v-model="content" placeholder='e.g., "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"' required><br>
               </div>
 
-              <br>
+              <div>
+                <label for="y-label">Y-label: </label><br>
+                <input type="text" id="y-label" v-model="content" placeholder='e.g., "Velocity"' required><br>
+              </div>
+
+              <div>
+                <label for="y-data">Y-axis (comma separated): </label><br>
+                <input type="text" id="y-data" v-model="tags" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
+              </div>
+
+
+
               <button @click="addPost">Submit Form</button>
               <br>
 
