@@ -2,38 +2,38 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <div id="register-container">
-          <div id="register-header">Add and record experimental data</div>
-          <div id="Csv-reader">
-            <textarea id="preview" v-model="csvData.text"></textarea>
-            <file-reader @fileLoaded="csvData.text = $event"></file-reader>
-            <button @click="saveChartData" ></button>
-            </div>
-          <div id="register-form">
+        <div id="add-experiment-container">
+          <div id="add-experiment-header">Add and record experimental data</div>
+          <div id="add-experiment-form">
             <form @submit.prevent>
-              <div id="username-container">
-                <label for="slug">Slug: </label><br>
-                <input type="text" id="slug" v-model="slug" required><br>
-              </div>
-
-              <div id="full-name-container">
+              <div id="title-container">
                 <label for="title">Title:</label><br>
-                <input type="text" id="title" v-model="title" required><br>
+                <input type="text" id="title" v-model="title" required placeholder='e.g., "Unhealthy Sarcomere Length vs Time"'><br>
               </div>
 
-              <div id="institution-container">
+              <div id="description-container">
                 <label for="description">Description:</label><br>
-                <input type="text" id="description" v-model="description" required><br>
+                <input type="text" id="description" v-model="description" required placeholder='e.g., "An experiment showing the difference between..."'><br>
               </div>
 
-              <div id="password-container">
-                <label for="content">Content: </label><br>
-                <input type="text" id="content" v-model="content" required><br>
+              <div>
+                <label for="x-label">X-label: </label><br>
+                <input type="text" id="x-label" v-model="xLabel" placeholder='e.g., "Time"' required><br>
               </div>
 
-              <div id="confirm-password-container">
-                <label for="tags">Tags: </label><br>
-                <input type="text" id="tags" v-model="tags" required><br>
+              <div>
+                <label for="x-data">X-axis (comma separated): </label><br>
+                <input type="text" id="x-data" v-model="xAxis" placeholder='e.g., "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"' required><br>
+              </div>
+
+              <div>
+                <label for="y-label">Y-label: </label><br>
+                <input type="text" id="y-label" v-model="yLabel" placeholder='e.g., "Length"' required><br>
+              </div>
+
+              <div>
+                <label for="y-data">Y-axis (comma separated): </label><br>
+                <input type="text" id="y-data" v-model="yAxis" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
               </div>
 
               <button @click="addPost">Submit Form</button>
@@ -90,19 +90,20 @@ export default {
   emits: ["add-post"],
 
   setup(props, context) {
-    const slug = ref("");
     const title = ref("");
     const description = ref("");
-    const content = ref("");
-    const tags = ref("");
+    const xLabel = ref("");
+    const xAxis = ref("");
+    const yLabel = ref("");
+    const yAxis = ref("");
     const router = useRouter();
 
     function addPost() {
-      context.emit("add-post", slug.value, title.value, description.value, content.value, tags.value);
+      context.emit("add-post", title.value, description.value, xLabel.value, xAxis.value, yLabel.value, yAxis.value);
       router.push("/");
     }
 
-    return {slug, title, description, content, tags, addPost};
+    return {title, description, xLabel, xAxis, yLabel, yAxis, addPost};
   },
 };
 

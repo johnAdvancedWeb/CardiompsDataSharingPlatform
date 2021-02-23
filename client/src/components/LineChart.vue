@@ -1,14 +1,14 @@
 <template>
   <div>
     <apexchart
-      type="line"
-      height="350"
-      width="500"
-      :options="chartOptions"
-      :series="series"
+        type="line"
+        height="350"
+        width="500"
+        :options="chartOptions"
+        :series="series"
     ></apexchart>
   </div>
-<!--  <button @click="test">Click me</button>-->
+  <!--  <button @click="test">Click me</button>-->
 
 </template>
 
@@ -16,6 +16,8 @@
 import { ref } from "vue";
 
 export default {
+  name: 'linechart',
+
   props: {
     mutationGroups: {
       type: Array,
@@ -28,58 +30,83 @@ export default {
   },
 
   setup() {
+    let hcmData = [], hcmMykData = [], xLabels = [];
+    hcmData = [0, 7.8565, 2.9038, 1.3811, 0.7305, 0.1927, 0];
+    hcmMykData = [0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0];
+    xLabels = [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6];
+
     const chartOptions = ref({
       chart: {
-        height: 350,
-        type: "line",
-        zoom: {
-          enabled: false,
-        },
+        background: '#1a1423',
+        foreColor: "#fff",
+        toolbar: {
+          show: false
+        }
+      },
+
+      colors: ["#FCCF31", "#17ead9", "#f02fc2"],
+      stroke: {
+        width: 3,
+        show: true,
+        curve: 'smooth',
+        lineCap: 'butt',
+        colors: undefined,
+        dashArray: 0,
       },
       dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: "straight",
-      },
-      title: {
-        text: "Product Trends by Month",
-        align: "left",
+        enabled: false
       },
       grid: {
-        row: {
-          colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-          opacity: 0.5,
-        },
+        borderColor: "#40475D"
       },
       xaxis: {
-        categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
-        title: {
-          text: "Month",
+        categories: {
+          xLabels
         },
+        decimalsInFloat: 2,
+
+        title: {
+          text: "Time (divided by 10)",
+        },
+        axisTicks: {
+          color: "#333"
+        },
+        axisBorder: {
+          color: "#333"
+        }
+      },
+      fill: {
+        type: "gradient",
+        gradient: {
+          gradientToColors: ["#F55555", "#6078ea", "#6094ea"]
+        }
+      },
+      tooltip: {
+        theme: "dark",
+        x: {
+          // formatter: function (val) {
+          //   return moment(new Date(val)).format("HH:mm:ss");
+          // }
+        }
       },
       yaxis: {
         title: {
-          text: "Desktops",
+          text: "Length",
         },
-      },
-      legend: {
-        position: "top",
-        horizontalAlign: "right",
-        floating: true,
-        offsetY: -25,
-        offsetX: -5,
-      },
+        decimalsInFloat: 2,
+        labels: {
+        }
+      }
     });
 
     const series = ref([
       {
-        name: "Desktops",
-        data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        name: "HCM",
+        data: hcmData,
       },
       {
-        name: "Laptops",
-        data: [20, 61, 75, 71, 69, 72, 89, 111, 168],
+        name: "HCM+(MYK-461)",
+        data: hcmMykData,
       },
     ]);
 
