@@ -1,9 +1,11 @@
 <template>
   <div>
-    <Navbar :user="user" @signOut="signOut"/>
-    <router-view @add-post="addPost" @delete-post="deletePost" :user="user" @signOut="signOut" :posts="posts"/>
+    <div>
+      <Navbar :user="user" @signOut="signOut"/>
+      <router-view @add-post="addPost" @delete-post="deletePost" :user="user" :posts="posts"/>
+    </div>
+    <canvas id="myChart"></canvas>
   </div>
-  <canvas id="myChart"></canvas>
 </template>
 
 <script>
@@ -55,6 +57,11 @@ export default {
               });
               posts.value = snapData;
             });
+
+            // if all details aren't yet stored on profile, force a fresh sign-in
+            if(user.value.displayName === null) {
+              signOut();
+            }
       }
       else {
         user.value = null;
@@ -114,8 +121,6 @@ export default {
   }
 }
 </script>
-
-
 
 <style>
 </style>

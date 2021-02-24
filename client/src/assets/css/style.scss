@@ -100,6 +100,7 @@ a:not(a.button), .nav-link {
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
+    background: var(--secondaryBackground);
     margin-left: 2.5%;
     width: 95%;
     padding-top: 10px;
@@ -108,21 +109,18 @@ a:not(a.button), .nav-link {
 
     #post {
         #content {
-            background-color: var(--bodyText);
+            background: var(--navbarBackground);
             height: 100%;
             padding: 20px;
             border-radius: 6px;
 
             p {
-                color: var(--bodyBackground);
+                color: var(--bodyText);
             }
         }
     }
 }
 
-.latest-news-container {
-    background: var(--secondaryBackground);
-}
 
 
 #login-container, #register-container {
@@ -142,14 +140,14 @@ a:not(a.button), .nav-link {
         transition: all .5s ease;
 
         &:valid {
-            background-color: var(--bodyText);
-            color: var(--secondaryBackground);
+            background-color: var(--bodyBackground);
+            color: var(--bodyText);
         }
 
         &:focus {
             &:valid {
-                color: black;
-                background-color: mediumspringgreen;
+                color: white;
+                background-color: var(--green);
             }
 
             &:invalid {
@@ -182,9 +180,8 @@ a:not(a.button), .nav-link {
     #register-form, #login-form {
         .error-container, .success-container {
             margin-top: 20px;
-            width: 50%;
-            margin-left: 50%;
-            transform: translateX(-50%);
+            width: 80%;
+            margin-left: 10%;
             user-select: none;
             p {
                 padding: 10px;
@@ -202,7 +199,7 @@ a:not(a.button), .nav-link {
 
 .success-container {
     p, strong {
-        color: black !important;
+        color: white !important;
     }
     background-color: var(--green);
 }
