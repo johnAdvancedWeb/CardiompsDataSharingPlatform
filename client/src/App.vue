@@ -82,20 +82,19 @@ export default {
   },
 
   methods: {
-    addExperimentalData(title, description, xLabel, xAxis, yLabel, yAxis) {
+    addExperimentalData(title, description, xAxis, y1Axis, y2Axis, y3Axis) {
       const post = {
         title: title,
         description: description,
-        xLabel: xLabel,
-        xAXis: xAxis,
-        yLabel: yLabel,
-        yAxis: yAxis,
-        createdAt: timestamp()
+        xAxis: xAxis,
+        y1Axis: y1Axis,
+        y2Axis: y2Axis,
+        y3Axis: y3Axis,
+        createdAt: timestamp(),
+        postedBy: this.user.email
       };
       firebaseFireStore
-          .collection("users")
-          .doc(this.user.uid)
-          .collection("posts")
+          .collection("experimental-data")
           .add(post);
     },
 

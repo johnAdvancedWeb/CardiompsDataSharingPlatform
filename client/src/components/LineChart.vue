@@ -101,11 +101,11 @@ export default {
 
     const series = ref([
       {
-        name: "HCM",
+        // name: "HCM",
         data: hcmData,
       },
       {
-        name: "HCM+(MYK-461)",
+        // name: "HCM+(MYK-461)",
         data: hcmMykData,
       },
     ]);
