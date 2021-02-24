@@ -26,7 +26,7 @@
             <form @submit.prevent>
               <div id="csv-reader">
                 <label class="logo-text">Submit by importing a CSV and hit generate <br><strong>(please make sure the columns are named accurately, e.g., "X, Y1, Y2, Y3")</strong></label><br>
-                <file-reader @fileLoaded="csvData.text = $event"></file-reader><button style="margin-left: 10px" @click="saveChartData">Generate</button>
+                <file-reader @fileLoaded="csvData.text = $event"></file-reader><button style="margin-left: 10px" @click="generateCsvData">Generate</button>
               </div>
               <label class="logo-text">Alternatively, you may manually input your data</label>
 
@@ -46,19 +46,24 @@
 <!--                <input type="text" id="y-label" v-model="yLabel" placeholder='e.g., "Length"' required><br>-->
 <!--              </div>-->
 
-              <div>
-                <label for="y-data">Y-axis (comma separated): </label><br>
-                <input type="text" id="y-data" v-model="y1AxisData" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
+              <div id="y1-container">
+                <label for="y1-data">Y-axis 1 (comma separated): </label><br>
+                <input type="text" id="y1-data" v-model="y1AxisData" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
               </div>
 
-              <button @click="addExperimentalData">Submit Form</button>
-              <br>
+              <div id="y2-container" style="display: none">
+                <label for="y2-data">Y-axis 2 (comma separated): </label><br>
+                <input type="text" id="y2-data" v-model="y2AxisData" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
+              </div>
 
-              <!--              <transition name="fade-in">-->
-              <!--                <div id="error-container" v-if="errorRegistration">-->
-              <!--                  <p class="red-text">{{ errorRegistration }}</p>-->
-              <!--                </div>-->
-              <!--              </transition>-->
+              <div id="y3-container" style="display: none">
+                <label for="y3-data">Y-axis 3 (comma separated): </label><br>
+                <input type="text" id="y3-data" v-model="y3AxisData" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
+              </div>
+
+              <button @click="hideAdditionalYaxisInputs">Hide additional Y-axis inputs</button><br>
+              <button @click="addExperimentalData" style="margin-top: 20px">Submit Form</button>
+              <br>
             </form>
 
             <br><br>
@@ -108,21 +113,31 @@ export default {
   },
 
   methods : {
-    saveChartData() {
+    hideAdditionalYaxisInputs() {
+      document.getElementById('y2-container').style.display = 'none';
+      document.getElementById('y3-container').style.display = 'none';
+    },
+
+    generateCsvData() {
       let jsonData = csv.toObjects(this.csvData.text);
       // console.table(jsonData);
 
-
       this.xAxisData = [];
       this.y1AxisData = [];
+
       this.y2AxisData = [];
+      this.y3AxisData = [];
+
+      this.hideAdditionalYaxisInputs();
       jsonData.forEach((ad) => {
         this.xAxisData.push(ad.x);
         this.y1AxisData.push(ad.y1);
         if(ad.y2) {
+          document.getElementById('y2-container').style.display = 'block';
           this.y2AxisData.push(ad.y2);
         }
         if(ad.y3) {
+          document.getElementById('y3-container').style.display = 'block';
           this.y3AxisData.push(ad.y3);
         }
       });
