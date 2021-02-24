@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :user="user" @signOut="signOut"/>
-    <router-view @add-experimental-data="addExperimentalData" @delete-post="deletePost" :user="user" @signOut="signOut" :posts="posts"/>
+    <router-view @add-experimental-data="addExperimentalData" @delete-post="deletePost" :user="user" @signOut="signOut" :experimental-data="experimentalData"/>
 <!--    <button @click="addCsvData">Test button for inserting data</button>-->
   </div>
   <canvas id="myChart"></canvas>
@@ -17,7 +17,7 @@ export default {
   components: {Navbar},
   
     setup() {
-      const posts = ref([
+      const experimentalData = ref([
         {
           slug: "cardiomyopathy-hcm",
           title: "What are the symptoms of HCM?",
@@ -40,21 +40,20 @@ export default {
         user.value = currentUser;
 
         firebaseFireStore
-            .collection("users")
-            .doc(user.value.uid)
-            .collection("posts")
+            .collection("experimental-data")
             .onSnapshot((snapShot) => {
               const snapData = [];
               snapShot.forEach((doc) => {
                 snapData.push({
-                  slug: doc.data().slug,
                   title: doc.data().title,
                   description: doc.data().description,
-                  content: doc.data().content,
-                  // tags: doc.data().tags.split(","),
+                  xAxis: doc.data().xAxis,
+                  y1Axis: doc.data().y1Axis,
+                  y2Axis: doc.data().y2Axis,
+                  y3Axis: doc.data().y3Axis,
                 });
               });
-              posts.value = snapData;
+              experimentalData.value = snapData;
             });
       }
       else {
@@ -78,12 +77,12 @@ export default {
       );
     }
 
-    return { user, signOut, posts };
+    return { user, signOut, experimentalData };
   },
 
   methods: {
     addExperimentalData(title, description, xAxis, y1Axis, y2Axis, y3Axis) {
-      const post = {
+      const experimentalData = {
         title: title,
         description: description,
         xAxis: xAxis,
@@ -95,7 +94,7 @@ export default {
       };
       firebaseFireStore
           .collection("experimental-data")
-          .add(post);
+          .add(experimentalData);
     },
 
     deletePost(slug) {
