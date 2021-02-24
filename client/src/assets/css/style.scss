@@ -134,7 +134,7 @@ a:not(a.button), .nav-link {
     padding-bottom: 20px;
     margin-top: 20px;
 
-    input {
+    input, select, option {
         background-color: var(--bodyBackground);
         margin-bottom: 20px;
         width: 50%;

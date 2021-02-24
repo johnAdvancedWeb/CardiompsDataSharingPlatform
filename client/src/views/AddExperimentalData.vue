@@ -5,38 +5,53 @@
         <div id="add-experiment-container">
           <div id="add-experiment-header">Add and record experimental data</div>
           <div id="add-experiment-form">
+            <div id="title-container">
+              <label for="title">Title:</label><br>
+              <select id="title" required>
+                <option disabled selected value>Select an option</option>
+                <option>Sarcomere Length vs Time</option>
+                <option>Tension vs Calcium</option>
+                <option>Velocity vs Calcium</option>
+                <option>Force vs Calcium</option>
+                <option>Length vs Time</option>
+              </select>
+              <!--                <input type="text" id="title" v-model="title" required placeholder='e.g., "Unhealthy Sarcomere Length vs Time"'><br>-->
+            </div>
+
+            <div id="description-container">
+              <label for="description">Description:</label><br>
+              <input type="text" id="description" v-model="description" required placeholder='e.g., "An experiment showing the difference between..."'><br>
+            </div>
+
             <form @submit.prevent>
-              <div id="title-container">
-                <label for="title">Title:</label><br>
-                <input type="text" id="title" v-model="title" required placeholder='e.g., "Unhealthy Sarcomere Length vs Time"'><br>
+              <div id="csv-reader">
+                <label class="logo-text">Submit by importing a CSV and hit generate <br><strong>(please make sure the columns are named accurately, e.g., "X, Y1, Y2, Y3")</strong></label><br>
+                <file-reader @fileLoaded="csvData.text = $event"></file-reader><button style="margin-left: 10px" @click="saveChartData">Generate</button>
               </div>
+              <label class="logo-text">Alternatively, you may manually input your data</label>
 
-              <div id="description-container">
-                <label for="description">Description:</label><br>
-                <input type="text" id="description" v-model="description" required placeholder='e.g., "An experiment showing the difference between..."'><br>
-              </div>
+<!--              <div>-->
+<!--                <label for="x-label">X-label: </label><br>-->
+<!--                <input type="text" id="x-label" v-model="xLabel" placeholder='e.g., "Time"' required><br>-->
+<!--              </div>-->
 
-              <div>
-                <label for="x-label">X-label: </label><br>
-                <input type="text" id="x-label" v-model="xLabel" placeholder='e.g., "Time"' required><br>
-              </div>
 
               <div>
                 <label for="x-data">X-axis (comma separated): </label><br>
-                <input type="text" id="x-data" v-model="xAxis" placeholder='e.g., "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"' required><br>
+                <input type="text" id="x-data" v-model="xAxisData" placeholder='e.g., "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"' required><br>
               </div>
 
-              <div>
-                <label for="y-label">Y-label: </label><br>
-                <input type="text" id="y-label" v-model="yLabel" placeholder='e.g., "Length"' required><br>
-              </div>
+<!--              <div>-->
+<!--                <label for="y-label">Y-label: </label><br>-->
+<!--                <input type="text" id="y-label" v-model="yLabel" placeholder='e.g., "Length"' required><br>-->
+<!--              </div>-->
 
               <div>
                 <label for="y-data">Y-axis (comma separated): </label><br>
-                <input type="text" id="y-data" v-model="yAxis" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
+                <input type="text" id="y-data" v-model="y1AxisData" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
               </div>
 
-              <button @click="addPost">Submit Form</button>
+              <button @click="addExperimentalData">Submit Form</button>
               <br>
 
               <!--              <transition name="fade-in">-->
@@ -45,6 +60,9 @@
               <!--                </div>-->
               <!--              </transition>-->
             </form>
+
+            <br><br>
+
           </div>
         </div>
       </div>
@@ -56,12 +74,14 @@
 
 <script>
 
-import {ref} from "vue";
-import {useRouter} from "vue-router";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import csv from "jquery-csv";
+import FileReader from "@/components/FileReader";
 
 export default {
   name: "AddExperimentalData",
-
+  components: {FileReader},
   props: {
     user: {
       type: Object,
@@ -75,7 +95,45 @@ export default {
     },
   },
 
-  emits: ["add-post"],
+  data () {
+    return {
+      csvData : {
+        text : ""
+      },
+      xAxisData: [],
+      y1AxisData: [],
+      y2AxisData: [],
+      y3AxisData: [],
+    }
+  },
+
+  methods : {
+    saveChartData() {
+      let jsonData = csv.toObjects(this.csvData.text);
+      // console.table(jsonData);
+
+
+      this.xAxisData = [];
+      this.y1AxisData = [];
+      this.y2AxisData = [];
+      jsonData.forEach((ad) => {
+        this.xAxisData.push(ad.x);
+        this.y1AxisData.push(ad.y1);
+        if(ad.y2) {
+          this.y2AxisData.push(ad.y2);
+        }
+        if(ad.y3) {
+          this.y3AxisData.push(ad.y3);
+        }
+      });
+
+      for(let i = 0; i < this.xAxisData.length; i++) {
+        // console.log(this.xAxisValues[i]);
+      }
+    }
+  },
+
+  emits: ["add-experimental-data"],
 
   setup(props, context) {
     const title = ref("");
@@ -86,12 +144,12 @@ export default {
     const yAxis = ref("");
     const router = useRouter();
 
-    function addPost() {
-      context.emit("add-post", title.value, description.value, xLabel.value, xAxis.value, yLabel.value, yAxis.value);
+    function addExperimentalData() {
+      context.emit("add-experimental-data", title.value, description.value, xLabel.value, xAxis.value, yLabel.value, yAxis.value);
       router.push("/");
     }
 
-    return {title, description, xLabel, xAxis, yLabel, yAxis, addPost};
+    return { title, description, xLabel, xAxis, yLabel, yAxis, addExperimentalData };
   },
 };
 

@@ -1,7 +1,8 @@
 <template>
   <div>
     <Navbar :user="user" @signOut="signOut"/>
-    <router-view @add-post="addPost" @delete-post="deletePost" :user="user" @signOut="signOut" :posts="posts"/>
+    <router-view @add-experimental-data="addExperimentalData" @delete-post="deletePost" :user="user" @signOut="signOut" :posts="posts"/>
+<!--    <button @click="addCsvData">Test button for inserting data</button>-->
   </div>
   <canvas id="myChart"></canvas>
 </template>
@@ -50,7 +51,7 @@ export default {
                   title: doc.data().title,
                   description: doc.data().description,
                   content: doc.data().content,
-                  tags: doc.data().tags.split(","),
+                  // tags: doc.data().tags.split(","),
                 });
               });
               posts.value = snapData;
@@ -81,14 +82,14 @@ export default {
   },
 
   methods: {
-
-    addPost(slug, title, description, content, tags) {
+    addExperimentalData(title, description, xLabel, xAxis, yLabel, yAxis) {
       const post = {
-        slug: slug,
         title: title,
         description: description,
-        content: content,
-        tags: tags,
+        xLabel: xLabel,
+        xAXis: xAxis,
+        yLabel: yLabel,
+        yAxis: yAxis,
         createdAt: timestamp()
       };
       firebaseFireStore
@@ -109,6 +110,22 @@ export default {
             querySnapshot.forEach((doc) => {
               doc.ref.delete();
             });
+          });
+    },
+
+    addCsvData() {
+      firebaseFireStore.collection("groups").doc("MYBPC3velocityCalcium").set({
+        title: "Sarcomere Length vs Time",
+        description: "None defined",
+        xAxis: "0.1, 0.2, 0.3, 0.4, 0.5, 0.6",
+        yAxis: "0, 7.8565, 2.9038, 1.3811, 0.7305, 0.1927, 0",
+        yAxis2: "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0",
+      })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
           });
     }
   }
