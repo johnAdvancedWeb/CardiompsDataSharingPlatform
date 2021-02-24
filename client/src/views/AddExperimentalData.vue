@@ -59,7 +59,8 @@
 <!--                <input type="text" id="y3-series" v-model="y3SeriesName" placeholder='e.g., "Donor"' required><br>-->
               </div>
 
-              <button @click="hideAdditionalYaxisInputs">Hide additional Y-axis inputs</button><br>
+              <button v-if="!areInputsShowing" @click="showAdditionalYaxisInputs">{{ showInputsMsg }}</button>
+              <button v-else @click="hideAdditionalYaxisInputs">{{ hideInputsMsg }}</button><br>
               <button @click="addExperimentalData" style="margin-top: 20px">Submit Form</button>
               <br>
             </form>
@@ -109,6 +110,9 @@ export default {
       y1AxisData: [],
       y2AxisData: [],
       y3AxisData: [],
+      showInputsMsg: "Show additional Y-axis inputs",
+      hideInputsMsg: "Hide additional Y-axis inputs",
+      areInputsShowing: false,
     }
   },
 
@@ -116,6 +120,15 @@ export default {
     hideAdditionalYaxisInputs() {
       document.getElementById('y2-container').style.display = 'none';
       document.getElementById('y3-container').style.display = 'none';
+
+      this.areInputsShowing = false;
+    },
+
+    showAdditionalYaxisInputs() {
+      document.getElementById('y2-container').style.display = 'block';
+      document.getElementById('y3-container').style.display = 'block';
+
+      this.areInputsShowing = true;
     },
 
     generateCsvData() {
