@@ -18,6 +18,15 @@
           <p class="text-sm md:text-lg mb-4">The latest cardiomyopathy experiments</p>
         </div>
 
+        <div class="search-container">
+          <label for="search-select">Query by mutation</label><br>
+          <select id="search-select" style="color: black; background-color: white">
+            <option disabled selected value>Select an option</option>
+            <option>HCM</option>
+            <option>MYBP3</option>
+          </select>
+        </div>
+
         <div id="experimental-data-container">
           <div v-for="(ctm, index) in catTermMap" :key="index">
             <div class="latest-news-container">

@@ -18,7 +18,7 @@
             <p class="text-sm md:text-lg mb-4">The latest cardiomyopathy experiments</p>
           </div>
 
-        <div id="experimental-data-container">
+        <div v-if="experimentalData && experimentalData.length" id="experimental-data-container">
         <div v-for="(ed, index) in experimentalData" :key="index">
             <div class="latest-news-container">
               <div class="container">
@@ -38,7 +38,7 @@
                       </div>
                     </div>
                     <button @click="recordIndexClicked(index); updateChart(ed.yColumns, ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)" style="margin-top: 20px; margin-bottom: 20px;">Display Chart</button><br>
-                    <button v-if="ed.postedBy === user.email" @click="deleteExperimentalData(ed.postedBy)" style="margin-bottom: 20px;">Delete Experiment</button>
+                    <button v-if="user && ed.postedBy === user.email" @click="deleteExperimentalData(ed.postedBy)" style="margin-bottom: 20px;">Delete Experiment</button>
                   </div>
                 </div>
               </div>
