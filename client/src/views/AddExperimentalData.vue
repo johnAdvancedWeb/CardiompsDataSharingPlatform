@@ -78,21 +78,20 @@
 
 <script>
 
-// import { ref } from "vue";
-// import { useRouter } from "vue-router";
 import csv from "jquery-csv";
 import FileReader from "@/components/FileReader";
 
+
 export default {
+  components: { FileReader },
   name: "AddExperimentalData",
-  components: {FileReader},
+
+
   props: {
     user: {
       type: Object,
-      default: () => {
-      },
+      default: () => {},
     },
-
     posts: {
       type: Array,
       default: () => [],
