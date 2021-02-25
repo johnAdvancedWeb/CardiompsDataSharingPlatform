@@ -9,7 +9,7 @@
     --secondaryBackground: rgb(255, 255, 255);
 
     /* this changes the overall theme, buttons, header background, hover colour and many other */
-    --actionBackground: slateblue;
+    --actionBackground: var(--blue);
     /* above comment ends here */
     --actionText: white;
 
@@ -18,9 +18,9 @@
 
 
     /* other variables */
-    --blue: rgb(106, 90, 205);
+    --blue: slateblue; //rgb(90, 205, 105)
     --red: crimson;
-    --green: mediumspringgreen;
+    --green: rgb(90, 205, 105);
 
     #dark-logo {
       display: none;
@@ -44,13 +44,13 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    --navbarBackground: rgb(33, 33, 34);
+    --navbarBackground: linear-gradient(315deg, #28282b 0%, #212122 90%);
     --logoText: var(--actionBackground);
 
     --bodyBackground: rgb(27, 27, 30);
     --bodyText: white;
 
-    --secondaryBackground: var(--navbarBackground);
+    --secondaryBackground: #212122;
 
     --actionBackground: #FCD34D;
     --actionText: black;
@@ -61,7 +61,7 @@
     /* other variables */
     --blue: slateblue;
     --red: crimson;
-    --green: mediumspringgreen;
+    --green: rgb(90, 205, 105);
 
     
     #light-logo {

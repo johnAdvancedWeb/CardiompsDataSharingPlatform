@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="user">
-      Sign out before registering a new account
+      
     </div>
 
     <div v-else>
@@ -26,8 +26,7 @@
 
                   <div id="institution-container">
                     <label for="institution">Institutional Affiliation:</label><br>
-                    <input type="text" placeholder='e.g., "The University of Oxford"' id="institution" minlength="6"
-                           required><br>
+                    <input type="text" placeholder='e.g., "The University of Oxford"' id="institution" minlength="6" v-model="uni" required><br>
                   </div>
 
                   <div id="password-container">
@@ -63,18 +62,10 @@
 <script>
 import {firebaseAuthentication} from "@/firebase/database";
 import {ref, watch} from "vue";
-import {useRouter} from "vue-router";
+//import {useRouter} from "vue-router";
 
 export default {
   name: "SignUp",
-
-  data() {
-    return {
-      // email: "",
-      // name: "",
-      // doPasswordsMatch: false,
-    }
-  },
 
   props: {
     user: {
@@ -85,9 +76,12 @@ export default {
   },
 
   setup() {
-    const router = useRouter();
+    //const router = useRouter();
+    //alert(this.user.value.email);
+
     const email = ref("");
     const name = ref("");
+    const uni = ref("");
     const doPasswordsMatch = ref(false);
     const confirmPassword = ref("");
     const password = ref("");
@@ -107,15 +101,18 @@ export default {
       const info = {
         email: email.value,
         displayName: name.value,
-        password: password.value
+        uni: uni.value,
+        password: password.value,
       };
 
       if (doPasswordsMatch.value) {
-        firebaseAuthentication.createUserWithEmailAndPassword(info.email, info.password).then((userCredentials) => {
-          return userCredentials.user.updateProfile({
+        firebaseAuthentication.createUserWithEmailAndPassword(info.email, info.password).then(
+          (userCredentials) => {
+            userCredentials.user.updateProfile({
             displayName: info.displayName,
+            //university: info.uni,
           }).then(() => {
-            router.push("/sign-in");
+            //router.push("/sign-in");
           })
         }, error => {
           this.errorRegistration = error.message;

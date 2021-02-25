@@ -85,11 +85,11 @@ export default {
   },
 
   setup() {
+    const router = useRouter();
+
     const email = ref("");
     const password = ref("");
     const errorLogin = ref(null);
-
-    const router = useRouter();
 
     function signIn() {
       const info = {
