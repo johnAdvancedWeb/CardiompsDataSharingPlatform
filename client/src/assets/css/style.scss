@@ -77,7 +77,8 @@ a:not(a.button), .nav-link {
 
 .about-heading {
     font-size: 2em;
-    padding: 10px 0;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .latest-news-container::-webkit-scrollbar {
@@ -107,15 +108,15 @@ a:not(a.button), .nav-link {
     padding-top: 10px;
     transition: all .3s ease;
     height: unset;
-    #post {
+    #api-post {
         #content {
-            //background-color: var(--bodyText);
+            background-color: var(--bodyText);
             height: 100%;
-            padding: 0;
+            padding: 20px;
+            margin: 20px 0;
             border-radius: 6px;
-
             p {
-                color: white;
+                color: var(--bodyBackground);
             }
         }
     }
@@ -123,8 +124,14 @@ a:not(a.button), .nav-link {
 
 .latest-news-container {
     background: var(--secondaryBackground);
+    margin: 1.5% 2.5% !important;
 }
 
+#experimental-data-container {
+    background-color: var(--navbarBackground);
+    margin: 5px;
+    padding: 5px;
+}
 
 #login-container, #register-container, #add-experiment-container, #reset-password-container {
     background: var(--secondaryBackground);
