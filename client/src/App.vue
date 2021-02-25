@@ -47,6 +47,7 @@ export default {
                 snapData.push({
                   title: doc.data().title,
                   description: doc.data().description,
+                  postedBy: doc.data().postedBy,
                   xAxis: doc.data().xAxis,
                   y1Axis: doc.data().y1Axis,
                   y2Axis: doc.data().y2Axis,

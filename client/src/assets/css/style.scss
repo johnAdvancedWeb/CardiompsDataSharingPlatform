@@ -100,21 +100,22 @@ a:not(a.button), .nav-link {
 .latest-news-container {
     @apply w-full h-64 rounded-lg shadow-2xl;
 
+    background: rgb(26 20 35) !important;
     margin-left: 2.5%;
     width: 95%;
+    margin-top: 20px;
     padding-top: 10px;
     transition: all .3s ease;
-    overflow: scroll; overflow-x: hidden;
-
+    height: unset;
     #post {
         #content {
-            background-color: var(--bodyText);
+            //background-color: var(--bodyText);
             height: 100%;
-            padding: 20px;
+            padding: 0;
             border-radius: 6px;
 
             p {
-                color: var(--bodyBackground);
+                color: white;
             }
         }
     }
