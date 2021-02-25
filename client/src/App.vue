@@ -4,7 +4,6 @@
     <router-view @add-experimental-data="addExperimentalData" @delete-post="deletePost" :user="user" @signOut="signOut" :experimental-data="experimentalData"/>
 <!--    <button @click="addCsvData">Test button for inserting data</button>-->
   </div>
-  <canvas id="myChart"></canvas>
 </template>
 
 <script>
@@ -56,6 +55,11 @@ export default {
               });
               experimentalData.value = snapData;
             });
+
+            // if all details aren't yet stored on profile, force a fresh sign-in
+            if(user.value.displayName === null) {
+              signOut();
+            }
       }
       else {
         user.value = null;
@@ -130,8 +134,6 @@ export default {
   }
 }
 </script>
-
-
 
 <style>
 </style>

@@ -4,213 +4,217 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 @import "variables";
 @font-face {
-    font-family: 'Raleway', sans-serif;
-    /*    font-family: Neu;
-        src: url(../fonts/Neufreit-ExtraBold.otf);*/
+  font-family: 'Raleway', sans-serif;
+  /*    font-family: Neu;
+      src: url(../fonts/Neufreit-ExtraBold.otf);*/
 }
 
 /* tailwind code goes here */
 @layer components {
-    .heading {
-        @apply py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75;
-    }
+  .heading {
+    @apply py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75;
+  }
 
-    .primary-button {
-        @apply bg-yellow-300 text-black hover:bg-gray-200 hover:text-black transition duration-300 rounded;
-    }
+  .primary-button {
+    @apply bg-yellow-300 text-black hover:bg-gray-200 hover:text-black transition duration-300 rounded;
+  }
 }
 /* tailwind code ends here */
 
 @import 'global';
 
 #navbar {
-    background: var(--navbarBackground);
+  background: var(--navbarBackground);
 }
+
 .navbar-container {
-    background: var(--navbarBackground);
-    color: white;
+  background: var(--navbarBackground);
+  color: white;
 }
 
 #dark-logo, #light-logo {
-    font-weight: normal;
-    color: var(--logoText);
-    background-color: unset;
-    pointer-events: none;
+  font-weight: normal;
+  color: var(--logoText);
+  background-color: unset;
+  pointer-events: none;
 }
 
 .logo-gif {
-    height: 50px; 
+  height: 50px;
 }
 
 .navbar-list-items-logo, .navbar-list-items-routes {
-    padding: 10px;
+  padding: 10px;
 }
 
 .navbar-list-items-routes {
-    transition: .3s ease all;
+  transition: .3s ease all;
 }
 
 a:not(a.button), .nav-link {
-    transition: all .5s ease;
-    text-decoration: none !important;
-    &:hover {
-        color: var(--actionBackground) !important;
-    }
+  transition: all .5s ease;
+  text-decoration: none !important;
+
+  &:hover {
+    color: var(--actionBackground) !important;
+  }
 }
 
 .navbar-list-items-button {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 
 
 .navbar-list-items-theme {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 30px;
-    transition: all .5s ease;
-    &:hover {
-        cursor: pointer;
-        color: var(--actionBackground) !important;
-    }
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  transition: all .5s ease;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--actionBackground) !important;
+  }
 }
 
 .about-heading {
-    font-size: 2em;
-    margin: 0 !important;
-    padding: 0 !important;
+  font-size: 2em;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .latest-news-container::-webkit-scrollbar {
-    width: 12px;
+  width: 12px;
 }
 
 .latest-news-container::-webkit-scrollbar-track {
-    background: var(--actionBackground);
+  background: var(--actionBackground);
 }
 
 .latest-news-container::-webkit-scrollbar-thumb {
-    background: var(--navbarBackground);
-    border: 1px solid var(--actionBackground);
+  background: var(--navbarBackground);
+  border: 1px solid var(--actionBackground);
 
-    &:hover {
-        background: crimson;
-    }
+  &:hover {
+    background: crimson;
+  }
 }
 
 .latest-news-container {
-    @apply w-full h-64 rounded-lg shadow-2xl;
+  @apply w-full h-64 rounded-lg shadow-2xl;
 
-    background: rgb(26 20 35) !important;
-    margin-left: 2.5%;
-    width: 95%;
-    margin-top: 20px;
-    padding-top: 10px;
-    transition: all .3s ease;
-    height: unset;
-    #api-post {
-        #content {
-            background-color: var(--bodyText);
-            height: 100%;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 6px;
-            p {
-                color: var(--bodyBackground);
-            }
-        }
+
+  background: rgb(26 20 35) !important;
+
+  margin-left: 2.5%;
+  width: 95%;
+  margin-top: 20px;
+  padding-top: 10px;
+  transition: all .3s ease;
+  height: unset;
+
+  #api-post {
+    #content {
+      background: var(--navbarBackground);
+      height: 100%;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 6px;
+
+      p {
+        color: var(--bodyText);
+      }
     }
-}
-
-.latest-news-container {
-    background: var(--secondaryBackground);
-    margin: 1.5% 2.5% !important;
+  }
 }
 
 #experimental-data-container {
-    background-color: var(--navbarBackground);
-    margin: 5px;
-    padding: 5px;
+  background-color: var(--navbarBackground);
+  margin: 5px;
+  padding: 5px;
 }
 
 #login-container, #register-container, #add-experiment-container, #reset-password-container {
-    background: var(--secondaryBackground);
-    max-width: 1200px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-bottom: 20px;
-    margin-top: 20px;
+  background: var(--secondaryBackground);
+  max-width: 1200px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 20px;
+  margin-top: 20px;
 
-    input, select, option {
-        background-color: var(--bodyBackground);
-        margin-bottom: 20px;
-        width: 50%;
-        padding: 10px;
-        transition: all .5s ease;
+  input, select, option {
+    background-color: var(--bodyBackground);
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 10px;
+    transition: all .5s ease;
 
-        &:valid {
-            background-color: var(--bodyText);
-            color: var(--secondaryBackground);
-        }
-
-        &:focus {
-            &:valid {
-                color: black;
-                background-color: mediumspringgreen;
-            }
-
-            &:invalid {
-                color: white;
-                background-color: var(--red);
-            }
-        }
+    &:valid {
+      background-color: var(--bodyBackground);
+      color: var(--bodyText);
     }
+
+    &:focus {
+      &:valid {
+        color: white;
+        background-color: var(--green);
+      }
+
+      &:invalid {
+        color: white;
+        background-color: var(--red);
+      }
+    }
+  }
 }
 
 #login-container {
-    #password-container {
-        margin-bottom: 10px;
+  #password-container {
+    margin-bottom: 10px;
 
-        #password {
-            margin-bottom: 2px !important;
-        }
+    #password {
+      margin-bottom: 2px !important;
     }
+  }
 }
 
 #login-header, #register-header, #add-experiment-header, #reset-password-header {
-    background: var(--headerBackground);
-    color: var(--headerText);
-    padding: 10px 0;
-    margin-bottom: 20px;
-    font-size: larger;
+  background: var(--headerBackground);
+  color: var(--headerText);
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-size: larger;
 }
 
-#register-container, #login-container, #add-experiment-container,#reset-password-container {
-    #register-form, #login-form, #add-experiment-form, #reset-password-form {
-        .error-container, .success-container {
-            margin-top: 20px;
-            width: 50%;
-            margin-left: 50%;
-            transform: translateX(-50%);
-            user-select: none;
-            p {
-                padding: 10px;
-            }
-        }
+#register-container, #login-container, #add-experiment-container, #reset-password-container {
+  #register-form, #login-form, #add-experiment-form, #reset-password-form {
+    .error-container, .success-container {
+      margin-top: 20px;
+      width: 80%;
+      margin-left: 10%;
+      user-select: none;
+
+      p {
+        padding: 10px;
+      }
     }
+  }
 }
 
 .error-container {
-    p, b {
-        color: white !important;
-    }
-    background-color: var(--red);
+  p, b {
+    color: white !important;
+  }
+
+  background-color: var(--red);
 }
 
 .success-container {
-    p, strong {
-        color: black !important;
-    }
-    background-color: var(--green);
+  p, strong {
+    color: white !important;
+  }
+
+  background-color: var(--green);
 }
