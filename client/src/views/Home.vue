@@ -46,7 +46,7 @@
 
                     </div>
                   </div>
-                  <button @click="recordIndexClicked(index); updateChart(ed.y1Axis, ed.y2Axis, ed.y3Axis)" style="margin-bottom: 20px; margin-top: 20px">Display Chart</button>
+                  <button @click="recordIndexClicked(index); updateChart(ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)" style="margin-bottom: 20px; margin-top: 20px">Display Chart</button>
                 </div>
               </div>
             </div>
@@ -166,11 +166,13 @@ export default {
       console.log(this.indexClicked);
     },
 
-    updateChart(y1, y2, y3) {
+    updateChart(y1, y2, y3, title) {
       const y1Axis = y1;
       const y2Axis = y2;
       const y3Axis = y3;
 
+      const yLabel = title.split(' vs ')[0];
+      const xLabel = title.split(' vs ')[1];
       const colors = ['#008FFB', '#00E396', '#FEB019', '#FF4560', '#775DD0']
 
       // Make sure to update the whole options config and not just a single property to allow the Vue watch catch the change.
@@ -202,7 +204,7 @@ export default {
           decimalsInFloat: 2,
 
           title: {
-            text: "Time (divided by 10)",
+            text: xLabel,
           },
           axisTicks: {
             color: "#333"
@@ -227,7 +229,7 @@ export default {
         },
         yaxis: {
           title: {
-            text: "Length",
+            text: yLabel,
           },
           decimalsInFloat: 2,
           labels: {}
