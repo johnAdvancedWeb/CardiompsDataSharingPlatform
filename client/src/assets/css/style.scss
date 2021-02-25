@@ -82,6 +82,7 @@ a:not(a.button), .nav-link {
   font-size: 2em;
   margin: 0 !important;
   padding: 0 !important;
+  color: white !important;
 }
 
 .latest-news-container::-webkit-scrollbar {
@@ -114,6 +115,13 @@ a:not(a.button), .nav-link {
   transition: all .3s ease;
   height: unset;
 
+  #experimental-post {
+    #content {
+      p {
+        color: white !important;
+      }
+    }
+  }
   #api-post {
     #content {
       background: var(--navbarBackground);
