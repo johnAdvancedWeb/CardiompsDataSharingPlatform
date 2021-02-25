@@ -27,7 +27,7 @@
                   <button plain type="success" @click="signIn">Sign in</button>
 
                   <transition name="fade-in">
-                    <div id="error-container" v-if="errorLogin">
+                    <div class="error-container" v-if="errorLogin">
                       <p class="red-text">{{ errorLogin }}</p>
                     </div>
                   </transition>
@@ -85,11 +85,11 @@ export default {
   },
 
   setup() {
+    const router = useRouter();
+
     const email = ref("");
     const password = ref("");
     const errorLogin = ref(null);
-
-    const router = useRouter();
 
     function signIn() {
       const info = {

@@ -1,20 +1,21 @@
 <template>
   <div>
-
-
     <h3>Line Chart Example</h3>
     <div>
-      <line-chart class="center"></line-chart>
+<!--      <line-chart class="center"></line-chart>-->
+      <linechart></linechart>
     </div>
 </div>
 </template>
 
 <script>
-import LineChart from "@/components/LineChart";
+// import LineChart from "@/components/charts/LineChart";
+import Linechart from "@/components/LineChart";
 
 export default {
   components: {
-    LineChart,
+    Linechart,
+    // LineChart,
   },
 
   props: {

@@ -1,15 +1,13 @@
 <template>
-  <div class="about">
-  </div>
+  <div></div>
 </template>
+
 
 <script>
 export default {
-  props: {
-    user: {
-      type: Object,
-      default: () => {},
-    },
-  },
+
 }
 </script>
+
+<style></style>
+
