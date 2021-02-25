@@ -47,7 +47,9 @@ export default {
                   title: doc.data().title,
                   description: doc.data().description,
                   postedBy: doc.data().postedBy,
+                  createdAt: doc.data().createdAt,
                   xAxis: doc.data().xAxis,
+                  yColumns: doc.data().yColumns,
                   y1Axis: doc.data().y1Axis,
                   y2Axis: doc.data().y2Axis,
                   y3Axis: doc.data().y3Axis,
@@ -86,11 +88,12 @@ export default {
   },
 
   methods: {
-    addExperimentalData(title, description, xAxis, y1Axis, y2Axis, y3Axis) {
+    addExperimentalData(title, description, xAxis, yColumns, y1Axis, y2Axis, y3Axis) {
       const experimentalData = {
         title: title,
         description: description,
         xAxis: xAxis,
+        yColumns: yColumns,
         y1Axis: y1Axis,
         y2Axis: y2Axis,
         y3Axis: y3Axis,

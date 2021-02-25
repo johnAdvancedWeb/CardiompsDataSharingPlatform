@@ -35,6 +35,13 @@
                 <input type="text" id="x-data" v-model="xAxisData" placeholder='e.g., "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"' required><br>
               </div>
 
+
+              <label class="logo-text">If not specified, default column names ("series 1, series 2, series 3") will be used</label>
+              <div id="y-columns-container">
+                <label for="y-columns">Y-column names (comma separated): </label><br>
+                <input type="text" id="y-columns" v-model="yColumns" placeholder='e.g., "time, velocity"'><br>
+              </div>
+
               <div id="y1-container">
                 <label for="y1-data">Y-axis 1 (comma separated): </label><br>
                 <input type="text" id="y1-data" v-model="y1AxisData" placeholder='e.g., "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0"' required><br>
@@ -106,6 +113,7 @@ export default {
       title: "",
       description: "",
       xAxisData: [],
+      yColumns: [],
       y1AxisData: [],
       y2AxisData: [],
       y3AxisData: [],
@@ -161,6 +169,10 @@ export default {
 
     addExperimentalData() {
       /* if they're not arrays, turn them into it by splitting them, this is if a user manually types inputs their data */
+      if (!Array.isArray(this.yColumns)) {
+        this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
+      }
+
       if (!Array.isArray(this.xAxisData)) {
         this.xAxisData = this.xAxisData.replaceAll(/\s/g, '').split(',');
       }
@@ -176,7 +188,7 @@ export default {
       if (!Array.isArray(this.y3AxisData)) {
         this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
       }
-      this.$emit('add-experimental-data', this.title, this.description, this.xAxisData, this.y1AxisData, this.y2AxisData, this.y3AxisData);
+      this.$emit('add-experimental-data', this.title, this.description, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
       this.$router.push("/");
     }
   },

@@ -37,7 +37,7 @@
                         </div>
                       </div>
                     </div>
-                    <button @click="recordIndexClicked(index); updateChart(ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)"
+                    <button @click="recordIndexClicked(index); updateChart(ed.yColumns, ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)"
                             style="margin-bottom: 20px; margin-top: 20px">Display Chart
                     </button>
                   </div>
@@ -160,7 +160,7 @@ export default {
       console.log(this.indexClicked);
     },
 
-    updateChart(y1, y2, y3, title) {
+    updateChart(yColumns, y1, y2, y3, title) {
       const y1Axis = y1;
       const y2Axis = y2;
       const y3Axis = y3;
@@ -234,12 +234,15 @@ export default {
       // In the same way, update the series option
       this.series = [
         {
+          name: yColumns[0],
           data: y1Axis
         },
         {
+          name: yColumns[1],
           data: y2Axis
         },
         {
+          name: yColumns[2],
           data: y3Axis
         },
       ]
