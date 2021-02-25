@@ -37,9 +37,8 @@
                         </div>
                       </div>
                     </div>
-                    <button @click="recordIndexClicked(index); updateChart(ed.yColumns, ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)"
-                            style="margin-bottom: 20px; margin-top: 20px">Display Chart
-                    </button>
+                    <button @click="recordIndexClicked(index); updateChart(ed.yColumns, ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)" style="margin-top: 20px; margin-bottom: 20px;">Display Chart</button><br>
+                    <button v-if="ed.postedBy === user.email" @click="deleteExperimentalData(ed.postedBy)" style="margin-bottom: 20px;">Delete Experiment</button>
                   </div>
                 </div>
               </div>
@@ -56,7 +55,7 @@
 
 
 export default {
-  name: 'MyPosts',
+  name: 'Home',
 
   data() {
     return {
@@ -158,6 +157,10 @@ export default {
     recordIndexClicked(index) {
       this.indexClicked = index;
       console.log(this.indexClicked);
+    },
+
+    deleteExperimentalData(owner) {
+      this.$emit('delete-experimental-data', owner)
     },
 
     updateChart(yColumns, y1, y2, y3, title) {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar :user="user" @signOut="signOut"/>
-    <router-view @add-experimental-data="addExperimentalData" @delete-post="deletePost" :user="user" @signOut="signOut" :experimental-data="experimentalData"/>
+    <router-view @add-experimental-data="addExperimentalData" @delete-experimental-data="deleteExperimentalData" :user="user" @signOut="signOut" :experimental-data="experimentalData"/>
 <!--    <button @click="addCsvData">Test button for inserting data</button>-->
   </div>
 </template>
@@ -105,12 +105,10 @@ export default {
           .add(experimentalData);
     },
 
-    deletePost(slug) {
+    deleteExperimentalData(owner) {
       firebaseFireStore
-          .collection("users")
-          .doc(this.user.uid)
-          .collection("posts")
-          .where("slug", "==", slug)
+          .collection("experimental-data")
+          .where("postedBy", "==", owner)
           .get()
           .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
