@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="user">
-      Sign out before registering a new account
+
     </div>
     <div v-else>
       <div class="container">
@@ -19,7 +19,8 @@
 
                   <div id="full-name-container">
                     <label for="full-name">Full Name:</label><br>
-                    <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="credential.name" minlength="6"
+                    <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="credential.name"
+                           minlength="6"
                            required><br>
                   </div>
 
@@ -32,13 +33,14 @@
 
                   <div id="password-container">
                     <label for="password">Password:</label><br>
-                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password" v-model="credential.password"
+                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password"
+                           v-model="credential.password"
                            minlength="6" autocomplete="new-password"
                            required><br>
                   </div>
 
                   <div id="confirm-password-container">
-                    <label for="confirm-password">Confirm Password: {{confirmPassword}} </label><br>
+                    <label for="confirm-password">Confirm Password: {{ confirmPassword }} </label><br>
                     <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password"
                            autocomplete="new-password" v-model="credential.confirmPassword" minlength="6" required><br>
                   </div>
@@ -62,76 +64,78 @@
 
 <script>
 import {firebaseAuthentication} from "@/firebase/database";
+
 export default {
   name: "SignUp",
-    props: {
-      user:
-      {  
-        type: Object,
-        default: () => {}
-       }
-    },
+  props: {
+    user: {
+      type: Object,
+      default: () => {
+      }
+    }
+  },
+
 
   data() {
     return {
-      credential : {
+      credential: {
         name: "",
         password: "",
-        email : "",
+        email: "",
         confirmPassword: "",
-        institution : ""
-        }, errorRegistration : ""
+        institution: "",
+      },
+      errorRegistration: ""
     }
   },
-  
-  methods : {
-    registerUser : function() {
+
+  methods: {
+    registerUser() {
       console.log(this.credential);
-      console.log(this.Vaildation);
+      console.log(this.validation);
       console.log(this.doPasswordsMatch)
-      if (this.doPasswordsMatch && this.Vaildation) {
-        firebaseAuthentication.createUserWithEmailAndPassword(this.credential.email,this.credential.password).then( userCredentials => {
+      if (this.doPasswordsMatch && this.validation) {
+        firebaseAuthentication.createUserWithEmailAndPassword(this.credential.email, this.credential.password).then(userCredentials => {
           const user = userCredentials.user;
-          user.updateProfile({ displayName: this.credential.name});
-          this.$router.push("/sign-in")
+          user.updateProfile({displayName: this.credential.name});
+          this.$router.push("/sign-in");
         }, error => {
-          this.errorRegistration = error.message;
+          this.errorRegistration = error.msg;
         });
       }
     }
   },
 
   computed: {
-    confirmPassword : function() {
+    confirmPassword() {
       return this.credential.password !== this.credential.confirmPassword ? "Please make sure your passwords match" : "";
-    },
-    doPasswordsMatch : function() {
-      return this.confirmPassword !== "Please make sure your passwords match" ? true : false; 
-    },
-    vaildInputs : function() {
+    }
+    ,
+    doPasswordsMatch() {
+      return this.confirmPassword !== "Please make sure your passwords match";
+    }
+    ,
+    validInputs() {
       const inputLengthArray = [];
       inputLengthArray.push(this.credential.name.length > 5)
       inputLengthArray.push(this.credential.email.length > 0)
       inputLengthArray.push(this.credential.password.length > 5)
-      inputLengthArray.push(this.credential.institution.length >5)
+      inputLengthArray.push(this.credential.institution.length > 5)
 
       return inputLengthArray;
-    },
-    Vaildation : function() {
-      let numOfvaildInputs = this.vaildInputs.reduce((prev,i)=> {return prev + i});
-      console.log(numOfvaildInputs);
-      return numOfvaildInputs == 4 ? true : false;
+    }
+    ,
+    validation: function () {
+      let numOfValidInputs = this.validInputs.reduce((prev, i) => {
+        return prev + i
+      });
+      console.log(numOfValidInputs);
+      return numOfValidInputs === 4;
     }
   }
 }
 </script>
 
 <style scoped>
-.fade-in-enter-from, .fade-in-leave-to {
-  opacity: 0;
-}
 
-.fade-in-enter-active, .fade-in-leave-active {
-  transition: opactiy 3s ease-in;
-}
 </style>
