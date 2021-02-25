@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <div id="login-container" @click.stop>
-          <div id="login-header">Reset your password here</div>
-          <div id="login-form">
+        <div id="reset-password-container" @click.stop>
+          <div id="reset-password-header">Reset your password here</div>
+          <div id="reset-password-form">
             <form @submit.prevent>
               <div id="username-container">
                 <label for="email">Email:</label><br>

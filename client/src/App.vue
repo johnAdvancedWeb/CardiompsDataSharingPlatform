@@ -1,10 +1,8 @@
 <template>
   <div>
-    <div>
-      <Navbar :user="user" @signOut="signOut"/>
-      <router-view @add-post="addPost" @delete-post="deletePost" :user="user" :posts="posts"/>
-    </div>
-    <canvas id="myChart"></canvas>
+    <Navbar :user="user" @signOut="signOut"/>
+    <router-view @add-experimental-data="addExperimentalData" @delete-post="deletePost" :user="user" @signOut="signOut" :experimental-data="experimentalData"/>
+<!--    <button @click="addCsvData">Test button for inserting data</button>-->
   </div>
 </template>
 
@@ -18,7 +16,7 @@ export default {
   components: {Navbar},
   
     setup() {
-      const posts = ref([
+      const experimentalData = ref([
         {
           slug: "cardiomyopathy-hcm",
           title: "What are the symptoms of HCM?",
@@ -41,21 +39,21 @@ export default {
         user.value = currentUser;
 
         firebaseFireStore
-            .collection("users")
-            .doc(user.value.uid)
-            .collection("posts")
+            .collection("experimental-data")
             .onSnapshot((snapShot) => {
               const snapData = [];
               snapShot.forEach((doc) => {
                 snapData.push({
-                  slug: doc.data().slug,
                   title: doc.data().title,
                   description: doc.data().description,
-                  content: doc.data().content,
-                  tags: doc.data().tags.split(","),
+                  postedBy: doc.data().postedBy,
+                  xAxis: doc.data().xAxis,
+                  y1Axis: doc.data().y1Axis,
+                  y2Axis: doc.data().y2Axis,
+                  y3Axis: doc.data().y3Axis,
                 });
               });
-              posts.value = snapData;
+              experimentalData.value = snapData;
             });
 
             // if all details aren't yet stored on profile, force a fresh sign-in
@@ -84,25 +82,24 @@ export default {
       );
     }
 
-    return { user, signOut, posts };
+    return { user, signOut, experimentalData };
   },
 
   methods: {
-
-    addPost(slug, title, description, content, tags) {
-      const post = {
-        slug: slug,
+    addExperimentalData(title, description, xAxis, y1Axis, y2Axis, y3Axis) {
+      const experimentalData = {
         title: title,
         description: description,
-        content: content,
-        tags: tags,
-        createdAt: timestamp()
+        xAxis: xAxis,
+        y1Axis: y1Axis,
+        y2Axis: y2Axis,
+        y3Axis: y3Axis,
+        createdAt: timestamp(),
+        postedBy: this.user.email
       };
       firebaseFireStore
-          .collection("users")
-          .doc(this.user.uid)
-          .collection("posts")
-          .add(post);
+          .collection("experimental-data")
+          .add(experimentalData);
     },
 
     deletePost(slug) {
@@ -116,6 +113,22 @@ export default {
             querySnapshot.forEach((doc) => {
               doc.ref.delete();
             });
+          });
+    },
+
+    addCsvData() {
+      firebaseFireStore.collection("groups").doc("MYBPC3velocityCalcium").set({
+        title: "Sarcomere Length vs Time",
+        description: "None defined",
+        xAxis: "0.1, 0.2, 0.3, 0.4, 0.5, 0.6",
+        yAxis: "0, 7.8565, 2.9038, 1.3811, 0.7305, 0.1927, 0",
+        yAxis2: "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0",
+      })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
           });
     }
   }
