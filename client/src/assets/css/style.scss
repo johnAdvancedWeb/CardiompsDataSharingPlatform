@@ -158,7 +158,7 @@ a:not(a.button), .nav-link {
 
     &:focus {
       &:valid {
-        color: white;
+        color: black;
         background-color: var(--green);
       }
 
@@ -213,7 +213,7 @@ a:not(a.button), .nav-link {
 
 .success-container {
   p, strong {
-    color: white !important;
+    color: black !important;
   }
 
   background-color: var(--green);
