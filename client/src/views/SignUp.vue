@@ -40,18 +40,19 @@
                   </div>
 
                   <div id="confirm-password-container">
-                    <label for="confirm-password">Confirm Password: {{ confirmPassword }} </label><br>
-                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password"
-                           autocomplete="new-password" v-model="credential.confirmPassword" minlength="6" required><br>
+                    <label for="confirm-password">Confirm Password</label><br>
+                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password" autocomplete="new-password" v-model="credential.confirmPassword" minlength="6" required><br>
                   </div>
 
                   <button @click="registerUser">Sign up</button>
 
-                  <transition name="fade-in">
                     <div class="error-container" v-if="errorRegistration">
                       <p class="red-text">{{ errorRegistration }}</p>
                     </div>
-                  </transition>
+
+                    <div class="error-container" v-if="confirmPassword">
+                      <p class="red-text">{{ confirmPassword }}</p>
+                    </div>
                 </form>
               </div>
             </div>
@@ -63,7 +64,7 @@
 </template>
 
 <script>
-import {firebaseAuthentication} from "@/firebase/database";
+import { firebaseAuthentication } from "@/firebase/database";
 
 export default {
   name: "SignUp",
@@ -91,16 +92,13 @@ export default {
 
   methods: {
     registerUser() {
-      console.log(this.credential);
-      console.log(this.validation);
-      console.log(this.doPasswordsMatch)
       if (this.doPasswordsMatch && this.validation) {
         firebaseAuthentication.createUserWithEmailAndPassword(this.credential.email, this.credential.password).then(userCredentials => {
           const user = userCredentials.user;
           user.updateProfile({displayName: this.credential.name});
           this.$router.push("/sign-in");
         }, error => {
-          this.errorRegistration = error.msg;
+          this.errorRegistration = error.message;
         });
       }
     }
@@ -109,8 +107,9 @@ export default {
   computed: {
     confirmPassword() {
       return this.credential.password !== this.credential.confirmPassword ? "Please make sure your passwords match" : "";
-    }
-    ,
+    },
+
+
     doPasswordsMatch() {
       return this.confirmPassword !== "Please make sure your passwords match";
     }
@@ -125,7 +124,7 @@ export default {
       return inputLengthArray;
     }
     ,
-    validation: function () {
+    validation() {
       let numOfValidInputs = this.validInputs.reduce((prev, i) => {
         return prev + i
       });
