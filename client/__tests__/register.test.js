@@ -15,11 +15,11 @@ describe("Register Tests", ()=> {
     test("Displays to user that they are signed in", ()=>{
         const wrapper = shallowMount(signup,{
             propsData: { 
-                user : { email : "bobby@shurmuda", password : "securepassowrd123456" }
+                user : { email : "bobby@shurmuda", password : "securepassowrd123456", displayName : "bobbyS" }
             }
         })
-
-        expect(wrapper.text()).toBe("Sign out before registering a new account");
+        expect(wrapper.vm.user.displayName).toEqual("bobbyS");
+        expect(wrapper.text()).toEqual("");
     })
 
     test("Displays to user to sign up when user is an empty object", ()=> {
