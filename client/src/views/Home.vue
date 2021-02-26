@@ -29,16 +29,29 @@
           </div>
 
           <div id="search-container">
-            <label for="search-experiment">Search and filter by mutation</label><br>
-            <select id="search-experiment" required v-model="geneMutation">
+            <label for="mutation-search-experiment">Search and filter by mutation</label><br>
+            <select id="mutation-search-experiment" required v-model="geneMutation">
               <option selected disabled value>Select a mutation to filter experiments</option>
               <option>MYBPC3</option>
               <option>MYH7</option>
               <option>TNNT</option>
               <option>TPM1</option>
             </select>
-            <button @click="filterExperiment(geneMutation)" style="margin-left: 10px">Search</button>
-            <button @click="showAllExperiments" style="margin-left: 10px">Show all</button>
+            <button @click="filterExperiment(geneMutation, 'mutation')" style="margin-left: 10px">Search</button>
+            <button @click="showAllExperiments" style="margin-left: 10px">Filter by gene mutation</button>
+            <br>
+
+            <label for="title-search-experiment">Search and filter by title</label><br>
+            <select id="title-search-experiment" required v-model="experimentTitle">
+              <option selected disabled value>Select an experiment title</option>
+              <option>Sarcomere Length vs Time</option>
+              <option>Tension vs Calcium</option>
+              <option>Velocity vs Calcium</option>
+              <option>Force vs Calcium</option>
+              <option>Length vs Time</option>
+            </select>
+            <button @click="filterExperiment(experimentTitle, 'title')" style="margin-left: 10px">Search</button>
+            <button @click="showAllExperiments" style="margin-left: 10px">Filter by experiment title</button>
             <br>
             <p v-if="this.mutationUpdate">Result displaying for genetic mutation {{ this.mutationUpdate }}</p>
           </div>
@@ -133,8 +146,10 @@ export default {
 
       chartOptions: {},
       series: [],
-      filteredExperiments: [],
+      filteredExperiments: null,
+
       geneMutation: '',
+      experimentTitle: '',
     }
   },
 
@@ -152,8 +167,9 @@ export default {
   },
 
   methods: {
-    filterExperiment(geneMutation) {
-      firebaseFireStore.collection("experimental-data").where("mutation", "==", geneMutation)
+    filterExperiment(searchData, searchType) {
+      this.filteredExperiments = [];
+      firebaseFireStore.collection("experimental-data").where(searchType, "==", searchData)
           .get()
           .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
