@@ -3,7 +3,7 @@
   <div>
     <h2 class="text-black text-2xl md:text-4xl font-bold mb-1 mt-2">
       <p>
-        Help & News Section
+        Help Section
       </p>
     </h2>
     <p>

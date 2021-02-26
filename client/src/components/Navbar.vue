@@ -37,7 +37,7 @@
         </li>
 
         <li class="navbar-list-items-routes">
-          <router-link class="nav-link" to="/about">Help and About</router-link>
+          <router-link class="nav-link" to="/about">Help</router-link>
         </li>
 
       </ul>
