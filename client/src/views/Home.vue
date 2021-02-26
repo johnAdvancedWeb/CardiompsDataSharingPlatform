@@ -28,7 +28,22 @@
             <p class="text-sm md:text-lg mb-4">The latest cardiomyopathy experiments</p>
           </div>
 
-          <div v-if="experimentalData && experimentalData.length > 0" id="experimental-data-container">
+          <div id="search-container">
+            <label for="search-experiment">Search and filter by mutation</label><br>
+            <select id="search-experiment" required v-model="geneMutation">
+              <option selected disabled value>Select a mutation to filter experiments</option>
+              <option>MYBPC3</option>
+              <option>MYH7</option>
+              <option>TNNT</option>
+              <option>TPM1</option>
+            </select>
+            <button @click="filterExperiment(geneMutation)" style="margin-left: 10px">Search</button>
+            <button @click="showAllExperiments" style="margin-left: 10px">Show all</button>
+            <br>
+            <p v-if="this.mutationUpdate">Result displaying for genetic mutation {{ this.mutationUpdate }}</p>
+          </div>
+
+          <div v-if="!filteredExperiments && experimentalData && experimentalData.length > 0" id="experimental-data-container">
             <div v-for="(ed, index) in experimentalData" :key="index">
               <div class="latest-news-container" id="l-n-c-h">
                 <div class="container">
@@ -39,7 +54,41 @@
                           {{ ed.title }}
                         </h2>
                         <div id="content">
-                          <p>{{ ed.description }}</p>
+                          <p>{{ ed.mutation }} gene mutation</p>
+                          <p>Added by {{ ed.postedBy }}</p>
+                          <p>{{ ed.content }}</p>
+                          <div style="position: relative;" v-if="this.indexClicked === index">
+                            <apexchart type="line" height="350" :options="chartOptions" :series="series"></apexchart>
+                          </div>
+                        </div>
+                      </div>
+                      <button
+                          @click="recordIndexClicked(index); updateChart(ed.yColumns, ed.y1Axis, ed.y2Axis, ed.y3Axis, ed.title)"
+                          style="margin-top: 20px; margin-bottom: 20px;">Display Chart
+                      </button>
+                      <br>
+                      <button v-if="user && ed.postedBy === user.email" @click="deleteExperimentalData(ed.postedBy)"
+                              style="margin-bottom: 20px;">Delete Experiment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="filteredExperiments" id="experimental-data-container1">
+            <div v-for="(ed, index) in filteredExperiments" :key="index">
+              <div class="latest-news-container" id="l-n-c-h1">
+                <div class="container">
+                  <div class="row">
+                    <div class="col">
+                      <div id="experimental-post1">
+                        <h2 class="text-white text-2xl md:text-4l font p-0">
+                          {{ ed.title }}
+                        </h2>
+                        <div id="content1">
+                          <p>{{ ed.mutation }} gene mutation</p>
                           <p>Added by {{ ed.postedBy }}</p>
                           <p>{{ ed.content }}</p>
                           <div style="position: relative;" v-if="this.indexClicked === index">
@@ -71,6 +120,8 @@
 <script>
 
 
+import { firebaseFireStore } from "@/firebase/database";
+
 export default {
   name: 'Home',
 
@@ -80,10 +131,10 @@ export default {
       actionDescription: "",
       indexClicked: null,
 
-      chartOptions: {
-      },
-      series: [
-      ],
+      chartOptions: {},
+      series: [],
+      filteredExperiments: [],
+      geneMutation: '',
     }
   },
 
@@ -101,6 +152,25 @@ export default {
   },
 
   methods: {
+    filterExperiment(geneMutation) {
+      firebaseFireStore.collection("experimental-data").where("mutation", "==", geneMutation)
+          .get()
+          .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+              // doc.data() is never undefined for query doc snapshots
+              this.filteredExperiments = [];
+              this.filteredExperiments.push(doc.data());
+            });
+          })
+          .catch((error) => {
+            console.log("Error getting documents: ", error);
+          });
+    },
+
+    showAllExperiments() {
+      this.filteredExperiments = null;
+    },
+
     recordIndexClicked(index) {
       this.indexClicked = index;
       console.log(this.indexClicked);

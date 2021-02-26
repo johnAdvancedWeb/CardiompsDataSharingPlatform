@@ -115,8 +115,8 @@ a:not(a.button), .nav-link {
   transition: all .3s ease;
   height: unset;
 
-  #experimental-post {
-    #content {
+  #experimental-post, #experimental-post1 {
+    #content, #content1 {
       p {
         color: white !important;
       }
@@ -137,7 +137,7 @@ a:not(a.button), .nav-link {
   }
 }
 
-#experimental-data-container {
+#experimental-data-container, #experimental-data-container1 {
   background-color: var(--navbarBackground);
   margin: 5px;
   padding: 5px;
@@ -146,9 +146,10 @@ a:not(a.button), .nav-link {
 #search-container {
   padding: 20px;
   margin: 0 !important;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
 
-#l-n-c-h * :not(button)  {
+#l-n-c-h * :not(button), #l-n-c-h1 * :not(button)  {
   color: white !important;
 }
 #chartContainer .apexcharts-tooltip .apexcharts-tooltip-series-group.active {

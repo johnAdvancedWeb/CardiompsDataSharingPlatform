@@ -3,7 +3,7 @@ import Home from '../views/Home.vue'
 import SignIn from "@/views/SignIn";
 import SignUp from "@/views/SignUp";
 import AddExperimentalData from "@/views/AddExperimentalData";
-import QueryExperimentalData from "@/views/QueryExperimentalData";
+import QueryExperimentalData from "@/views/FetchExternalData";
 
 const routes = [
   {

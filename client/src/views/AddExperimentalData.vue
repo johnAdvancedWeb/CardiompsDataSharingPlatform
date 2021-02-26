@@ -27,9 +27,15 @@
               <!--                <input type="text" id="title" v-model="title" required placeholder='e.g., "Unhealthy Sarcomere Length vs Time"'><br>-->
             </div>
 
-            <div id="description-container">
-              <label for="description">Description:</label><br>
-              <input type="text" id="description" v-model="description" required placeholder='e.g., "An experiment showing the difference between..."'><br>
+            <div id="mutation-container">
+              <label for="mutation-select">Gene mutation: </label><br>
+              <select id="mutation-select" required v-model="mutation">
+                <option disabled selected value>Select a mutation</option>
+                <option>MYBPC3</option>
+                <option>MYH7</option>
+                <option>TNNT</option>
+                <option>TMP1</option>
+              </select>
             </div>
 
             <form @submit.prevent>
@@ -120,7 +126,7 @@ export default {
         text : ""
       },
       title: "",
-      description: "",
+      mutation: "",
       xAxisData: [],
       yColumns: [],
       y1AxisData: [],
@@ -197,7 +203,7 @@ export default {
       if (!Array.isArray(this.y3AxisData)) {
         this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
       }
-      this.$emit('add-experimental-data', this.title, this.description, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
+      this.$emit('add-experimental-data', this.title, this.mutation, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
       this.$router.push("/");
     }
   },
