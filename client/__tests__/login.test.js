@@ -22,15 +22,6 @@ describe("Login View Tests", ()=> {
         expect(wrapper.text()).toBe("User is already signed in");
     })
 
-    test("Displays the register page",  ()=> {
-        const wrapper = mount(signin);
-        wrapper.find("#login-form > form > button").trigger("click");
-        wrapper.vm.$nextTick().then(()=>{
-           expect(wrapper.vm.isModalVisible).toBe(true);
-          }
-        )
-    })
-
     test("Display the login error", ()=>{
 
         const wrapper = mount(signin);
