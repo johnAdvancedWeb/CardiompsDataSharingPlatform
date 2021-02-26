@@ -9,7 +9,7 @@
   <!-- above code ends here -->
 
   <div v-else>
-    <div class="md:flex md:flex-col md:justify-center mt-4">
+    <div class="md:flex md:flex-col md:justify-center mt-2">
       <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
         <p>External Cardiomyopathy Data</p>
       </h2>

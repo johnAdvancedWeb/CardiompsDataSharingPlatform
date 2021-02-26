@@ -10,14 +10,13 @@
   <!-- above code ends here -->
 
   <div id="section-one" v-else>
-    <div class="min-h-screen p-10">
-      <div class="space-y-10 md:space-y-0">
+    <div class="min-h-screen">
+      <div class="space-y-10 md:space-y-0 mt-2">
 
         <div class="md:flex md:flex-col md:justify-center" v-if="experimentalData.length < 1">
           <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
             <p>No data can be fetched 😞</p>
           </h2>
-          <p class="text-sm md:text-lg mb-4">Come back later</p>
         </div>
 
         <div v-else>
@@ -234,7 +233,7 @@ export default {
           decimalsInFloat: 2,
 
           title: {
-            text: xLabel,
+            text: xLabel + ' (divided by 10)',
           },
           axisTicks: {
             color: "#333"
