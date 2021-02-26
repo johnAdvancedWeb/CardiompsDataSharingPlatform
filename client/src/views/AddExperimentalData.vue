@@ -54,7 +54,7 @@
               <label class="logo-text">If not specified, default column names ("series 1, series 2, series 3") will be used</label>
               <div id="y-columns-container">
                 <label for="y-columns">Y-column names (comma separated): </label><br>
-                <input type="text" id="y-columns" v-model="yColumns" placeholder='e.g., "time, velocity"'><br>
+                <input type="text" id="y-columns" v-model="yColumns" placeholder='e.g., "HCM, donor, healthy"'><br>
               </div>
 
               <div id="y1-container">
