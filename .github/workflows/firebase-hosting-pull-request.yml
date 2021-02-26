@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npm run test:unit
+      - run: cd client && npm ci && npm run test:unit
   e2e_test:
     runs-on: ubuntu-latest
     steps:
