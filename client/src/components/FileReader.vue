@@ -4,7 +4,7 @@
 <script>
 export default {
   methods: {
-    loadFile : function(ev) {
+    loadFile(ev) {
       const file = ev.target.files[0];
       const reader = new FileReader();
       reader.readAsText(file,"UTF-8");

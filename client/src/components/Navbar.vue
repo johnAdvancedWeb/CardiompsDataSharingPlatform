@@ -25,6 +25,10 @@
         </li>
 
         <li class="navbar-list-items-routes" v-if="user && user.displayName">
+          <router-link class="nav-link" to="/news-feed">News Feed</router-link>
+        </li>
+
+        <li class="navbar-list-items-routes" v-if="user && user.displayName">
           <router-link class="nav-link" :to="{ name: 'AddData' }">Add Experimental Data</router-link>
         </li>
 
