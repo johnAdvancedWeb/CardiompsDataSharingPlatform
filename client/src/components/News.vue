@@ -67,7 +67,7 @@ export default {
       content: null,
       link: null,
       date: null,
-      status: 'No data can be fetched 😞',
+      status: 'Content is loading...',
     }
   },
 
@@ -79,14 +79,14 @@ export default {
     getLatestNews() {
       axios.get('https://api.factmaven.com/xml-to-json/?xml=https://www.news-medical.net/tag/feed/Cardiomyopathy.aspx')
           .then((res) => {
-            this.status = 'Content is loading...';
+            // this.status = 'Content is loading...';
             const data = res.data.rss.channel;
             this.title = data.title;
             this.description = data.description;
             this.content = data.item;
             this.link = data.link;
             this.data = data.date;
-            if (this.content.length > 1) {
+            if (this.content.length > 0) {
               this.status = '';
             } else {
               this.status = 'No data can be fetched 😞';
