@@ -3,10 +3,15 @@ import home from "@/views/Home";
 
 describe("home test ",()=> {
 
-    test("render content", () => {
+    test("Display content", () => {
         
-        const wrapper = mount(home);
+        const wrapper = mount(home, {
+            props : { user : { test : "ada", ff: "ada"},
+            experimentalData : [{ title: "Test" , mutation : "Test", postedBy : "testProp", content : "test"}],
+            filteredExperiments : true,
+        }
+        });
     
-        expect(wrapper.text()).toMatch("test1");
+        expect(wrapper.text()).toMatch("testProp");
     })
 })
