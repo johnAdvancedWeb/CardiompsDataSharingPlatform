@@ -16,17 +16,7 @@ export default {
   components: {Navbar},
   
     setup() {
-      const experimentalData = ref([
-        {
-          slug: "cardiomyopathy-hcm",
-          title: "What are the symptoms of HCM?",
-          description: "Common symptoms of HCM",
-          content: `Shortness of breath, Chest pain, Palpitations, Light headedness and fainting.
-             You may find that you never have any serious problems related to your condition, and with treatment, your symptoms should be controlled.
-             However some people may find that their symptoms worsen or become harder to control in later life.
-
-             The area of heart muscle that is affected by HCM and the amount of stiffening that occurs will determine how the symptoms affect you.`,
-          tags: ["hcm", "hcm symptoms"],
+      const experimentalData = ref([{
         },
       ]);
 

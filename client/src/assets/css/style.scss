@@ -143,7 +143,19 @@ a:not(a.button), .nav-link {
   padding: 5px;
 }
 
-#login-container, #register-container, #add-experiment-container, #reset-password-container {
+#search-container {
+  padding: 20px;
+  margin: 0 !important;
+}
+
+#l-n-c-h * :not(button)  {
+  color: white !important;
+}
+#chartContainer .apexcharts-tooltip .apexcharts-tooltip-series-group.active {
+  background: #ffffff !important;
+}
+
+#login-container, #register-container, #add-experiment-container, #reset-password-container, #search-container {
   background: var(--secondaryBackground);
   max-width: 1200px;
   position: relative;
