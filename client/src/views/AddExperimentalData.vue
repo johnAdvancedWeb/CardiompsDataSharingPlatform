@@ -176,28 +176,30 @@ export default {
     },
 
     addExperimentalData() {
-      /* if they're not arrays, turn them into arrays by splitting them, this is if a user manually types inputs their data */
-      if (!Array.isArray(this.yColumns)) {
-        this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
-      }
+      if(this.title && this.mutation) {
+        /* if they're not arrays, turn them into arrays by splitting them, this is if a user manually types inputs their data */
+        if (!Array.isArray(this.yColumns)) {
+          this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.xAxisData)) {
-        this.xAxisData = this.xAxisData.replaceAll(/\s/g, '').split(',');
-      }
+        if (!Array.isArray(this.xAxisData)) {
+          this.xAxisData = this.xAxisData.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.y1AxisData)) {
-        this.y1AxisData = this.y1AxisData.replaceAll(/\s/g, '').split(',');
-      }
+        if (!Array.isArray(this.y1AxisData)) {
+          this.y1AxisData = this.y1AxisData.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.y2AxisData)) {
-        this.y2AxisData = this.y2AxisData.replaceAll(/\s/g, '').split(',');
-      }
+        if (!Array.isArray(this.y2AxisData)) {
+          this.y2AxisData = this.y2AxisData.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.y3AxisData)) {
-        this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
+        if (!Array.isArray(this.y3AxisData)) {
+          this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
+        }
+        this.$emit('add-experimental-data', this.title, this.mutation, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
+        this.$router.push("/");
       }
-      this.$emit('add-experimental-data', this.title, this.mutation, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
-      this.$router.push("/");
     }
   },
 
