@@ -1,5 +1,6 @@
 <template>
-  <div class="container">
+  <Unauthorised v-if="!user"></Unauthorised>
+  <div class="container" v-else>
     <div class="row">
       <div class="col-sm">
         <div id="add-experiment-container">
@@ -18,9 +19,15 @@
               <!--                <input type="text" id="title" v-model="title" required placeholder='e.g., "Unhealthy Sarcomere Length vs Time"'><br>-->
             </div>
 
-            <div id="description-container">
-              <label for="description">Description:</label><br>
-              <input type="text" id="description" v-model="description" required placeholder='e.g., "An experiment showing the difference between..."'><br>
+            <div id="mutation-container">
+              <label for="mutation-select">Gene mutation: </label><br>
+              <select id="mutation-select" required v-model="mutation">
+                <option disabled selected value>Select a mutation</option>
+                <option>MYBPC3</option>
+                <option>MYH7</option>
+                <option>TNNT</option>
+                <option>TMP1</option>
+              </select>
             </div>
 
             <form @submit.prevent>
@@ -39,7 +46,7 @@
               <label class="logo-text">If not specified, default column names ("series 1, series 2, series 3") will be used</label>
               <div id="y-columns-container">
                 <label for="y-columns">Y-column names (comma separated): </label><br>
-                <input type="text" id="y-columns" v-model="yColumns" placeholder='e.g., "time, velocity"'><br>
+                <input type="text" id="y-columns" v-model="yColumns" placeholder='e.g., "HCM, donor, healthy"'><br>
               </div>
 
               <div id="y1-container">
@@ -87,10 +94,11 @@
 
 import csv from "jquery-csv";
 import FileReader from "@/components/FileReader";
+import Unauthorised from "@/components/Unauthorised";
 
 
 export default {
-  components: { FileReader },
+  components: {Unauthorised, FileReader },
   name: "AddExperimentalData",
 
 
@@ -111,7 +119,7 @@ export default {
         text : ""
       },
       title: "",
-      description: "",
+      mutation: "",
       xAxisData: [],
       yColumns: [],
       y1AxisData: [],
@@ -168,28 +176,30 @@ export default {
     },
 
     addExperimentalData() {
-      /* if they're not arrays, turn them into it by splitting them, this is if a user manually types inputs their data */
-      if (!Array.isArray(this.yColumns)) {
-        this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
-      }
+      if(this.title && this.mutation) {
+        /* if they're not arrays, turn them into arrays by splitting them, this is if a user manually types inputs their data */
+        if (!Array.isArray(this.yColumns)) {
+          this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.xAxisData)) {
-        this.xAxisData = this.xAxisData.replaceAll(/\s/g, '').split(',');
-      }
+        if (!Array.isArray(this.xAxisData)) {
+          this.xAxisData = this.xAxisData.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.y1AxisData)) {
-        this.y1AxisData = this.y1AxisData.replaceAll(/\s/g, '').split(',');
-      }
+        if (!Array.isArray(this.y1AxisData)) {
+          this.y1AxisData = this.y1AxisData.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.y2AxisData)) {
-        this.y2AxisData = this.y2AxisData.replaceAll(/\s/g, '').split(',');
-      }
+        if (!Array.isArray(this.y2AxisData)) {
+          this.y2AxisData = this.y2AxisData.replaceAll(/\s/g, '').split(',');
+        }
 
-      if (!Array.isArray(this.y3AxisData)) {
-        this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
+        if (!Array.isArray(this.y3AxisData)) {
+          this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
+        }
+        this.$emit('add-experimental-data', this.title, this.mutation, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
+        this.$router.push("/");
       }
-      this.$emit('add-experimental-data', this.title, this.description, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
-      this.$router.push("/");
     }
   },
 

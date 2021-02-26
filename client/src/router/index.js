@@ -1,11 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
-import Line from "@/views/Line";
-import Bar from "@/views/Bar";
 import SignIn from "@/views/SignIn";
 import SignUp from "@/views/SignUp";
 import AddExperimentalData from "@/views/AddExperimentalData";
-import QueryExperimentalData from "@/views/QueryExperimentalData";
+import QueryExperimentalData from "@/views/FetchExternalData";
+import NewsFeed from "@/views/NewsFeed";
 
 const routes = [
   {
@@ -14,14 +13,9 @@ const routes = [
     component: Home
   },
   {
-    path: "/line",
-    name: "Line",
-    component: Line,
-  },
-  {
-    path: "/bar",
-    name: "Bar",
-    component: Bar
+    path: '/news-feed',
+    name: 'NewsFeed',
+    component: NewsFeed
   },
   {
     path: "/sign-up",

@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit --watch",
+    "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "build-css": "tailwindcss build src/assets/css/style.scss -o src/assets/tailwind-outputted/style.scss"
   },
@@ -25,6 +27,7 @@
     "core-js": "^3.6.5",
     "d3-request": "^1.0.6",
     "firebase": "^8.2.7",
+    "flush-promises": "^1.0.2",
     "jquery-csv": "^1.0.11",
     "postcss": "^7.0.35",
     "run": "^1.4.0",
@@ -38,15 +41,20 @@
   "devDependencies": {
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
     "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
+    "@vue/test-utils": "^2.0.0-rc.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
     "sass": "^1.32.6",
     "sass-loader": "^10.1.1",
-    "vue-chartjs": "^3.5.1"
+    "typescript": "~3.9.3",
+    "vue-chartjs": "^3.5.1",
+    "vue-jest": "^5.0.0-0"
   }
 }
