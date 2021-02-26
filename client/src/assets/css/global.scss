@@ -1,5 +1,23 @@
 @import 'variables';
 
+*::-webkit-scrollbar {
+  width: 18px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--actionBackground);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--navbarBackground);
+  border: 2px solid var(--actionBackground);
+  border-radius: 20px;
+
+  &:hover {
+    background: #1a1423;
+  }
+}
+
 * {
   font-family: Raleway, serif;
   color: var(--bodyText);
@@ -46,4 +64,8 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logo-text {
+  color: var(--logoText);
 }

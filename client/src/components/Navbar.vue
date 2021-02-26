@@ -7,28 +7,33 @@
         <i class="fas fa-bars" style="color: green !important;"></i>
       </span>
     </button>
-    <a class="navbar-brand" href="#" id="logo">
-      <img src="../assets/images/Logo.gif" alt="Beating Heart Logo" id="logo-gif" class="d-inline-block">
+
+    <a class="navbar-brand" href="#" id="dark-logo">
+      <img src="../assets/images/Dark-Logo.gif" alt="Beating Heart Logo (dark)" class="d-inline-block logo-gif">
+      Cardiomps DSP
+    </a>
+    <a class="navbar-brand" href="#" id="light-logo">
+      <img src="../assets/images/Light-Logo.gif" alt="Beating Heart Logo (light)" class="d-inline-block logo-gif">
       Cardiomps DSP
     </a>
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
-        <li class="navbar-list-items-routes" v-if="user">
+        <li class="navbar-list-items-routes" v-if="user && user.displayName">
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
 
-        <li class="navbar-list-items-routes" v-if="user">
+        <li class="navbar-list-items-routes" v-if="user && user.displayName">
+          <router-link class="nav-link" to="/news-feed">News Feed</router-link>
+        </li>
+
+        <li class="navbar-list-items-routes" v-if="user && user.displayName">
           <router-link class="nav-link" :to="{ name: 'AddData' }">Add Experimental Data</router-link>
         </li>
 
-        <li class="navbar-list-items-routes" v-if="user">
-          <router-link class="nav-link" :to="{ name: 'QueryData' }">Query Experimental Data</router-link>
-        </li>
-
-        <li class="navbar-list-items-routes" v-if="user">
-          <router-link class="nav-link" :to="{ name: 'MyPosts' }">My Posts</router-link>
+        <li class="navbar-list-items-routes" v-if="user && user.displayName">
+          <router-link class="nav-link" :to="{ name: 'QueryData' }">Query External Data</router-link>
         </li>
 
         <li class="navbar-list-items-routes">
@@ -36,7 +41,8 @@
         </li>
 
       </ul>
-      <div v-if="user">
+      <br>
+      <div v-if="user && user.displayName">
         <i class="fas fa-user"></i><span style="margin-left: 6px; margin-right: 14px">{{ user.displayName }}</span>
         <router-link id="data-test-logout" @click="$emit('signOut')" class="button btn my-2 my-sm-0" to="#">Sign Out
         </router-link>

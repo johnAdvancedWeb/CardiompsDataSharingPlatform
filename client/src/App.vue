@@ -1,9 +1,9 @@
 <template>
   <div>
     <Navbar :user="user" @signOut="signOut"/>
-    <router-view @add-post="addPost" @delete-post="deletePost" :user="user" @signOut="signOut" :posts="posts"/>
+    <router-view @add-experimental-data="addExperimentalData" @delete-experimental-data="deleteExperimentalData" :user="user" @signOut="signOut" :experimental-data="experimentalData"/>
+<!--    <button @click="addCsvData">Test button for inserting data</button>-->
   </div>
-  <canvas id="myChart"></canvas>
 </template>
 
 <script>
@@ -16,17 +16,7 @@ export default {
   components: {Navbar},
   
     setup() {
-      const posts = ref([
-        {
-          slug: "cardiomyopathy-hcm",
-          title: "What are the symptoms of HCM?",
-          description: "Common symptoms of HCM",
-          content: `Shortness of breath, Chest pain, Palpitations, Light headedness and fainting.
-             You may find that you never have any serious problems related to your condition, and with treatment, your symptoms should be controlled.
-             However some people may find that their symptoms worsen or become harder to control in later life.
-
-             The area of heart muscle that is affected by HCM and the amount of stiffening that occurs will determine how the symptoms affect you.`,
-          tags: ["hcm", "hcm symptoms"],
+      const experimentalData = ref([{
         },
       ]);
 
@@ -39,22 +29,29 @@ export default {
         user.value = currentUser;
 
         firebaseFireStore
-            .collection("users")
-            .doc(user.value.uid)
-            .collection("posts")
+            .collection("experimental-data")
             .onSnapshot((snapShot) => {
               const snapData = [];
               snapShot.forEach((doc) => {
                 snapData.push({
-                  slug: doc.data().slug,
                   title: doc.data().title,
-                  description: doc.data().description,
-                  content: doc.data().content,
-                  tags: doc.data().tags.split(","),
+                  mutation: doc.data().mutation,
+                  postedBy: doc.data().postedBy,
+                  createdAt: doc.data().createdAt,
+                  xAxis: doc.data().xAxis,
+                  yColumns: doc.data().yColumns,
+                  y1Axis: doc.data().y1Axis,
+                  y2Axis: doc.data().y2Axis,
+                  y3Axis: doc.data().y3Axis,
                 });
               });
-              posts.value = snapData;
+              experimentalData.value = snapData;
             });
+
+            // if all details aren't yet stored on profile, force a fresh sign-in
+            if(user.value.displayName === null) {
+              signOut();
+            }
       }
       else {
         user.value = null;
@@ -77,45 +74,58 @@ export default {
       );
     }
 
-    return { user, signOut, posts };
+    return { user, signOut, experimentalData };
   },
 
-  methods: {
 
-    addPost(slug, title, description, content, tags) {
-      const post = {
-        slug: slug,
+  methods: {
+    addExperimentalData(title, mutation, xAxis, yColumns, y1Axis, y2Axis, y3Axis) {
+      const experimentalData = {
         title: title,
-        description: description,
-        content: content,
-        tags: tags,
-        createdAt: timestamp()
+        mutation: mutation,
+        xAxis: xAxis,
+        yColumns: yColumns,
+        y1Axis: y1Axis,
+        y2Axis: y2Axis,
+        y3Axis: y3Axis,
+        createdAt: timestamp(),
+        postedBy: this.user.email
       };
       firebaseFireStore
-          .collection("users")
-          .doc(this.user.uid)
-          .collection("posts")
-          .add(post);
+          .collection("experimental-data")
+          .add(experimentalData);
     },
 
-    deletePost(slug) {
+    deleteExperimentalData(owner) {
       firebaseFireStore
-          .collection("users")
-          .doc(this.user.uid)
-          .collection("posts")
-          .where("slug", "==", slug)
+          .collection("experimental-data")
+          .where("postedBy", "==", owner)
           .get()
           .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
               doc.ref.delete();
             });
           });
+    },
+
+    addCsvData() {
+      firebaseFireStore.collection("groups").doc("MYBPC3velocityCalcium").set({
+        title: "Sarcomere Length vs Time",
+        mutation: "None defined",
+        xAxis: "0.1, 0.2, 0.3, 0.4, 0.5, 0.6",
+        yAxis: "0, 7.8565, 2.9038, 1.3811, 0.7305, 0.1927, 0",
+        yAxis2: "0, 3.891, 0.8063, 0.1905, 0.0105, 0, 0",
+      })
+          .then(() => {
+            console.log("Document successfully written!");
+          })
+          .catch((error) => {
+            console.error("Error writing document: ", error);
+          });
     }
   }
 }
 </script>
-
-
 
 <style>
 </style>

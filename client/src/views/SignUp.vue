@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div v-if="user">
-      Sign out before registering a new account
-    </div>
+    <AlreadySignedIn v-if="user"></AlreadySignedIn>
 
     <div v-else>
       <div class="container">
@@ -14,42 +12,46 @@
                 <form @submit.prevent>
                   <div id="username-container">
                     <label for="email">Email:</label><br>
-                    <input type="email" placeholder='e.g., "asmith2021@gmail.com"' id="email" v-model="email"
-                           required><br>
+                    <input type="email" placeholder='e.g., "asmith2021@gmail.com"' id="email" v-model="credential.email"
+                           autocomplete="email" required><br>
                   </div>
 
                   <div id="full-name-container">
                     <label for="full-name">Full Name:</label><br>
-                    <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="name" minlength="6"
+                    <input type="text" placeholder='e.g., "Adam Smith"' id="full-name" v-model="credential.name"
+                           minlength="6"
                            required><br>
                   </div>
 
                   <div id="institution-container">
                     <label for="institution">Institutional Affiliation:</label><br>
                     <input type="text" placeholder='e.g., "The University of Oxford"' id="institution" minlength="6"
+                           v-model="credential.institution"
                            required><br>
                   </div>
 
                   <div id="password-container">
                     <label for="password">Password:</label><br>
-                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password" v-model="password"
-                           minlength="6"
+                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="password"
+                           v-model="credential.password"
+                           minlength="6" autocomplete="new-password"
                            required><br>
                   </div>
 
                   <div id="confirm-password-container">
-                    <label for="confirm-password">Confirm Password:</label><br>
-                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password"
-                           v-model="confirmPassword" minlength="6" required><br>
+                    <label for="confirm-password">Confirm Password</label><br>
+                    <input type="password" placeholder='e.g., "ACtcvun449MM4bIf"' id="confirm-password" autocomplete="new-password" v-model="credential.confirmPassword" minlength="6" required><br>
                   </div>
 
                   <button @click="registerUser">Sign up</button>
 
-                  <transition name="fade-in">
                     <div class="error-container" v-if="errorRegistration">
                       <p class="red-text">{{ errorRegistration }}</p>
                     </div>
-                  </transition>
+
+                    <div class="error-container" v-if="confirmPassword">
+                      <p class="red-text">{{ confirmPassword }}</p>
+                    </div>
                 </form>
               </div>
             </div>
@@ -61,81 +63,79 @@
 </template>
 
 <script>
-import {firebaseAuthentication} from "@/firebase/database";
-import {ref, watch} from "vue";
-import {useRouter} from "vue-router";
+import { firebaseAuthentication } from "@/firebase/database";
+import AlreadySignedIn from "@/components/AlreadySignedIn";
 
 export default {
   name: "SignUp",
-
-  data() {
-    return {
-      // email: "",
-      // name: "",
-      // doPasswordsMatch: false,
-    }
-  },
-
+  components: {AlreadySignedIn},
   props: {
     user: {
       type: Object,
       default: () => {
-      },
-    },
+      }
+    }
   },
 
-  setup() {
-    const router = useRouter();
-    const email = ref("");
-    const name = ref("");
-    const doPasswordsMatch = ref(false);
-    const confirmPassword = ref("");
-    const password = ref("");
-    const errorRegistration = ref("");
 
-    watch(confirmPassword, () => {
-      if (password.value !== "" && confirmPassword.value !== "" && password.value !== confirmPassword.value) {
-        errorRegistration.value = "Please make sure your passwords match";
-        doPasswordsMatch.value = false;
-      } else {
-        errorRegistration.value = null;
-        doPasswordsMatch.value = true;
-      }
-    });
+  data() {
+    return {
+      credential: {
+        name: "",
+        password: "",
+        email: "",
+        confirmPassword: "",
+        institution: "",
+      },
+      errorRegistration: ""
+    }
+  },
 
-    function registerUser() {
-      const info = {
-        email: email.value,
-        displayName: name.value,
-        password: password.value
-      };
-
-      if (doPasswordsMatch.value) {
-        firebaseAuthentication.createUserWithEmailAndPassword(info.email, info.password).then((userCredentials) => {
-          return userCredentials.user.updateProfile({
-            displayName: info.displayName,
-          }).then(() => {
-            router.push("/sign-in");
-          })
+  methods: {
+    registerUser() {
+      if (this.doPasswordsMatch && this.validation) {
+        firebaseAuthentication.createUserWithEmailAndPassword(this.credential.email, this.credential.password).then(userCredentials => {
+          const user = userCredentials.user;
+          user.updateProfile({displayName: this.credential.name});
+          this.$router.push("/sign-in");
         }, error => {
           this.errorRegistration = error.message;
         });
       }
     }
-
-    return {email, name, doPasswordsMatch, password, confirmPassword, errorRegistration, registerUser}
   },
 
-}
+  computed: {
+    confirmPassword() {
+      return this.credential.password !== this.credential.confirmPassword ? "Please make sure your passwords match" : "";
+    },
 
+
+    doPasswordsMatch() {
+      return this.confirmPassword !== "Please make sure your passwords match";
+    }
+    ,
+    validInputs() {
+      const inputLengthArray = [];
+      inputLengthArray.push(this.credential.name.length > 5)
+      inputLengthArray.push(this.credential.email.length > 0)
+      inputLengthArray.push(this.credential.password.length > 5)
+      inputLengthArray.push(this.credential.institution.length > 5)
+
+      return inputLengthArray;
+    }
+    ,
+    validation() {
+      let numOfValidInputs = this.validInputs.reduce((prev, i) => {
+        return prev + i
+      });
+      console.log(numOfValidInputs);
+      return numOfValidInputs === 4;
+    }
+  }
+}
 </script>
 
 <style scoped>
-.fade-in-enter-from, .fade-in-leave-to {
-  opacity: 0;
-}
 
-.fade-in-enter-active, .fade-in-leave-active {
-  transition: opactiy 3s ease-in;
-}
 </style>

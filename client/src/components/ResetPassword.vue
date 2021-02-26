@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       <div class="col-sm">
-        <div id="login-container" @click.stop>
-          <div id="login-header">Reset your password here</div>
-          <div id="login-form">
+        <div id="reset-password-container" @click.stop>
+          <div id="reset-password-header">Reset your password here</div>
+          <div id="reset-password-form">
             <form @submit.prevent>
               <div id="username-container">
                 <label for="email">Email:</label><br>
@@ -18,7 +18,7 @@
                   <p class="red-text">{{ resetError }}</p>
                 </div>
                 <div class="success-container" v-else-if="resetError === 'none'">
-                  <p>Success! Check email inbox for <strong>{{successEmail}}</strong> to reset your password, then refresh this page to sign in.</p>
+                  <p>Success! Check email inbox for <strong style="color: white">{{successEmail}}</strong> to reset your password, then refresh this page to sign in.</p>
                 </div>
               </transition>
             </form>

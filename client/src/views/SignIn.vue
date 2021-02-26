@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div v-if="user">
-      User is already signed in
-    </div>
-
+    <AlreadySignedIn v-if="user"></AlreadySignedIn>
     <div v-else>
       <div class="container">
         <div class="row">
@@ -19,12 +16,11 @@
 
                   <div id="password-container">
                     <label for="password">Password:</label><br>
-                    <input type="password" placeholder="Enter password here" id="password" show-password
-                           v-model="password" required><br>
+                    <input type="password" placeholder="Enter password here" id="password" v-model="password" required><br>
                     <a href="#" @click="showModal('resetPassword')">Forgotten password</a>
                   </div>
 
-                  <button plain type="success" @click="signIn">Sign in</button>
+                  <button @click="signIn">Sign in</button>
 
                   <transition name="fade-in">
                     <div class="error-container" v-if="errorLogin">
@@ -51,11 +47,13 @@ import {firebaseAuthentication} from "@/firebase/database";
 import {useRouter} from "vue-router";
 import Modal from "@/components/Modal";
 import ResetPassword from "@/components/ResetPassword";
+import AlreadySignedIn from "@/components/AlreadySignedIn";
 
 export default {
   name: "SignIn",
 
   components: {
+    AlreadySignedIn,
     Modal, ResetPassword
   },
 
@@ -85,11 +83,11 @@ export default {
   },
 
   setup() {
+    const router = useRouter();
+
     const email = ref("");
     const password = ref("");
     const errorLogin = ref(null);
-
-    const router = useRouter();
 
     function signIn() {
       const info = {
