@@ -1,13 +1,5 @@
 <template>
-  <!-- if a user is not logged in -->
-  <div class="md:flex md:flex-col md:justify-center" id="user-not-logged-in" v-if="!user">
-    <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
-      <p>Unauthorised</p>
-    </h2>
-    <p class="text-sm md:text-lg mb-4">Please login or register to view this page</p>
-  </div>
-  <!-- above code ends here -->
-
+  <Unauthorised v-if="!user"></Unauthorised>
   <div v-else>
     <div class="md:flex md:flex-col md:justify-center mt-2">
       <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
@@ -35,9 +27,10 @@
                         <h1 class="about-heading">{{ c.title }}</h1>
 
                         <div id="content">
-
-                          <img style="position: relative; left: 50%; transform: translateX(-50%); box-shadow: 16px 16px rgba(0, 0, 0, 0.15);" :src="c.content.url" alt="postImage">
+                          <p><strong>Posted on {{ c.pubDate }}</strong></p>
+                          <img style="width: 50%; position: relative; left: 50%; transform: translateX(-50%); box-shadow: 16px 16px rgba(0, 0, 0, 0.15);" :src="c.content.url" alt="postImage">
                           <p style="padding-top: 20px">{{ c.description }}</p>
+                          <p>More information at <a :href="link">{{ link }}</a></p>
                         </div>
                       </div>
                     </div>
@@ -54,10 +47,11 @@
 
 <script>
 import axios from "axios";
+import Unauthorised from "@/components/Unauthorised";
 
 export default {
   name: "News",
-
+  components: { Unauthorised },
   props: {
     user: {
       type: Object,
@@ -71,6 +65,8 @@ export default {
       title: null,
       description: null,
       content: null,
+      link: null,
+      date: null,
       status: 'No data can be fetched 😞',
     }
   },
@@ -88,12 +84,13 @@ export default {
             this.title = data.title;
             this.description = data.description;
             this.content = data.item;
+            this.link = data.link;
+            this.data = data.date;
             if (this.content.length > 1) {
               this.status = '';
             } else {
               this.status = 'No data can be fetched 😞';
             }
-            console.log(data);
           });
     },
   }

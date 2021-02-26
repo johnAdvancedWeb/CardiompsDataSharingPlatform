@@ -1,4 +1,5 @@
 <template>
+  <!-- authorisation done in component for this view -->
   <News></News>
 </template>
 

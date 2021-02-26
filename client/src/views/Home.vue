@@ -1,16 +1,7 @@
 <template>
-
-  <!-- if a user is not logged in -->
-  <div class="md:flex md:flex-col md:justify-center mt-2" id="user-not-logged-in" v-if="!user">
-    <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
-      <p>Unauthorised</p>
-    </h2>
-    <p class="text-sm md:text-lg mb-4">Please login or register to view this page</p>
-  </div>
-  <!-- above code ends here -->
-
+  <Unauthorised v-if="!user"></Unauthorised>
   <div id="section-one" v-else>
-    <div class="min-h-screen">
+    <div>
       <div class="space-y-10 md:space-y-0 mt-2">
 
         <div class="md:flex md:flex-col md:justify-center" v-if="experimentalData.length < 1">
@@ -133,10 +124,11 @@
 
 
 import { firebaseFireStore } from "@/firebase/database";
+import Unauthorised from "@/components/Unauthorised";
 
 export default {
   name: 'Home',
-
+  components: {Unauthorised},
   data() {
     return {
       isModalVisible: false,

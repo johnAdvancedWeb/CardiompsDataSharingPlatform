@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div v-if="user">
+    <AlreadySignedIn v-if="user"></AlreadySignedIn>
 
-    </div>
     <div v-else>
       <div class="container">
         <div class="row">
@@ -65,9 +64,11 @@
 
 <script>
 import { firebaseAuthentication } from "@/firebase/database";
+import AlreadySignedIn from "@/components/AlreadySignedIn";
 
 export default {
   name: "SignUp",
+  components: {AlreadySignedIn},
   props: {
     user: {
       type: Object,
