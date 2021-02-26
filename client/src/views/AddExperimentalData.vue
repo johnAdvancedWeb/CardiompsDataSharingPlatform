@@ -176,7 +176,7 @@ export default {
     },
 
     addExperimentalData() {
-      /* if they're not arrays, turn them into it by splitting them, this is if a user manually types inputs their data */
+      /* if they're not arrays, turn them into arrays by splitting them, this is if a user manually types inputs their data */
       if (!Array.isArray(this.yColumns)) {
         this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
       }
