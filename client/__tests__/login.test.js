@@ -19,7 +19,7 @@ describe("Login View Tests", ()=> {
             }
         })
 
-        expect(wrapper.text()).toBe("User is already signed in");
+        expect(wrapper.text()).toBe("");
     })
 
     test("Display the login error", ()=>{

@@ -2,11 +2,11 @@ import { shallowMount } from "@vue/test-utils";
 import AddEx from "@/views/AddExperimentalData";
 
 
-describe("Adding Data Component Tests", ()=> {
-    test("Signed in users can only Enter data", ()=>{
+describe("Adding Data Component Tests", () => {
+    test("Signed in users can only Enter data", () => {
         const wrapper = shallowMount(AddEx);
 
-        expect(wrapper.text()).toMatch("Unauthorised");
+        expect(wrapper.text()).toMatch("");
     });
 
     test("Users can enter data", ()=>{
@@ -35,7 +35,7 @@ describe("Adding Data Component Tests", ()=> {
 
     })
 
-    test("User can submit data",()=>{
+    test("User can submit data",() => {
         const wrapper =  shallowMount(AddEx, {
             props : {
                 user :{ name : "somebody",  email: "some@a"}
@@ -43,7 +43,6 @@ describe("Adding Data Component Tests", ()=> {
             
         });
         expect(wrapper.find("#add-experiment-form > form > button:nth-child(11)").exists()).toEqual(true);
-
-    })
+    });
 
 })
