@@ -11,35 +11,16 @@ describe("Register Tests", ()=> {
 
         expect(wrapper.text()).toMatch("Sign up below");
     });
-
-    test("Displays to user that they are signed in", ()=>{
-        const wrapper = shallowMount(signup,{
-            propsData: { 
-                user : { email : "bobby@shurmuda", password : "securepassowrd123456", displayName : "bobbyS" }
-            }
-        })
-        expect(wrapper.vm.user.displayName).toEqual("bobbyS");
-        expect(wrapper.text()).toEqual("");
-    })
-
-    test("Displays to user to sign up when user is an empty object", ()=> {
-        const wrapper = shallowMount(signup,{
-            propsData: { 
-                user : {}
-            }
-        })
-        expect(wrapper.text()).toMatch("Sign up below");
-    })
-
+    
     test("User can input details", ()=>{
         const wrapper = shallowMount(signup);
         wrapper.find("#email").setValue("test email");
         wrapper.find("#password").setValue("test password");
         wrapper.find("#confirm-password").setValue("test password");
         
-        expect(wrapper.vm.email).toBe("test email")
-        expect(wrapper.vm.password).toBe("test password");
-        expect(wrapper.vm.confirmPassword).toBe("test password");
+        expect(wrapper.vm.credential.email).toBe("test email")
+        expect(wrapper.vm.credential.password).toBe("test password");
+        expect(wrapper.vm.credential.confirmPassword).toBe("test password");
         
 
     })
@@ -47,20 +28,31 @@ describe("Register Tests", ()=> {
     test("Password vaildation",()=>{
         const wrapper = mount(signup);
 
+        wrapper.find("#password").setValue("test");
+        wrapper.find("#confirm-password").setValue("TEST");
+
+        expect(wrapper.vm.doPasswordsMatch).toBe(false);
+
+        wrapper.find("#confirm-password").setValue("test");
+
+        expect(wrapper.vm.doPasswordsMatch).toBe(true);
+
+    })
+
+    test("Form validation", ()=> {
+        const wrapper = mount(signup);
+        
+        wrapper.find("#full-name").setValue("test name");
+        wrapper.find("#institution").setValue("test insit");
         wrapper.find("#email").setValue("test email");
         wrapper.find("#password").setValue("test password");
         wrapper.find("#confirm-password").setValue("test password");
 
-        wrapper.vm.$nextTick().then(() => {
-            expect(wrapper.vm.doPasswordsMatch).toBe(true);
-        })
+        expect(wrapper.vm.validation).toEqual(true);
 
-    })
+        wrapper.find("#institution").setValue("");
 
-    test("Sign in button disabled if inputs not satified", ()=>{
+        expect(wrapper.vm.validation).toEqual(false);
 
-        const wrapper = shallowMount(signup);
-
-        expect(wrapper.find("#register-form > form > button").isVisible()).toBe(false);
     })
 })
