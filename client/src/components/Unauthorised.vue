@@ -1,6 +1,6 @@
 <template>
   <!-- if a user is not logged in -->
-  <div class="md:flex md:flex-col md:justify-center" id="user-not-logged-in">
+  <div class="md:flex md:flex-col md:justify-center mt-2" id="user-not-logged-in">
     <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
       <p>Unauthorised</p>
     </h2>
