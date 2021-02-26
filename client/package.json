@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit --watch",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build-css": "tailwindcss build src/assets/css/style.scss -o src/assets/tailwind-outputted/style.scss"
   },
@@ -51,6 +51,8 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "sass": "^1.32.6",
     "sass-loader": "^10.1.1",
-    "vue-chartjs": "^3.5.1"
+    "typescript": "~3.9.3",
+    "vue-chartjs": "^3.5.1",
+    "vue-jest": "^5.0.0-0"
   }
 }
