@@ -37,8 +37,8 @@
               <option>TNNT</option>
               <option>TPM1</option>
             </select>
-            <button @click="filterExperiment(geneMutation, 'mutation')" style="margin-left: 10px">Search</button>
-            <button @click="showAllExperiments" style="margin-left: 10px">Filter by gene mutation</button>
+            <button @click="filterExperiment(geneMutation, 'mutation')" style="margin-left: 10px">Filter by gene mutation</button>
+            <button @click="showAllExperiments" style="margin-left: 10px">Show all</button>
             <br>
 
             <label for="title-search-experiment">Search and filter by title</label><br>
@@ -50,8 +50,8 @@
               <option>Force vs Calcium</option>
               <option>Length vs Time</option>
             </select>
-            <button @click="filterExperiment(experimentTitle, 'title')" style="margin-left: 10px">Search</button>
-            <button @click="showAllExperiments" style="margin-left: 10px">Filter by experiment title</button>
+            <button @click="filterExperiment(experimentTitle, 'title')" style="margin-left: 10px">Filter by experiment title</button>
+            <button @click="showAllExperiments" style="margin-left: 10px">Show all</button>
             <br>
             <p v-if="this.mutationUpdate">Result displaying for genetic mutation {{ this.mutationUpdate }}</p>
           </div>

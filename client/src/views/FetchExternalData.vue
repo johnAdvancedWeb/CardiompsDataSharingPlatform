@@ -17,7 +17,7 @@
     </div>
 
     <div id="search-container">
-      <label for="mutation-select">Filter by gene mutation and cardiomyopathy</label><br>
+      <label for="mutation-select">Filter by gene mutation and cardiomyopathy data</label><br>
       <select id="mutation-select" v-model="mutation" required>
         <option disabled selected value>Select a mutation</option>
         <option disabled value></option>
