@@ -44,7 +44,7 @@
       <br>
       <div v-if="user && user.displayName">
         <i class="fas fa-user"></i><span style="margin-left: 6px; margin-right: 14px">{{ user.displayName }}</span>
-        <router-link @click="$emit('signOut')" class="button btn my-2 my-sm-0" to="#">Sign Out
+        <router-link id="data-test-logout" @click="$emit('signOut')" class="button btn my-2 my-sm-0" to="#">Sign Out
         </router-link>
       </div>
       <div v-else>
