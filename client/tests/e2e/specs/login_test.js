@@ -24,7 +24,7 @@ describe('Login Page : signed in', () => {
   it("user can login", ()=> {
     cy.get("#password").type("56");
     cy.get("#login-form > form > button").click();
-    cy.contains("What's new")
+    cy.contains("The latest cardiomyopathy experiments")
   })
 
 })
