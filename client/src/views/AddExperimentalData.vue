@@ -148,7 +148,6 @@ export default {
 
     generateCsvData() {
       let jsonData = csv.toObjects(this.csvData.text);
-      // console.table(jsonData);
 
       this.xAxisData = [];
       this.y1AxisData = [];
