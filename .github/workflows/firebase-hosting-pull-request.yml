@@ -17,7 +17,7 @@ jobs:
       - name: cypress-io/github-action@v2
         uses: cypress-io/github-action@v2
         with:
-          start: npm run serve
+          start: cd client && npm run serve
           wait-on: <http://localhost:8080/>
           config_file: cypress.json
           spec: "tests/e2e/**/*"
