@@ -1,5 +1,14 @@
 <template>
-  <div class="container">
+  <!-- if a user is not logged in -->
+  <div class="md:flex md:flex-col md:justify-center" id="user-not-logged-in" v-if="!user">
+    <h2 class="text-black text-2xl md:text-4xl font-bold mb-1">
+      <p>Unauthorised</p>
+    </h2>
+    <p class="text-sm md:text-lg mb-4">Please login or register to view this page</p>
+  </div>
+  <!-- above code ends here -->
+
+  <div class="container" v-else>
     <div class="row">
       <div class="col-sm">
         <div id="add-experiment-container">
@@ -18,9 +27,15 @@
               <!--                <input type="text" id="title" v-model="title" required placeholder='e.g., "Unhealthy Sarcomere Length vs Time"'><br>-->
             </div>
 
-            <div id="description-container">
-              <label for="description">Description:</label><br>
-              <input type="text" id="description" v-model="description" required placeholder='e.g., "An experiment showing the difference between..."'><br>
+            <div id="mutation-container">
+              <label for="mutation-select">Gene mutation: </label><br>
+              <select id="mutation-select" required v-model="mutation">
+                <option disabled selected value>Select a mutation</option>
+                <option>MYBPC3</option>
+                <option>MYH7</option>
+                <option>TNNT</option>
+                <option>TMP1</option>
+              </select>
             </div>
 
             <form @submit.prevent>
@@ -33,6 +48,13 @@
               <div>
                 <label for="x-data">X-axis (comma separated): </label><br>
                 <input type="text" id="x-data" v-model="xAxisData" placeholder='e.g., "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9"' required><br>
+              </div>
+
+
+              <label class="logo-text">If not specified, default column names ("series 1, series 2, series 3") will be used</label>
+              <div id="y-columns-container">
+                <label for="y-columns">Y-column names (comma separated): </label><br>
+                <input type="text" id="y-columns" v-model="yColumns" placeholder='e.g., "time, velocity"'><br>
               </div>
 
               <div id="y1-container">
@@ -104,8 +126,9 @@ export default {
         text : ""
       },
       title: "",
-      description: "",
+      mutation: "",
       xAxisData: [],
+      yColumns: [],
       y1AxisData: [],
       y2AxisData: [],
       y3AxisData: [],
@@ -161,6 +184,10 @@ export default {
 
     addExperimentalData() {
       /* if they're not arrays, turn them into it by splitting them, this is if a user manually types inputs their data */
+      if (!Array.isArray(this.yColumns)) {
+        this.yColumns = this.yColumns.replaceAll(/\s/g, '').split(',');
+      }
+
       if (!Array.isArray(this.xAxisData)) {
         this.xAxisData = this.xAxisData.replaceAll(/\s/g, '').split(',');
       }
@@ -176,7 +203,7 @@ export default {
       if (!Array.isArray(this.y3AxisData)) {
         this.y3AxisData = this.y3AxisData.replaceAll(/\s/g, '').split(',');
       }
-      this.$emit('add-experimental-data', this.title, this.description, this.xAxisData, this.y1AxisData, this.y2AxisData, this.y3AxisData);
+      this.$emit('add-experimental-data', this.title, this.mutation, this.xAxisData, this.yColumns, this.y1AxisData, this.y2AxisData, this.y3AxisData);
       this.$router.push("/");
     }
   },

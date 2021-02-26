@@ -29,11 +29,7 @@
         </li>
 
         <li class="navbar-list-items-routes" v-if="user && user.displayName">
-          <router-link class="nav-link" :to="{ name: 'QueryData' }">Query Experimental Data</router-link>
-        </li>
-
-        <li class="navbar-list-items-routes" v-if="user && user.displayName">
-          <router-link class="nav-link" :to="{ name: 'MyPosts' }">My Posts</router-link>
+          <router-link class="nav-link" :to="{ name: 'QueryData' }">Query External Data</router-link>
         </li>
 
         <li class="navbar-list-items-routes">
