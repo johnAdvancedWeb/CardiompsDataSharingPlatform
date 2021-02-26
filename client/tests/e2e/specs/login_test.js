@@ -37,11 +37,17 @@ describe("Signed in only pages", ()=> {
 
   it("query page loads",()=>{
     cy.visit("/query-data");
+    cy.get("div#search-container").should("exist");
+
   })
 
   it("Add Data page loads",()=>{
     cy.visit("add-data");
     cy.contains("Add and record experimental data");
+  })
+  it("News data loads",()=>{
+    cy.visit("/news-feed");
+    cy.contains("Latest Cardiomyopathy News and Research");
   })
 
 })
